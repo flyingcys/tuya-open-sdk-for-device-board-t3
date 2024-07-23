@@ -17,7 +17,7 @@ static TKL_HCI_FUNC_CB s_evt_cb = NULL;
 static TKL_HCI_FUNC_CB s_acl_cb = NULL;
 BOOL_T ble_init_flag = FALSE;
 
-OPERATE_RET tkl_hci_init(VOID)
+OPERATE_RET tkl_hci_init(void)
 {
 //     int count = 0;
 //     while(!bk_ble_get_env_state()) {
@@ -37,7 +37,7 @@ OPERATE_RET tkl_hci_init(VOID)
     return OPRT_OK;
 }
 
-OPERATE_RET tkl_hci_deinit(VOID)
+OPERATE_RET tkl_hci_deinit(void)
 {
 #if TKL_DEBUG
     bk_printf("%s\n", __func__);
@@ -48,7 +48,7 @@ OPERATE_RET tkl_hci_deinit(VOID)
     return OPRT_OK;
 }
 
-OPERATE_RET tkl_hci_reset(VOID)
+OPERATE_RET tkl_hci_reset(void)
 {
 #if TKL_DEBUG
     bk_printf("%s\n", __func__);

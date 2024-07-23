@@ -142,7 +142,7 @@ OPERATE_RET tkl_uart_deinit(TUYA_UART_NUM_E port_id)
  * @return return > 0: number of data written; return <= 0: write errror
  */
 
-int32_t tkl_uart_write(TUYA_UART_NUM_E port_id, VOID_T *buff, UINT16_T len)
+int tkl_uart_write(TUYA_UART_NUM_E port_id, VOID_T *buff, uint16_t len)
 {
     uart_id_t port;
 
@@ -171,7 +171,7 @@ int32_t tkl_uart_write(TUYA_UART_NUM_E port_id, VOID_T *buff, UINT16_T len)
  *
  * @return return >= 0: number of data read; return < 0: read errror
  */
-int32_t tkl_uart_read(TUYA_UART_NUM_E port_id, VOID_T *buff, UINT16_T len)
+int tkl_uart_read(TUYA_UART_NUM_E port_id, VOID_T *buff, uint16_t len)
 {
     uart_id_t port;
 

@@ -213,7 +213,7 @@ uint32_t tkl_adc_ref_voltage_get(TUYA_ADC_NUM_E port_num)
  *
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_adc_read_data(TUYA_ADC_NUM_E unit_num, int32_t *buff, UINT16_T len)
+OPERATE_RET tkl_adc_read_data(TUYA_ADC_NUM_E unit_num, int32_t *buff, uint16_t len)
 {
     OPERATE_RET ret = OPRT_OK;
     unsigned char i = 0, j = 0;
@@ -300,7 +300,7 @@ int32_t tkl_adc_temperature_get(VOID_T)
  *
  */
 extern float saradc_calculate(UINT16 adc_val);
-OPERATE_RET tkl_adc_read_voltage(TUYA_ADC_NUM_E port_num, int32_t *buff, UINT16_T len)
+OPERATE_RET tkl_adc_read_voltage(TUYA_ADC_NUM_E port_num, int32_t *buff, uint16_t len)
 { 
     uint16_t value   = 0;
     float cali_value = 0;

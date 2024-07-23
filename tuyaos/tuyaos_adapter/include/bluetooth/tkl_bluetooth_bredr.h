@@ -180,33 +180,33 @@ typedef struct {
 	TUYA_BT_GAP_ADDR_T                  addr;           /**< Address of the remote device. */
     uint8_t                             link_key[16];   /**< security keys. */
 
-    VOID                                *user_data;
+    void                                *user_data;
 } TUYA_BT_PAIR_BOND_INFO_T;
 
 typedef struct {
 	TUYA_BT_GAP_ADDR_T                  addr;           /**< Address of the remote device. */
     uint32_t                              passkey;        /**< respond passkey. */
 
-    VOID                                *user_data;
+    void                                *user_data;
 } TUYA_BT_PAIR_DEVICE_T;
 
 typedef struct {
     TUYA_BT_GAP_ADDR_T                  addr;           /**< Disconnection handle on which the event occured.*/
     uint32_t                              reason;         /**< Disconnection Reason */
-    VOID                                *user_data;
+    void                                *user_data;
 } TUYA_BT_DISCONNECT_EVT_T;
 
 typedef struct {
     TUYA_BT_PAIR_REQUEST_T              req;            /**< pair request */
     uint32_t                              passkey;        /**< Init passkey. */
-    VOID                                *user_data;
+    void                                *user_data;
 } TUYA_BT_PAIR_BOND_EVT_T;
 
 typedef struct {
     TUYA_BT_GAP_ADDR_T                  addr;           /**< Address of the remote device. */
     uint8_t                             *name;          /**< BT name of the remote device. */
     uint8_t                             name_len;
-    VOID                                *user_data;
+    void                                *user_data;
 } TUYA_BT_PAIR_INQUIRY_EVT_T;
 
 
@@ -226,7 +226,7 @@ typedef struct {
 
 typedef struct {
     TUYA_BT_BREDR_EVENT_TYPE_E          type;           /**< Tuya BR-EDR Event */
-    int32_t                               result;         /**< Indiacte event result for bluetooth callback */
+    int                               result;         /**< Indiacte event result for bluetooth callback */
 
     union {
         TUYA_BT_PAIR_BOND_EVT_T         pair;           /**< Pairing Event callback */
@@ -244,7 +244,7 @@ typedef struct {
  ********************* variable ****************************************
  **********************************************************************/
 /**< Tuya Bluetooth BR-EDR Callback Register function definition */
-typedef VOID(*TUYA_BT_BREDR_EVT_FUNC_CB)(TUYA_BT_BREDR_EVENT_T *p_event);
+typedef void(*TUYA_BT_BREDR_EVT_FUNC_CB)(TUYA_BT_BREDR_EVENT_T *p_event);
 
 /***********************************************************************
  ********************* function ****************************************

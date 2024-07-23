@@ -52,7 +52,7 @@ typedef struct {
     OPERATE_RET (*station_get_status)           (WF_STATION_STAT_E *stat);
     OPERATE_RET (*send_mgnt)                    (const uint8_t *buf, const uint32_t len);
     OPERATE_RET (*register_recv_mgnt_callback)  (const BOOL_T enable, const WIFI_REV_MGNT_CB recv_cb);
-    OPERATE_RET (*ioctl)                        (WF_IOCTL_CMD_E cmd,  VOID *args);
+    OPERATE_RET (*ioctl)                        (WF_IOCTL_CMD_E cmd,  void *args);
 } TKL_WIFI_DESC_T;
 
 /**
@@ -68,7 +68,7 @@ TKL_WIFI_DESC_T* tkl_wifi_desc_get(VOID_T);
  *
  */
 typedef struct {
-        OPERATE_RET (*ioctl)                    (int32_t dev, int32_t vif_index, uint32_t cmd, ULONG_T arg);
+        OPERATE_RET (*ioctl)                    (int dev, int vif_index, uint32_t cmd, ULONG_T arg);
 } TKL_WIFI_HOSTAP_DESC_T;
 
 /**

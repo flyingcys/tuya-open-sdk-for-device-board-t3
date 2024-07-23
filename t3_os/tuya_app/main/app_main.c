@@ -24,29 +24,10 @@ int main(void)
     __get_flash_id();
 
 #if (CONFIG_SYS_CPU0)
-    extern void tuya_app_main(void);
-    extern int tuya_upgrade_main(void);
-    //extern void tkl_system_heap_init(void);
-    extern TUYA_OTA_PATH_E tkl_ota_is_under_seg_upgrade(void);
-    //extern void tuya_ota_peripheral_flash_earse(void);
-    //extern int tuya_ota_set_peripheral_jude(void);
-    //extern void tuya_ota_pre_process(void);
 
-    if(TUYA_OTA_PATH_INVALID != tkl_ota_is_under_seg_upgrade()) {
-        //tkl_system_heap_init();
-        bk_printf("goto tuya_upgrade_main: %d\r\n", tuya_upgrade_main());
-        rtos_set_user_app_entry((beken_thread_function_t)tuya_upgrade_main);
-        //if(tuya_ota_set_peripheral_jude()) {
-        //   tuya_ota_peripheral_flash_earse();
-        //}
-    } else {
-        if (!ate_is_enabled()) {
-            bk_printf("go to tuya\r\n");
-            rtos_set_user_app_entry((beken_thread_function_t)tuya_app_main);
-        }
-        //if(tuya_ota_set_peripheral_jude()) {
-        //    tuya_ota_pre_process();
-        //}
+    if (!ate_is_enabled()) {
+        bk_printf("go to tuya\r\n");
+        rtos_set_user_app_entry((beken_thread_function_t)tuya_app_main);
     }
 
     // bk_set_printf_sync(true);
@@ -54,10 +35,6 @@ int main(void)
 #endif
 
     bk_init();
-
-#if (CONFIG_TUYA_OS_ADAPTER)
-    cli_tuya_test_init();
-#endif
 
     return 0;
 }

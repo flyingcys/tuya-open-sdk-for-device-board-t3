@@ -82,11 +82,11 @@ OPERATE_RET tkl_ble_gap_adv_start(TKL_BLE_GAP_ADV_PARAMS_T const *p_adv_params);
 
 /**
  * @brief   Stop advertising
- * @param   VOID
+ * @param   void
  * @return  SUCCESS
  *          ERROR
  * */ 
-OPERATE_RET tkl_ble_gap_adv_stop(VOID);
+OPERATE_RET tkl_ble_gap_adv_stop(void);
 
 /**
  * @brief   Setting advertising data
@@ -118,11 +118,11 @@ OPERATE_RET tkl_ble_gap_scan_start(TKL_BLE_GAP_SCAN_PARAMS_T const *p_scan_param
 
 /**
  * @brief   Stop scanning
- * @param   VOID
+ * @param   void
  * @return  SUCCESS
  *          ERROR
  * */ 
-OPERATE_RET tkl_ble_gap_scan_stop(VOID);
+OPERATE_RET tkl_ble_gap_scan_stop(void);
 
 /**
  * @brief   Start connecting one peer

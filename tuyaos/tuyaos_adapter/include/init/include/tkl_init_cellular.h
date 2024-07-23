@@ -80,7 +80,7 @@ typedef struct
      *            4：飞行模式
      * @return 0 成功 其它 失败
      */
-    OPERATE_RET (*set_cfun_mode) (uint8_t sim_id,int32_t cfun);
+    OPERATE_RET (*set_cfun_mode) (uint8_t sim_id,int cfun);
 
     /**
      * @brief 获取SIM卡中的国际移动用户识别码
@@ -118,7 +118,7 @@ typedef struct
      * @param rsrp 返回实际的信号强度(dbm)
      * @return 0 成功 其它 失败
      */
-    OPERATE_RET (*get_rsrp)(uint8_t sim_id,int32_t *rsrp);
+    OPERATE_RET (*get_rsrp)(uint8_t sim_id,int *rsrp);
 
   	/**
      * @brief 获取当前蜂窝设备的信号噪声比
@@ -126,7 +126,7 @@ typedef struct
      * @param sinr (0~31)
      * @return 0 成功 其它 失败
      */
-    OPERATE_RET (*get_sinr)(uint8_t sim_id,int32_t *sinr,int32_t *bit_error);
+    OPERATE_RET (*get_sinr)(uint8_t sim_id,int *sinr,int *bit_error);
 
 	/**
      * @brief 当前LBS的基站信息(只支持LTE)
@@ -136,14 +136,14 @@ typedef struct
      * @param timeout 搜索临近基站信息超时时间(一般需要4秒左右)
      * @return 0 成功 其它 失败
      */
-    OPERATE_RET (*get_lbs)(uint8_t simid,TKL_LBS_INFO_T *lbs,BOOL_T neighbour,int32_t timeout);
+    OPERATE_RET (*get_lbs)(uint8_t simid,TKL_LBS_INFO_T *lbs,BOOL_T neighbour,int timeout);
 
     /**
      * @brief 获取当前设备的射频校准状态
      * @param
      * @return TRUE正常，FALSE异常
      */
-     BOOL_T      (*rf_calibrated)(VOID);
+     BOOL_T      (*rf_calibrated)(void);
 
     /**
      * @brief 设置是否使能SIM检测功能
@@ -156,7 +156,7 @@ typedef struct
     * @brief 获取默认的SIM ID
     * @return 小于0失败，其他SIM ID
     */
-    INT8_T      (*get_default_simid)(VOID);
+    INT8_T      (*get_default_simid)(void);
 
     /**
     * @brief 平台提供一些特殊的能力接口
@@ -166,7 +166,7 @@ typedef struct
     *
     * @return 0 成功 其它 失败
     */
-    OPERATE_RET (*ioctl)(int32_t cmd,VOID* argv);
+    OPERATE_RET (*ioctl)(int cmd,void* argv);
 
 } TKL_CELL_BASE_INTF_T;
 
@@ -255,7 +255,7 @@ typedef struct
     * @param vol （0~100）
     * @return 0 成功，其他失败
     */
-    OPERATE_RET (*set_voice_vol)(int32_t vol);
+    OPERATE_RET (*set_voice_vol)(int vol);
 
 
     /**
@@ -272,14 +272,14 @@ typedef struct
     * @param duration 播放音的持续时间
     * @return 0 成功，其他失败
     */
-    OPERATE_RET (*play_tone)(TUYA_TONE_TYPE_E tone, int32_t duration);
+    OPERATE_RET (*play_tone)(TUYA_TONE_TYPE_E tone, int duration);
 
     /**
     * @brief 停止电话的拨号音
     * @param 无
     * @return 0 成功，其他失败
     */
-    OPERATE_RET (*stop_tone)(VOID);
+    OPERATE_RET (*stop_tone)(void);
 
 
     /**
@@ -437,9 +437,9 @@ typedef struct
      */
     OPERATE_RET (*sms_mute)(BOOL_T mute);
 
-    VOID*   (*convert_str)(const VOID *from, int32_t from_size,
+    void*   (*convert_str)(const void *from, int from_size,
                             TUYA_CELLULAR_SMS_ENCODE_E from_chset,
-                            TUYA_CELLULAR_SMS_ENCODE_E to_chset, int32_t *to_size);
+                            TUYA_CELLULAR_SMS_ENCODE_E to_chset, int *to_size);
 }TKL_CELL_SMS_INTF_T;
 
 /**
@@ -484,7 +484,7 @@ typedef struct
      * @param 无
      * @return 充电器状态
      */
-    TKL_CELLULAR_VBAT_CHG_STATE_E (*get_charger_state)(VOID);
+    TKL_CELLULAR_VBAT_CHG_STATE_E (*get_charger_state)(void);
 
     /**
      * @brief 注册电池充电器消息回调处理函数
@@ -521,10 +521,10 @@ typedef struct
     OPERATE_RET (*audio_play) (TKL_AUDIO_PLAYER_TYPE_E type, TKL_AUDIO_STREAM_FORMAT_E format,
                                 PCHAR_T file_path,
                                 TKL_AUDIO_PLAYER_CB cb, PVOID_T cb_ctx);
-    OPERATE_RET (*audio_pause) (VOID);
-    OPERATE_RET (*audio_resume) (VOID);
-    OPERATE_RET (*audio_stop) (VOID);
-    OPERATE_RET (*audio_set_vol) (int32_t vol);
+    OPERATE_RET (*audio_pause) (void);
+    OPERATE_RET (*audio_resume) (void);
+    OPERATE_RET (*audio_stop) (void);
+    OPERATE_RET (*audio_set_vol) (int vol);
     OPERATE_RET (*audio_get_vol) (PINT_T vol);
     OPERATE_RET (*audio_set_mute) (BOOL_T mute);
     OPERATE_RET (*audio_get_mute) (PBOOL_T mute);
@@ -538,7 +538,7 @@ typedef struct
     OPERATE_RET (*audio_get_status) (TKL_AUDIO_PLAYER_STATUS_E *status);
     OPERATE_RET (*audio_play_stream) (TKL_AUDIO_PLAYER_TYPE_E type, const TKL_AUDIO_PLAY_OPS_T* playOps,
                                       PVOID_T playCtx, const TKL_AUDIO_FRAME_T* frame);
-    OPERATE_RET (*audio_stop_stream) (VOID);
+    OPERATE_RET (*audio_stop_stream) (void);
 } TKL_CELL_PLAYER_INTF_T;
 
 /**
@@ -555,13 +555,13 @@ TKL_CELL_PLAYER_INTF_T* tkl_cellular_player_desc_get();
  */
 typedef struct
 {
-    OPERATE_RET (*init) (VOID *param);
+    OPERATE_RET (*init) (void *param);
     TUYA_CELLULAR_KEY_LISTENER (*key_listener_add) (TUYA_KEYMAP_E keyId,
                                      TUYA_CELLULAR_KEY_CB cb,
                                      void *ctx);
     OPERATE_RET (*key_listener_delete) (TUYA_CELLULAR_KEY_LISTENER listener);
     OPERATE_RET (*key_state_get) (TUYA_KEYMAP_E keyId,TUYA_KEYSTATE_E *state);
-    OPERATE_RET (*key_ioctl)(int32_t cmd,VOID *argv);
+    OPERATE_RET (*key_ioctl)(int cmd,void *argv);
 } TKL_CELL_KEYPAD_INTF_T;
 
 /**

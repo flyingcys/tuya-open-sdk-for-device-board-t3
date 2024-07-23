@@ -75,7 +75,7 @@ typedef struct {
 typedef struct {
     TUYA_BLE_SM_EVT_TYPE_E              type;               /**< Security Manager Protocol Event */
     uint16_t                            conn_handle;        /**< Connection Handle */
-    int32_t                               result;             /**< Will Refer to HOST STACK Error Code */
+    int                               result;             /**< Will Refer to HOST STACK Error Code */
 
     union {
         TUYA_BLE_SM_STATUS_PARAM_T      security_fail;      /**< Report fail event for this link, See @ref TUYA_BLE_SM_FAIL_EVT_T. */
@@ -85,7 +85,7 @@ typedef struct {
     }sm_event;
 } TUYA_BLE_SM_PARAMS_EVT_T;
 
-typedef VOID(*TUYA_BLE_SM_FUNC_CB)(TUYA_BLE_SM_PARAMS_EVT_T *p_event);
+typedef void(*TUYA_BLE_SM_FUNC_CB)(TUYA_BLE_SM_PARAMS_EVT_T *p_event);
 
 /**
  * @brief   [Optional][SM Required] Init the Security Manager And Post The Correct Parameters

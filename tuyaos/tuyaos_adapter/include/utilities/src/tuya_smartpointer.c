@@ -33,7 +33,7 @@
  * @param[in] cnt the Initial value of the reference
  * @return the reference data address
  */
-SMARTPOINTER_T *tuya_smartpointer_create(VOID *data, const uint32_t data_len, const BOOL_T malk, const uint32_t cnt)
+SMARTPOINTER_T *tuya_smartpointer_create(void *data, const uint32_t data_len, const BOOL_T malk, const uint32_t cnt)
 {
     if (0 == data_len || NULL == data) {
         return NULL;
@@ -71,7 +71,7 @@ SMARTPOINTER_T *tuya_smartpointer_create(VOID *data, const uint32_t data_len, co
  * @brief get the reference data, increase the reference
  * 
  * @param[inout] sp_data the reference data
- * @return VOID 
+ * @return void 
  */
 VOID_T tuya_smartpointer_get(SMARTPOINTER_T *sp_data)
 {
@@ -90,7 +90,7 @@ VOID_T tuya_smartpointer_get(SMARTPOINTER_T *sp_data)
  * @brief put the reference data, decrease the reference
  * 
  * @param[inout] sp_data the reference data 
- * @return VOID 
+ * @return void 
  * 
  * @note the reference data will be released when reference is 0
  */
@@ -119,7 +119,7 @@ VOID_T tuya_smartpointer_put(SMARTPOINTER_T *sp_data)
  * @brief delete the reference data, ignore the reference
  * 
  * @param[inout] sp_data the reference data 
- * @return VOID 
+ * @return void 
  */
 VOID_T tuya_smartpointer_del(SMARTPOINTER_T *sp_data)
 {

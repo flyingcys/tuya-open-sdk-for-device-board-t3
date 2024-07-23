@@ -39,30 +39,30 @@ typedef OPERATE_RET (*TKL_HCI_FUNC_CB)(uint8_t *p_buf, uint16_t buf_len);
 
 /**
  * @brief   Function for initializing the bluetooth host-controller interface
- * @param   VOID
+ * @param   void
  * @return  SUCCESS             Initialized successfully.
  *          ERROR
  * */
-OPERATE_RET tkl_hci_init(VOID);
+OPERATE_RET tkl_hci_init(void);
 
 /**
  * @brief   Function for de-initializing the bluetooth host-controller interface
- * @param   VOID
+ * @param   void
  * @return  SUCCESS             De-initialized successfully.
  *          ERROR
  * */
-OPERATE_RET tkl_hci_deinit(VOID);
+OPERATE_RET tkl_hci_deinit(void);
 
 /**
  * @brief   [Linux/Android] Function for reseting the bluetooth host-controller interface
  *          Try to recover socket or reopen uart/usb interface.
- * @param   VOID
+ * @param   void
  * @return  SUCCESS             Reset successfully.
  *          ERROR
  * @note    [Special Interface] If running in RTOS, we may not support this feature. 
  *          And you can report OPRT_NOT_SUPPORT if you dont need it.
  * */
-OPERATE_RET tkl_hci_reset(VOID);
+OPERATE_RET tkl_hci_reset(void);
 
 /**
  * @brief   Send HCI-Command Packet to controller from host.

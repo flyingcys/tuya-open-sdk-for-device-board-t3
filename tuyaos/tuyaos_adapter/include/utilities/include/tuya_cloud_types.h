@@ -29,7 +29,7 @@ typedef long long DLONG_T;
 typedef DLONG_T *PDLONG_T;
 typedef float FLOAT_T;
 typedef FLOAT_T *PFLOAT_T;
-// typedef signed int int32_t;
+// typedef signed int int;
 typedef int *PINT_T;
 typedef void *PVOID_T;
 typedef char CHAR_T;
@@ -53,13 +53,13 @@ typedef INT64_T *PINT64_T;
 typedef unsigned long long int UINT64_T;
 typedef UINT64_T *PUINT64_T;
 // typedef unsigned int uint32_t;
-typedef unsigned int *PUINT32_T;
+// typedef unsigned int *PUint32_t;
 // typedef int int32_t;
-typedef int *PINT32_T;
+typedef int *Pint32_t;
 typedef short INT16_T;
 typedef INT16_T *PINT16_T;
-typedef unsigned short UINT16_T;
-typedef UINT16_T *PUINT16_T;
+typedef unsigned short uint16_t;
+typedef uint16_t *PUINT16_T;
 typedef signed char INT8_T;
 typedef INT8_T *PINT8_T;
 typedef unsigned char uint8_t;
@@ -93,8 +93,8 @@ typedef DWORD_T *PDWORD_T;
 #define INOUT
 #endif
 
-#ifndef VOID
-#define VOID void
+#ifndef void
+#define void void
 #endif
 
 #ifndef VOID_T
@@ -138,7 +138,7 @@ typedef int bool_t;
 #define false 0
 #endif
 
-typedef size_t SIZE_T;
+// typedef size_t size_t;
 
 #ifndef MAX
 #define MAX(a,b) (((a) > (b)) ? (a) : (b))
@@ -192,13 +192,13 @@ typedef size_t SIZE_T;
 
 #endif
 
-#define OFFSOF(s,m) ((SIZE_T)(&(((s*)0)->m)))
+#define OFFSOF(s,m) ((size_t)(&(((s*)0)->m)))
 #define CNTSOF(a)   (sizeof(a)/sizeof(a[0]))
 #define CNTR_OF(ptr, type, member) \
         ({(type *)( (char *)ptr - OFFSOF(type,member) );}) // continer of
 
 /* tuyaos definition of socket domain */
-typedef int32_t SOCKET_DOMAIN;
+typedef int SOCKET_DOMAIN;
 #define TY_PF_INET  TY_AF_INET
 #define TY_PF_INET6 TY_AF_INET6
 
@@ -372,7 +372,7 @@ typedef struct {
     uint32_t freq;          // sampling frequency
     TUYA_ADC_TYPE_E type;   // sampling type
     TUYA_ADC_MODE_E mode;   // sampling mode
-    UINT16_T   conv_cnt;    // sampling times
+    uint16_t   conv_cnt;    // sampling times
     uint32_t   ref_vol;     // reference voltage (bat: mv), if dont support set reference voltage, ignore it
 } TUYA_ADC_BASE_CFG_T;
 
@@ -412,7 +412,7 @@ typedef enum {
 
 typedef struct{
 	TUYA_DAC_CMD_E cmd;
-	VOID * argu;
+	void * argu;
 }TUYA_DAC_CTL_CONFIG_T;
 
 /**
@@ -478,7 +478,7 @@ typedef struct {
 /**
  * @brief tuya pinmux io name
  */
-typedef UINT16_T TUYA_PIN_NAME_E;
+typedef uint16_t TUYA_PIN_NAME_E;
 /**
  * @brief tuya pinmux io name default define
  */
@@ -549,7 +549,7 @@ typedef UINT16_T TUYA_PIN_NAME_E;
  * @brief tuya pinmux func name
  */
 
-typedef UINT16_T TUYA_PIN_FUNC_E;
+typedef uint16_t TUYA_PIN_FUNC_E;
 
 /**
  * @brief tuya pinmux default func define
@@ -860,8 +860,8 @@ typedef VOID_T (*TUYA_I2C_IRQ_CB)(TUYA_I2C_NUM_E port, TUYA_IIC_IRQ_EVT_E event)
  */
 // typedef struct {
 //     uint32_t        flags;
-//     UINT16_T        addr;
-//     UINT16_T        len;
+//     uint16_t        addr;
+//     uint16_t        len;
 //     uint8_t         *buff;
 // } TUYA_I2C_MSG_T;
 
@@ -1346,12 +1346,12 @@ typedef enum {
     TUYA_TIMER_MODE_PERIOD
 } TUYA_TIMER_MODE_E;
 
-typedef VOID (*TUYA_TIMER_ISR_CB)(VOID *args);
+typedef void (*TUYA_TIMER_ISR_CB)(void *args);
 
 typedef struct {
     TUYA_TIMER_MODE_E   mode;
     TUYA_TIMER_ISR_CB   cb;
-    VOID                *args;
+    void                *args;
 } TUYA_TIMER_BASE_CFG_T;
 
 
@@ -1432,8 +1432,8 @@ typedef struct {
 #endif
 #endif
 
-typedef int32_t TUYA_OPT_LEVEL;
-typedef int32_t TUYA_OPT_NAME;
+typedef int TUYA_OPT_LEVEL;
+typedef int TUYA_OPT_NAME;
 
 /* tuyaos definition of fd operations */
 typedef struct {
@@ -1454,7 +1454,7 @@ typedef enum {
 }TUYA_TRANS_TYPE_E;
 
 /* tuyaos errorno */
-typedef int32_t TUYA_ERRNO;
+typedef int TUYA_ERRNO;
 #define UNW_SUCCESS       0
 #define UNW_FAIL          -1
 #define UNW_EINTR         -2

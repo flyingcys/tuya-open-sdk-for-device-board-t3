@@ -25,7 +25,7 @@ extern "C" {
 *
 * @return the memory address malloced
 */
-VOID_T *tkl_system_malloc(SIZE_T size);
+VOID_T *tkl_system_malloc(size_t size);
 
 /**
 * @brief Free memory of system
@@ -65,7 +65,7 @@ VOID_T *tkl_system_realloc(VOID_T* ptr, size_t size);
 *
 * @return heap size
 */
-int32_t tkl_system_get_free_heap_size(VOID_T);
+int tkl_system_get_free_heap_size(VOID_T);
 
 #ifdef __cplusplus
 }

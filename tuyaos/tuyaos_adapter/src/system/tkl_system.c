@@ -19,7 +19,7 @@
 /**
 * @brief Get system ticket count
 *
-* @param VOID
+* @param void
 *
 * @note This API is used to get system ticket count.
 *
@@ -49,7 +49,7 @@ SYS_TIME_T tkl_system_get_millisecond(VOID_T)
 *
 * @note This API is used for system sleep.
 *
-* @return VOID
+* @return void
 */
 VOID_T tkl_system_sleep(const uint32_t num_ms)
 {
@@ -66,11 +66,11 @@ VOID_T tkl_system_sleep(const uint32_t num_ms)
 /**
 * @brief System reset
 *
-* @param VOID
+* @param void
 *
 * @note This API is used for system reset.
 *
-* @return VOID
+* @return void
 */
 VOID_T tkl_system_reset(VOID_T)
 {
@@ -81,21 +81,21 @@ VOID_T tkl_system_reset(VOID_T)
 /**
 * @brief Get free heap size
 *
-* @param VOID
+* @param void
 *
 * @note This API is used for getting free heap size.
 *
 * @return size of free heap
 */
-int32_t tkl_system_get_free_heap_size(VOID_T)
+int tkl_system_get_free_heap_size(VOID_T)
 {
-    return (int32_t)xPortGetFreeHeapSize();
+    return (int)xPortGetFreeHeapSize();
 }
 
 /**
 * @brief Get system reset reason
 *
-* @param VOID
+* @param void
 *
 * @note This API is used for getting system reset reason.
 *
@@ -124,25 +124,36 @@ TUYA_RESET_REASON_E tkl_system_get_reset_reason(CHAR_T** describe)
         case RESET_SOURCE_DEEPPS_RTC:
         case RESET_SOURCE_DEEPPS_USB:
         case RESET_SOURCE_DEEPPS_TOUCH:
+        case RESET_SOURCE_SUPER_DEEP:
             ty_value = TUYA_RESET_REASON_DEEPSLEEP;
             break;
 
-        // case RESET_SOURCE_CRASH_XAT0:
+        case RESET_SOURCE_CRASH_ILLEGAL_JUMP:
         case RESET_SOURCE_CRASH_UNDEFINED:
         case RESET_SOURCE_CRASH_PREFETCH_ABORT:
         case RESET_SOURCE_CRASH_DATA_ABORT:
         case RESET_SOURCE_CRASH_UNUSED:
-        // case RESET_SOURCE_CRASH_PER_XAT0:
+        case RESET_SOURCE_CRASH_ILLEGAL_INSTRUCTION:
+        case RESET_SOURCE_CRASH_MISALIGNED:
+        case RESET_SOURCE_CRASH_ASSERT:
+            ty_value = TUYA_RESET_REASON_CRASH;
+            break;
+
+        case RESET_SOURCE_HARD_FAULT:
+        case RESET_SOURCE_MPU_FAULT:
+        case RESET_SOURCE_BUS_FAULT:
+        case RESET_SOURCE_USAGE_FAULT:
+        case RESET_SOURCE_SECURE_FAULT:
+        case RESET_SOURCE_DEFAULT_EXCEPTION:
             ty_value = TUYA_RESET_REASON_FAULT;
             break;
 
         default:
             ty_value = TUYA_RESET_REASON_UNKNOWN;
             break;
-
     }
 
-    bk_printf("bk_value:%d, ty_value:%d\r\n", value, ty_value);
+    bk_printf("bk_value:%x, ty_value:%x\r\n", value, ty_value);
     return ty_value;
 
 }
@@ -156,7 +167,7 @@ TUYA_RESET_REASON_E tkl_system_get_reset_reason(CHAR_T** describe)
 *
 * @return a random number in the specified range
 */
-int32_t tkl_system_get_random(const uint32_t range)
+int tkl_system_get_random(const uint32_t range)
 {
     unsigned int trange = range;
 
@@ -176,7 +187,7 @@ int32_t tkl_system_get_random(const uint32_t range)
 #define EFUSE_DEVICE_ID_BYTE_NUM 5
 #define OTP_DEVICE_ID 30
 
-OPERATE_RET tkl_system_get_cpu_info(TUYA_CPU_INFO_T **cpu_ary, int32_t *cpu_cnt)
+OPERATE_RET tkl_system_get_cpu_info(TUYA_CPU_INFO_T **cpu_ary, int *cpu_cnt)
 {
     TUYA_CPU_INFO_T *cpu = tkl_system_malloc(sizeof(TUYA_CPU_INFO_T));
     if (NULL == cpu) {

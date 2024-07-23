@@ -31,7 +31,7 @@ VOID_T tkl_log_output(const CHAR_T *format, ...);
 /**
 * @brief Close log port
 *
-* @param VOID
+* @param void
 *
 * @note This API is used for closing log port.
 *
@@ -42,7 +42,7 @@ OPERATE_RET tkl_log_close(VOID_T);
 /**
 * @brief Open log port
 *
-* @param VOID
+* @param void
 *
 * @note This API is used for openning log port.
 *

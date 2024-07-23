@@ -195,7 +195,7 @@ typedef enum {
 
 typedef struct {
     /* Called when the reader is opened for reading.*/
-    OPERATE_RET (*dfu_open)(uint16_t area_id, VOID *user_data);
+    OPERATE_RET (*dfu_open)(uint16_t area_id, void *user_data);
 
     /* Used by the BLOB Transfer Client to fetch outgoing data.*/
     uint32_t (*dfu_read)(uint16_t area_id, uint32_t offset, uint8_t *pbuff, uint32_t size);
@@ -204,7 +204,7 @@ typedef struct {
     OPERATE_RET (*dfu_close)(uint16_t area_id);
 
     /* Called when the client report @TKL_MESH_DFU_STATUS_E status. */
-    OPERATE_RET (*dfu_start)(uint16_t group_addr, int32_t result);
+    OPERATE_RET (*dfu_start)(uint16_t group_addr, int result);
 
     /* Called when the client report result. */
     OPERATE_RET (*dfu_result)(uint16_t group_addr, TKL_MESH_DFU_TARGET_LIST_T target_list);
@@ -212,7 +212,7 @@ typedef struct {
 
 typedef struct {
     TKL_MESH_EVT_TYPE_E         type;               /**< Mesh Event Type */
-    int32_t                       state;              /**< Mesh Event States */
+    int                       state;              /**< Mesh Event States */
 
     union {
         TKL_MESH_UNPROV_BEACON_T unprov_report;     /**< Receive Mesh Unprovisioned Beacon Data */
@@ -225,7 +225,7 @@ typedef struct {
 } TKL_MESH_EVT_PARAMS_T;
 
 /**< Define Event Callback for mesh*/
-typedef VOID(*TKL_MESH_EVT_FUNC_CB)(TKL_MESH_EVT_PARAMS_T *p_event);
+typedef void(*TKL_MESH_EVT_FUNC_CB)(TKL_MESH_EVT_PARAMS_T *p_event);
 
 typedef enum{
     TKL_MESH_PROVISION_SUCCESS = 0,
@@ -242,7 +242,7 @@ typedef enum{
     TKL_OTA_FAIL,
 }TKL_MESH_STATE_T;
 
-typedef VOID(*TKL_MESH_NET_STATE_CB_T)(TKL_MESH_STATE_T state);
+typedef void(*TKL_MESH_NET_STATE_CB_T)(TKL_MESH_STATE_T state);
 
 #endif
 

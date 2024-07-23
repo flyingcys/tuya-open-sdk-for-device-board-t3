@@ -9,7 +9,7 @@ extern "C" {
 
 
 
-typedef int32_t IOCTRL_CMD;
+typedef int IOCTRL_CMD;
 
 #define IOCTRL_CMD_SET                  1
 #define IOCTRL_CMD_GET_STRING           2
@@ -21,11 +21,11 @@ typedef struct {
 	/*device name -- it is devcie unique identifier*/
 	CHAR_T name[16];
 	/* voltage output range (inclusive) - for voltage control */
-	int32_t min_mV;
-	int32_t max_mV;
+	int min_mV;
+	int max_mV;
 	/* current output range (inclusive) - for current control */
-	int32_t min_mA;
-	int32_t max_mA;
+	int min_mA;
+	int max_mA;
     /* 用户私有定义值 */
     uint32_t usr_arg;
 }TUYA_PM_DEV_DESC_T;
@@ -68,7 +68,7 @@ TUYA_PM_DEV_DESC_T *tkl_pm_get_dev_list_head(VOID_T);
  *
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_set_voltage(const CHAR_T *devname, int32_t mV);
+OPERATE_RET tkl_pm_set_voltage(const CHAR_T *devname, int mV);
 
 
 /**
@@ -78,7 +78,7 @@ OPERATE_RET tkl_pm_set_voltage(const CHAR_T *devname, int32_t mV);
  *
  * @return 电压，单位毫伏 .小于0 失败
  */
-int32_t tkl_pm_get_voltage(const CHAR_T *devname);
+int tkl_pm_get_voltage(const CHAR_T *devname);
 
 /**
  * @brief 设置设备电源输出电流。
@@ -88,7 +88,7 @@ int32_t tkl_pm_get_voltage(const CHAR_T *devname);
  *
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_set_current(const CHAR_T *devname,int32_t mA);
+OPERATE_RET tkl_pm_set_current(const CHAR_T *devname,int mA);
 
 /**
  * @brief 获取设备电源当前输出电流。
@@ -97,7 +97,7 @@ OPERATE_RET tkl_pm_set_current(const CHAR_T *devname,int32_t mA);
  *
  * @return 电压，单位毫安，小于0 失败
  */
-int32_t  tkl_pm_get_current(const CHAR_T *devname);
+int  tkl_pm_get_current(const CHAR_T *devname);
 
 /**
  * @brief 使能设备电源功能。
@@ -107,7 +107,7 @@ int32_t  tkl_pm_get_current(const CHAR_T *devname);
  *
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_enable(const CHAR_T *devname,int32_t lp_en);
+OPERATE_RET tkl_pm_enable(const CHAR_T *devname,int lp_en);
 
 /**
  * @brief 关闭设备电源功能。
@@ -155,7 +155,7 @@ OPERATE_RET tkl_pm_reset(const CHAR_T *devname);
  * @param param    输入参数指针
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_ioctl(const CHAR_T *devname,int32_t ctl_cmd,VOID_T *param);
+OPERATE_RET tkl_pm_ioctl(const CHAR_T *devname,int ctl_cmd,VOID_T *param);
 
 
 

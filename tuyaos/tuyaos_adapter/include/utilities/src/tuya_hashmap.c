@@ -16,8 +16,8 @@ typedef struct _hashmap_element{
 /* A hashmap has some maximum size and current size,
  * as well as the data to hold. */
 typedef struct _hashmap_map{
-    int32_t size;
-    int32_t table_size;
+    int size;
+    int table_size;
     HLIST_HEAD *list;
 } HASHMAP_T;
 
@@ -174,7 +174,7 @@ STATIC HASHMAP_ELEMENT_T *__hash_find_next_element(HASHMAP_ELEMENT_T *curr)
 
 STATIC HASHMAP_ELEMENT_T *__hash_find(HASHMAP_T *m, CHAR_T* key)
 {
-    int32_t curr = __hashmap_hash_int(m, key);
+    int curr = __hashmap_hash_int(m, key);
     HLIST_HEAD *list = &(m->list[curr]);
     if(tuya_hlist_empty(list)) {
         return NULL;
@@ -237,7 +237,7 @@ err:
  * 
  * @note For same key, it does not replace it. it is inserted in the head of the list
  */
-int32_t tuya_hashmap_put(MAP_T in, const CHAR_T* key ,const ANY_T data)
+int tuya_hashmap_put(MAP_T in, const CHAR_T* key ,const ANY_T data)
 {
     HASHMAP_ELEMENT_T *element = (HASHMAP_ELEMENT_T *)tkl_system_malloc(sizeof(HASHMAP_ELEMENT_T));
     if(NULL == element) {
@@ -265,7 +265,7 @@ int32_t tuya_hashmap_put(MAP_T in, const CHAR_T* key ,const ANY_T data)
  * @param[out] arg the first value that the key matches
  * @return MAP_OK on success, others on failed, please refer to the define of hashmap error code  
  */
-int32_t tuya_hashmap_get(MAP_T in, const CHAR_T* key, ANY_T *arg)
+int tuya_hashmap_get(MAP_T in, const CHAR_T* key, ANY_T *arg)
 {
     HASHMAP_T *m = (HASHMAP_T *) in;
     HASHMAP_ELEMENT_T *element = __hash_find(m,(CHAR_T *)key);
@@ -288,7 +288,7 @@ int32_t tuya_hashmap_get(MAP_T in, const CHAR_T* key, ANY_T *arg)
  * 
  * @note if arg_iterator is NULL, fetch the first element, otherwise, fetch the next element
  */
-int32_t tuya_hashmap_data_traversal(MAP_T in, const CHAR_T* key, ANY_T_ITER *arg_iterator)
+int tuya_hashmap_data_traversal(MAP_T in, const CHAR_T* key, ANY_T_ITER *arg_iterator)
 {
     HASHMAP_T *m = (HASHMAP_T *) in;
     HASHMAP_ELEMENT_T *element = NULL;
@@ -320,7 +320,7 @@ int32_t tuya_hashmap_data_traversal(MAP_T in, const CHAR_T* key, ANY_T_ITER *arg
  * 
  * @note if data is NULL,then delete the first note match key.if data is not null, then delete the node match key and data.
  */
-int32_t tuya_hashmap_remove(MAP_T in, CHAR_T* key, ANY_T data)
+int tuya_hashmap_remove(MAP_T in, CHAR_T* key, ANY_T data)
 {
     HASHMAP_T *m = (HASHMAP_T *) in;
     int curr = __hashmap_hash_int(m, key);
@@ -377,7 +377,7 @@ VOID_T tuya_hashmap_free(MAP_T in)
  * @param[in] in the hashmap
  * @return the current size
  */
-int32_t tuya_hashmap_length(MAP_T in)
+int tuya_hashmap_length(MAP_T in)
 {
     HASHMAP_T* m = (HASHMAP_T *) in;
     if(m != NULL) 

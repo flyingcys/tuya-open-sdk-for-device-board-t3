@@ -174,9 +174,9 @@ static OPERATE_RET tkl_wifi_all_ap_scan(AP_IF_S **ap_ary, unsigned int *num)
     AP_IF_S *item;
     AP_IF_S *array = NULL;
     OPERATE_RET ret;
-    int32_t i;
-    int32_t scan_cnt;
-    int32_t ssid_len;
+    int i;
+    int scan_cnt;
+    int ssid_len;
     wifi_scan_result_t scan_result = {0};
     uint32_t semaphore_timeout = 5000;  //ms
     
@@ -291,7 +291,7 @@ OPERATE_RET tkl_wifi_scan_ap(const SCHAR_T *ssid, AP_IF_S **ap_ary, uint32_t *nu
 
     AP_IF_S *array = NULL;
     OPERATE_RET ret;
-    int32_t i = 0, j = 0, ssid_len;
+    int i = 0, j = 0, ssid_len;
     wifi_scan_result_t apList;
     uint32_t semaphore_timeout = 5000;  //ms
 
@@ -953,6 +953,7 @@ OPERATE_RET tkl_wifi_set_lp_mode(const BOOL_T enable, const uint8_t dtim)
 }
 
 static int fast_connect_flag = FALSE;
+static bool need_fast_connect_flag = TRUE;
 
 int _wifi_event_cb(void *arg, event_module_t event_module,
 					  int event_id, void *event_data)
@@ -1098,6 +1099,7 @@ OPERATE_RET tkl_wifi_station_fast_connect(const FAST_WF_CONNECTED_AP_INFO_T *fas
 #endif
 
     fast_connect_flag = TRUE;
+    need_fast_connect_flag = FALSE;
 
 	return OPRT_OK;
 
@@ -1125,6 +1127,22 @@ OPERATE_RET tkl_wifi_station_connect(const SCHAR_T *ssid, const SCHAR_T *passwd)
         wifi_event_init = 0;
         bk_event_register_cb(EVENT_MOD_WIFI, EVENT_ID_ALL, _wifi_event_cb, NULL);
         bk_event_register_cb(EVENT_MOD_NETIF, EVENT_ID_ALL, _netif_event_cb, NULL);
+    }
+
+    bk_printf("need_fast_connect_flag:%d\r\n", need_fast_connect_flag);
+    if(need_fast_connect_flag) {
+        need_fast_connect_flag = FALSE;
+        FAST_WF_CONNECTED_AP_INFO_T *fast_ap_info = NULL;
+        struct wlan_fast_connect_info *fci = NULL;
+        ret = ws_db_connect_ap_info_v2_read(&fast_ap_info);
+        if(ret == OPRT_OK) {
+            fci = (struct wlan_fast_connect_info *)fast_ap_info->data;
+            if(!strcmp(fci->ssid, ssid) && !strcmp(fci->pwd, passwd)) {
+                ret = tkl_wifi_station_fast_connect(fast_ap_info);
+                os_free(fast_ap_info);
+                return ret;
+            }
+        }
     }
 
     os_strcpy((char *)sta_config.ssid, (const char *)ssid);
@@ -1330,7 +1348,7 @@ OPERATE_RET tkl_wifi_register_recv_mgnt_callback(const BOOL_T enable, const WIFI
  * @param[in]       args    args associated with the command
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_ioctl(WF_IOCTL_CMD_E cmd,  VOID *args)
+OPERATE_RET tkl_wifi_ioctl(WF_IOCTL_CMD_E cmd,  void *args)
 {
     return OPRT_NOT_SUPPORTED;
 }

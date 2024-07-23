@@ -45,7 +45,7 @@ OPERATE_RET tkl_spi_deinit(TUYA_SPI_NUM_E port);
  *
  * @return  OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_spi_send(TUYA_SPI_NUM_E port, VOID_T *data, UINT16_T size);
+OPERATE_RET tkl_spi_send(TUYA_SPI_NUM_E port, VOID_T *data, uint16_t size);
 
 /**
  * spi_recv
@@ -56,7 +56,7 @@ OPERATE_RET tkl_spi_send(TUYA_SPI_NUM_E port, VOID_T *data, UINT16_T size);
  *
  * @return  OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_spi_recv(TUYA_SPI_NUM_E port, VOID_T *data, UINT16_T size);
+OPERATE_RET tkl_spi_recv(TUYA_SPI_NUM_E port, VOID_T *data, uint16_t size);
 
 /**
  * @brief spi transfer
@@ -147,7 +147,7 @@ int32_t tkl_spi_get_data_count(TUYA_SPI_NUM_E port);
  * @param[in]       args    args associated with the command
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_spi_ioctl(TUYA_SPI_NUM_E port, uint32_t cmd,  VOID *args);
+OPERATE_RET tkl_spi_ioctl(TUYA_SPI_NUM_E port, uint32_t cmd,  void *args);
 
 
 #ifdef __cplusplus

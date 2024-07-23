@@ -297,11 +297,11 @@ OPERATE_RET tkl_ota_data_process(TUYA_OTA_DATA_T *pack, uint32_t* remain_len)
             }
 
             flash_area = FIRMWARE_AREA;
-            tkl_ota_flash_erase(pack->start_addr, ug_proc->bin_len, (VOID *)&flash_area);
+            tkl_ota_flash_erase(pack->start_addr, ug_proc->bin_len, (void *)&flash_area);
             
             if(off_size != 0) {
                 flash_area = INVALID_ARG;
-                tkl_ota_flash_write(address, temp_buf, off_size, (VOID *)&flash_area);
+                tkl_ota_flash_write(address, temp_buf, off_size, (void *)&flash_area);
             }
             if(NULL != temp_buf) {
                 tkl_system_free(temp_buf);
@@ -317,17 +317,17 @@ OPERATE_RET tkl_ota_data_process(TUYA_OTA_DATA_T *pack, uint32_t* remain_len)
         }
 
         //bk_printf("start_addr:%x\r\n",pack->start_addr);
-        tkl_ota_flash_write(pack->start_addr, pack->data, pack->len, (VOID *)&flash_area);
+        tkl_ota_flash_write(pack->start_addr, pack->data, pack->len, (void *)&flash_area);
         ug_proc->recv_data_cnt += pack->len;
         *remain_len = 0;
     } else {
         if(!tkl_fist_flag) {
             tkl_fist_flag = 1;
             flash_area = PATCH_AREA;
-            tkl_ota_flash_erase(pack->start_addr, ug_proc->bin_len, (VOID *)&flash_area);
+            tkl_ota_flash_erase(pack->start_addr, ug_proc->bin_len, (void *)&flash_area);
         }
         flash_area = PATCH_AREA;
-        tkl_ota_flash_write(pack->start_addr, pack->data, pack->len, (VOID *)&flash_area);
+        tkl_ota_flash_write(pack->start_addr, pack->data, pack->len, (void *)&flash_area);
     }
     
     return OPRT_OK;

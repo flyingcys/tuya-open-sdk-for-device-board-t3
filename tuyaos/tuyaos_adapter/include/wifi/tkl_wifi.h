@@ -195,7 +195,7 @@ typedef struct {
  * @param[in]       buf         the buf wifi recv
  * @param[in]       len         the len of buf
  */
-typedef VOID_T (*SNIFFER_CALLBACK)(const uint8_t *buf, const UINT16_T len, const INT8_T rssi);
+typedef VOID_T (*SNIFFER_CALLBACK)(const uint8_t *buf, const uint16_t len, const INT8_T rssi);
 
 /**
  * @brief callback function: WIFI_REV_MGNT_CB
@@ -464,7 +464,7 @@ OPERATE_RET tkl_wifi_register_recv_mgnt_callback(const BOOL_T enable, const WIFI
  * @param[in]       args    args associated with the command
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_ioctl(WF_IOCTL_CMD_E cmd,  VOID *args);
+OPERATE_RET tkl_wifi_ioctl(WF_IOCTL_CMD_E cmd,  void *args);
 
 
 #ifdef __cplusplus

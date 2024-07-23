@@ -9,6 +9,7 @@
 #include <driver/aon_rtc.h>
 #endif
 
+#define TUYA_CPU_SUPER_DEEP_SLEEP 2
 
 #if CONFIG_AON_RTC
 extern OPERATE_RET tkl_wakeup_source_get(TUYA_WAKEUP_SOURCE_BASE_CFG_T *param, uint32_t *status);
@@ -78,10 +79,8 @@ OPERATE_RET tkl_cpu_sleep_mode_set(BOOL_T enable, TUYA_CPU_SLEEP_MODE_E mode)
         if(enable) {
             // PM_MODE_DEEP_SLEEP
             bk_printf("prepare to deepsleep\r\n");
-            // 1. disable tuya ble
-            // tuya_ble_set_serv_switch(false);
 
-            // 2. set wakeup source
+            // set wakeup source
             uint32_t status = 0;
             TUYA_WAKEUP_SOURCE_BASE_CFG_T  wakeup[2];
             OPERATE_RET ret = tkl_wakeup_source_get(wakeup, &status);
@@ -139,6 +138,21 @@ OPERATE_RET tkl_cpu_sleep_mode_set(BOOL_T enable, TUYA_CPU_SLEEP_MODE_E mode)
 
             // 4. set deepsleep mode
             bk_pm_sleep_mode_set(PM_MODE_DEEP_SLEEP);
+        }
+    } else if(mode == TUYA_CPU_SUPER_DEEP_SLEEP) {
+        if(enable) {
+            os_printf("prepare to super deepsleep\r\n");
+            // 1. disable tuya ble
+            //tuya_ble_set_serv_switch(false);
+            // 2. set wakeup source: usb plug
+            usbplug_wakeup_param_t  usbplug_wakeup_param = {0};
+            bk_pm_wakeup_source_set(PM_WAKEUP_SOURCE_INT_USBPLUG, &usbplug_wakeup_param);
+            // 3. stop cpu 1
+            #if CONFIG_SYS_CPU0 && (CONFIG_CPU_CNT > 1)
+            stop_cpu1_core();
+            #endif
+            // 4. set deepsleep mode
+            bk_pm_sleep_mode_set(PM_MODE_SUPER_DEEP_SLEEP);
         }
     } else {
         return OPRT_OS_ADAPTER_CPU_LPMODE_SET_FAILED;

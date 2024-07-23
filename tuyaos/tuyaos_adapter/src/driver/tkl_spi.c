@@ -65,13 +65,13 @@ OPERATE_RET tkl_spi_deinit(TUYA_SPI_NUM_E port)
     return OPRT_OK;
 }
 
-OPERATE_RET tkl_spi_send(TUYA_SPI_NUM_E port, VOID_T *data, UINT16_T size)
+OPERATE_RET tkl_spi_send(TUYA_SPI_NUM_E port, VOID_T *data, uint16_t size)
 {
     bk_spi_write_bytes((spi_id_t)port, data, size);
     return OPRT_OK;
 }
 
-OPERATE_RET tkl_spi_recv(TUYA_SPI_NUM_E port, VOID_T *data, UINT16_T size)
+OPERATE_RET tkl_spi_recv(TUYA_SPI_NUM_E port, VOID_T *data, uint16_t size)
 {
     bk_spi_read_bytes((spi_id_t)port, data, size);
     return OPRT_OK;

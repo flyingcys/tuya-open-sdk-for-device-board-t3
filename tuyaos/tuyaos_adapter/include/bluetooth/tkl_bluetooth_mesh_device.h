@@ -47,14 +47,14 @@ OPERATE_RET tkl_mesh_access_rsp_data_send(uint16_t src_addr, uint16_t dst_addr, 
  * @param   [in] version_id  product version identifier
  * @return  NULL
  * */
-VOID tkl_mesh_composition_data_set(uint16_t company_id, uint16_t product_id, uint16_t version_id);
+void tkl_mesh_composition_data_set(uint16_t company_id, uint16_t product_id, uint16_t version_id);
 
 /**
  * @brief   Init the mesh node uuid.
  * @param   [in] uuid  mesh universally unique identifier
  * @return  NULL
  * */
-VOID tkl_mesh_uuid_set(uint8_t* uuid);
+void tkl_mesh_uuid_set(uint8_t* uuid);
 
 /**
  * @brief   Function to subscribe a group address for a model of the element.
@@ -81,7 +81,7 @@ uint16_t* tkl_mesh_group_addr_sub_list_get(uint16_t ele_idx, uint32_t model_id);
  * @param   [in] step  retransmission interval = (net_trans_steps + 1) * 10ms
  * @return  NULL
  * */
-VOID tkl_mesh_network_transmit_set(uint8_t cnt, uint8_t step);
+void tkl_mesh_network_transmit_set(uint8_t cnt, uint8_t step);
 
 /**
  * @brief   Get the network layer retransmit parameters.
@@ -89,13 +89,13 @@ VOID tkl_mesh_network_transmit_set(uint8_t cnt, uint8_t step);
  * @param   [out] step  retransmission interval = (net_trans_steps + 1) * 10ms
  * @return  NULL
  * */
-VOID tkl_mesh_network_transmit_get(uint8_t* cnt, uint8_t* step);
+void tkl_mesh_network_transmit_get(uint8_t* cnt, uint8_t* step);
 
 /**
  * @brief   Set the node PB-GATT ADV use identity type.
  * @return  NULL
  * */
-VOID tkl_mesh_mode_identity_set(VOID);
+void tkl_mesh_mode_identity_set(void);
 
 /**
  * @brief   Set the network layer relay retransmit parameters.
@@ -103,7 +103,7 @@ VOID tkl_mesh_mode_identity_set(VOID);
  * @param   [in] step  retransmission interval = (net_trans_steps + 1) * 10ms
  * @return  NULL
  * */
-VOID tkl_mesh_network_relay_retransmit_set(uint8_t cnt, uint8_t step);
+void tkl_mesh_network_relay_retransmit_set(uint8_t cnt, uint8_t step);
 
 /**
  * @brief   Get the network layer retransmit parameters.
@@ -111,7 +111,7 @@ VOID tkl_mesh_network_relay_retransmit_set(uint8_t cnt, uint8_t step);
  * @param   [out] step  retransmission interval = (net_trans_steps + 1) * 10ms
  * @return  NULL
  * */
-VOID tkl_mesh_network_relay_retransmit_get(uint8_t* cnt, uint8_t* step);
+void tkl_mesh_network_relay_retransmit_get(uint8_t* cnt, uint8_t* step);
 
 /**
  * @brief   Set the node feature.
@@ -148,19 +148,19 @@ uint8_t tkl_mesh_node_default_ttl_get(void);
  * @brief   Save all mesh param into flash.
  * @return  ttl
  * */
-VOID tkl_mesh_node_param_save_all(VOID);
+void tkl_mesh_node_param_save_all(void);
 
 /**
  * @brief   Get the mesh node provision state.
  * @return  the provision state
  * */
-uint8_t tkl_mesh_get_if_prov_success(VOID);
+uint8_t tkl_mesh_get_if_prov_success(void);
 
 /**
  * @brief   Get the mesh node primary element address.
  * @return  the primary element address
  * */
-uint16_t tkl_mesh_primary_ele_addr_get(VOID);
+uint16_t tkl_mesh_primary_ele_addr_get(void);
 
 /**
  * @brief   Set the mesh node primary element address.
@@ -168,28 +168,28 @@ uint16_t tkl_mesh_primary_ele_addr_get(VOID);
  * @param   [in] flash_save_en  save in flash or only update in ram
  * @return  NULL
  * */
-VOID tkl_mesh_primary_ele_addr_set(uint16_t addr, int flash_save_en);
+void tkl_mesh_primary_ele_addr_set(uint16_t addr, int flash_save_en);
 
 /**
  * @brief   Set the mesh node device key.
  * @param   [in] key  point of device key
  * @return  NULL
  * */
-VOID tkl_mesh_device_key_update(uint8_t *key);
+void tkl_mesh_device_key_update(uint8_t *key);
 
 /**
  * @brief   get the mesh node device key.
  * @param   [in] key  point of device key
  * @return  NULL
  * */
-VOID tkl_mesh_device_key_get(uint8_t *key);
+void tkl_mesh_device_key_get(uint8_t *key);
 
 /**
  * @brief   Reset the seq cache.
  * @param   [in] addr  the src addr
  * @return  NULL
  * */
-VOID tkl_mesh_seq_cache_reset(uint16_t addr);
+void tkl_mesh_seq_cache_reset(uint16_t addr);
 
 
 /**
@@ -197,21 +197,21 @@ VOID tkl_mesh_seq_cache_reset(uint16_t addr);
  *          The unprovision state should store in flash,and the clear the network parameters.
  * @return  NULL
  * */
-VOID tkl_mesh_network_reset(VOID);
+void tkl_mesh_network_reset(void);
 
 /**
  * @brief   Reset the mesh node into unprovision state.
  *          The unprovision state only keep in ram,and must not clear the network parameters.
  * @return  NULL
  * */
-VOID tkl_mesh_network_reset_in_ram(VOID);
+void tkl_mesh_network_reset_in_ram(void);
 
 /**
  * @brief   Recover the mesh node into provision state.
  *          Node recover into provision state with the network parameters in flash.
  * @return  NULL
  * */
-VOID tkl_mesh_network_recover(VOID);
+void tkl_mesh_network_recover(void);
 
 /**
  * @brief   Close the mesh node mesh beacon.
@@ -219,7 +219,7 @@ VOID tkl_mesh_network_recover(VOID);
  * @param   [in] enable  enable or disable the adv
  * @return  NULL
  * */
-VOID tkl_mesh_node_unprovision_beacon_enable(uint8_t enable);
+void tkl_mesh_node_unprovision_beacon_enable(uint8_t enable);
 
 /**
  * @brief   Close the mesh node gatt adv.
@@ -227,7 +227,7 @@ VOID tkl_mesh_node_unprovision_beacon_enable(uint8_t enable);
  * @param   [in] enable  enable or disable the adv
  * @return  NULL
  * */
-VOID tkl_mesh_node_pbgatt_adv_enable(uint8_t enable);
+void tkl_mesh_node_pbgatt_adv_enable(uint8_t enable);
 
 /**
  * @brief   Update the mesh network provision data and the app key data.
@@ -247,7 +247,7 @@ OPERATE_RET tkl_mesh_provision_data_set(uint8_t prov_en, TKL_NET_PROV_DATA_T *pr
  * @return  SUCCESS
  *          ERROR
  * */
-OPERATE_RET tkl_mesh_model_appkey_bind_all(UINT16_T appkey_idx);
+OPERATE_RET tkl_mesh_model_appkey_bind_all(uint16_t appkey_idx);
 
 /**
  * @brief   Function to register a elemennt.
