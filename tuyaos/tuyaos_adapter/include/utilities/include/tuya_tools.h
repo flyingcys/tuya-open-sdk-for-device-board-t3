@@ -130,7 +130,7 @@ VOID_T tuya_hex2str(uint8_t *str, uint8_t *hex, int32_t hexlen);
  * @return none
  * @note the size of <pbDest> must >= nLen * 2, convert example 00-ff -> "00"-"FF"
  */
-BOOL_T tuya_str2num(UINT_T *number, const CHAR_T *str, uint8_t strlen);
+BOOL_T tuya_str2num(uint32_t *number, const CHAR_T *str, uint8_t strlen);
 
 /**
  * @brief int number convert to buff 
@@ -141,7 +141,7 @@ BOOL_T tuya_str2num(UINT_T *number, const CHAR_T *str, uint8_t strlen);
  * 
  * @return the arry length of converted
  */
-UINT_T tuya_int2intArray(UINT_T num, uint8_t *intArray, uint8_t len);
+uint32_t tuya_int2intArray(uint32_t num, uint8_t *intArray, uint8_t len);
 
 /**
  * @brief int array convert to a int number 
@@ -152,7 +152,7 @@ UINT_T tuya_int2intArray(UINT_T num, uint8_t *intArray, uint8_t len);
  * 
  * @return the number of converted
  */
-UINT_T tuya_intArray2int(uint8_t *intArray, UINT_T index, uint8_t len);
+uint32_t tuya_intArray2int(uint8_t *intArray, uint32_t index, uint8_t len);
 
 /**
  * @note buff reversal function
@@ -202,7 +202,7 @@ int32_t tuya_find_char_with_reverse_idx(const CHAR_T *str, const int32_t index, 
  * 
  * @return number of bits 1
  */
-UINT_T tuya_bit1_count(UINT_T num);
+uint32_t tuya_bit1_count(uint32_t num);
 
 /**
  * @brief the software calculates the number of leading zeros
@@ -211,7 +211,7 @@ UINT_T tuya_bit1_count(UINT_T num);
  * 
  * @return number of leading zeros
  */
-UINT_T tuya_leading_zeros_count(UINT_T num);
+uint32_t tuya_leading_zeros_count(uint32_t num);
 
 /**
  * @brief 8-bit cumulative checksum calculation 

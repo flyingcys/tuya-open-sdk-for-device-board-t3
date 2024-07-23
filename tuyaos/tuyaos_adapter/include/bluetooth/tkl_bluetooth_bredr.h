@@ -173,7 +173,7 @@ typedef struct {
 	uint8_t                             oob_data;
 	uint8_t                             mitm;           /**< Man In The Middle mode enalbe/disable */
     BOOL_T                              ble_secure_conn;/**< BLE Secure Simple Pairing, also called Secure Connection mode. Enable or not */
-    UINT_T                              passkey;        /**< Init passkey. */
+    uint32_t                              passkey;        /**< Init passkey. */
 } TUYA_BT_PAIR_INIT_PARAM_T;
 
 typedef struct {
@@ -185,20 +185,20 @@ typedef struct {
 
 typedef struct {
 	TUYA_BT_GAP_ADDR_T                  addr;           /**< Address of the remote device. */
-    UINT_T                              passkey;        /**< respond passkey. */
+    uint32_t                              passkey;        /**< respond passkey. */
 
     VOID                                *user_data;
 } TUYA_BT_PAIR_DEVICE_T;
 
 typedef struct {
     TUYA_BT_GAP_ADDR_T                  addr;           /**< Disconnection handle on which the event occured.*/
-    UINT_T                              reason;         /**< Disconnection Reason */
+    uint32_t                              reason;         /**< Disconnection Reason */
     VOID                                *user_data;
 } TUYA_BT_DISCONNECT_EVT_T;
 
 typedef struct {
     TUYA_BT_PAIR_REQUEST_T              req;            /**< pair request */
-    UINT_T                              passkey;        /**< Init passkey. */
+    uint32_t                              passkey;        /**< Init passkey. */
     VOID                                *user_data;
 } TUYA_BT_PAIR_BOND_EVT_T;
 
@@ -328,7 +328,7 @@ OPERATE_RET tkl_bt_bredr_inquiry_enable(BOOL_T enable);
  * @return  SUCCESS
  *          ERROR
  * */
-OPERATE_RET tkl_bt_gap_address_set(TUYA_BT_GAP_ADDR_T CONST *p_peer_addr);
+OPERATE_RET tkl_bt_gap_address_set(TUYA_BT_GAP_ADDR_T const *p_peer_addr);
 
 /**
  * @brief   Get the BT Address
@@ -374,7 +374,7 @@ OPERATE_RET tkl_bt_gap_paring_request(TUYA_BT_PAIR_DEVICE_T *p_device);
  * @return  SUCCESS
  *          ERROR
  * */
-OPERATE_RET tkl_bt_gap_paring_passkey_send(UINT_T passkey);
+OPERATE_RET tkl_bt_gap_paring_passkey_send(uint32_t passkey);
 
 /**
  * @brief   Enable or Disable pair when pairing request

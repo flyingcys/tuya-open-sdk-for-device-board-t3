@@ -50,7 +50,7 @@ typedef ANY_T *ANY_T_ITER;
  * @param[in] table_size the hash table size
  * @return a new empty hashmap 
  */
-MAP_T tuya_hashmap_new(UINT_T table_size);
+MAP_T tuya_hashmap_new(uint32_t table_size);
 
 
 /**
@@ -63,7 +63,7 @@ MAP_T tuya_hashmap_new(UINT_T table_size);
  * 
  * @note For same key, it does not replace it. it is inserted in the head of the list
  */
-int32_t tuya_hashmap_put(MAP_T in, CONST CHAR_T* key ,CONST ANY_T data);
+int32_t tuya_hashmap_put(MAP_T in, const CHAR_T* key ,const ANY_T data);
 
 /**
  * @brief get an element from the hashmap
@@ -73,7 +73,7 @@ int32_t tuya_hashmap_put(MAP_T in, CONST CHAR_T* key ,CONST ANY_T data);
  * @param[out] arg the first value that the key matches
  * @return MAP_OK on success, others on failed, please refer to the define of hashmap error code  
  */
-int32_t tuya_hashmap_get(MAP_T in, CONST CHAR_T* key, ANY_T *arg);
+int32_t tuya_hashmap_get(MAP_T in, const CHAR_T* key, ANY_T *arg);
 
 /**
  * @brief traverse all data with same key
@@ -85,7 +85,7 @@ int32_t tuya_hashmap_get(MAP_T in, CONST CHAR_T* key, ANY_T *arg);
  * 
  * @note if arg_iterator is NULL, fetch the first element, otherwise, fetch the next element
  */
-int32_t tuya_hashmap_data_traversal(MAP_T in, CONST CHAR_T* key, ANY_T_ITER *arg_iterator);
+int32_t tuya_hashmap_data_traversal(MAP_T in, const CHAR_T* key, ANY_T_ITER *arg_iterator);
 
 /**
  * @brief traverse all data with same key

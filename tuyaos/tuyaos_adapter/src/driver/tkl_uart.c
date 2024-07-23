@@ -226,13 +226,13 @@ void uart_dev_irq_handler(int uport, void *param)
 {
     TUYA_UART_IRQ_CB uart_irq_cb = (TUYA_UART_IRQ_CB)param;
 
-    uart_irq_cb((UINT_T)uport);
+    uart_irq_cb((uint32_t)uport);
 }
 
 TUYA_UART_IRQ_CB tkl_rx_cb = NULL;
 static void uart_isr_t_cb(uart_id_t id, void  *param) {
     if (NULL != tkl_rx_cb) {
-        tkl_rx_cb((UINT_T)id);
+        tkl_rx_cb((uint32_t)id);
     }
 }
 /**

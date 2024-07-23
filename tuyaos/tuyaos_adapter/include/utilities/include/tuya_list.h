@@ -134,7 +134,7 @@ for (p = (head)->next; n = p->next, p != (head); p = n)
  * @param[in] pHead the bidirection list
  * @return 0 means empty, others means empty
  */
-int32_t tuya_list_empty(IN CONST P_LIST_HEAD pHead);
+int32_t tuya_list_empty(IN const P_LIST_HEAD pHead);
 
 /**
  * @brief add new list node into bidirection list
@@ -143,7 +143,7 @@ int32_t tuya_list_empty(IN CONST P_LIST_HEAD pHead);
  * @param[in] pHead the bidirection list
  * @return VOID 
  */
-VOID tuya_list_add(IN CONST P_LIST_HEAD pNew, IN CONST P_LIST_HEAD pHead);
+VOID tuya_list_add(IN const P_LIST_HEAD pNew, IN const P_LIST_HEAD pHead);
 
 /**
  * @brief add new list node to the tail of the bidirection list
@@ -152,7 +152,7 @@ VOID tuya_list_add(IN CONST P_LIST_HEAD pNew, IN CONST P_LIST_HEAD pHead);
  * @param[in] pHead the bidirection list
  * @return VOID 
  */
-VOID tuya_list_add_tail(IN CONST P_LIST_HEAD pNew, IN CONST P_LIST_HEAD pHead);
+VOID tuya_list_add_tail(IN const P_LIST_HEAD pNew, IN const P_LIST_HEAD pHead);
 
 /**
  * @brief splice two dibrection list
@@ -161,7 +161,7 @@ VOID tuya_list_add_tail(IN CONST P_LIST_HEAD pNew, IN CONST P_LIST_HEAD pHead);
  * @param[in] pHead the bidirection list
  * @return VOID 
  */
-VOID tuya_list_splice(IN CONST P_LIST_HEAD pList, IN CONST P_LIST_HEAD pHead);
+VOID tuya_list_splice(IN const P_LIST_HEAD pList, IN const P_LIST_HEAD pHead);
 
 /**
  * @brief remove a list node from bidirection list
@@ -169,7 +169,7 @@ VOID tuya_list_splice(IN CONST P_LIST_HEAD pList, IN CONST P_LIST_HEAD pHead);
  * @param[in] pEntry the list node need to remove
  * @return VOID 
  */
-VOID tuya_list_del(IN CONST P_LIST_HEAD pEntry);
+VOID tuya_list_del(IN const P_LIST_HEAD pEntry);
 
 /**
  * @brief remove a list node from bidirection list and initialize it
@@ -177,7 +177,7 @@ VOID tuya_list_del(IN CONST P_LIST_HEAD pEntry);
  * @param[in] pEntry the list node need to remove and initialize
  * @return VOID 
  */
-VOID tuya_list_del_init(IN CONST P_LIST_HEAD pEntry);
+VOID tuya_list_del_init(IN const P_LIST_HEAD pEntry);
 
 #ifdef __cplusplus
 }

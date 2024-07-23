@@ -27,7 +27,7 @@ extern "C" {
  * @param   [in] appkey_idx  use which appkey index
  * @return  tx result
  * */
-OPERATE_RET tkl_mesh_access_normal_data_send(uint16_t src_addr, uint16_t dst_addr, UINT_T opcode, uint8_t *data, uint16_t data_len, uint16_t appkey_idx);
+OPERATE_RET tkl_mesh_access_normal_data_send(uint16_t src_addr, uint16_t dst_addr, uint32_t opcode, uint8_t *data, uint16_t data_len, uint16_t appkey_idx);
 
 /**
  * @brief   Send mesh data to unicast/group addr.
@@ -38,7 +38,7 @@ OPERATE_RET tkl_mesh_access_normal_data_send(uint16_t src_addr, uint16_t dst_add
  * @param   [in] data_len  data point
  * @return  tx result
  * */
-OPERATE_RET tkl_mesh_access_rsp_data_send(uint16_t src_addr, uint16_t dst_addr, UINT_T opcode, uint8_t *data, uint16_t data_len);
+OPERATE_RET tkl_mesh_access_rsp_data_send(uint16_t src_addr, uint16_t dst_addr, uint32_t opcode, uint8_t *data, uint16_t data_len);
 
 /**
  * @brief   Init the mesh node composition data(head).
@@ -65,7 +65,7 @@ VOID tkl_mesh_uuid_set(uint8_t* uuid);
  *          ERROR
  *          INSUFFICIENT_RESOURCES
  * */
-OPERATE_RET tkl_mesh_group_addr_sub_set(uint16_t opcode, uint16_t ele_addr, uint16_t sub_addr, UINT_T model_id);
+OPERATE_RET tkl_mesh_group_addr_sub_set(uint16_t opcode, uint16_t ele_addr, uint16_t sub_addr, uint32_t model_id);
 
 /**
  * @brief   Function to get the subscribe addr list of a model of the element.
@@ -73,7 +73,7 @@ OPERATE_RET tkl_mesh_group_addr_sub_set(uint16_t opcode, uint16_t ele_addr, uint
  * @param   [in] group_addr  group address
  * @return  subscribe addr list
  * */
-uint16_t* tkl_mesh_group_addr_sub_list_get(uint16_t ele_idx, UINT_T model_id);
+uint16_t* tkl_mesh_group_addr_sub_list_get(uint16_t ele_idx, uint32_t model_id);
 
 /**
  * @brief   Set the network layer retransmit parameters.

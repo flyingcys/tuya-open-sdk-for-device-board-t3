@@ -25,7 +25,7 @@ extern void bk_printf_port(int level, char *tag, const char *fmt, va_list args);
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
 extern void bk_printf(const char *fmt, ...);
-VOID_T tkl_log_output(IN CONST CHAR_T *str, ...)
+VOID_T tkl_log_output(IN const CHAR_T *str, ...)
 {
     if (str == NULL) {
         return;

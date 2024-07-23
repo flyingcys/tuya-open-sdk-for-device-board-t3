@@ -50,12 +50,12 @@ typedef enum {
 
 
 typedef struct {
-    UINT_T start_addr;
-    UINT_T cur_addr;
-    UINT_T recv_data_cnt;
-    UINT_T bin_len;
-    UINT_T bin_type;
-    UINT_T offset;
+    uint32_t start_addr;
+    uint32_t cur_addr;
+    uint32_t recv_data_cnt;
+    uint32_t bin_len;
+    uint32_t bin_type;
+    uint32_t offset;
     uint8_t firmware_is_crc;  //0- 固件区不需要加crc校验， 1- 固件区需要加crc校验（bk平台）
     UG_STAT_E stat;
     OTA_TYPE_E ota_type;//0-diff; 1-seg_A; 2-seg_B
@@ -68,7 +68,7 @@ typedef struct {
 #define SEC_B_UNIT (1024)
 
 static uint8_t buf[FLASH_SECTOR_SIZE] = {0};
-static UINT_T flash_area = INVALID_ARG;
+static uint32_t flash_area = INVALID_ARG;
 static UG_PROC_S *ug_proc = NULL;
 static uint8_t tkl_fist_flag = 0;
 
@@ -227,7 +227,7 @@ OPERATE_RET tkl_ota_flash_write(uint32_t addr, uint8_t *buf, uint32_t len, void*
 *
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
-OPERATE_RET tkl_ota_start_notify(UINT_T image_size, TUYA_OTA_TYPE_E type, TUYA_OTA_PATH_E path)
+OPERATE_RET tkl_ota_start_notify(uint32_t image_size, TUYA_OTA_TYPE_E type, TUYA_OTA_PATH_E path)
 {
     if(image_size == 0) {
         return OPRT_OS_ADAPTER_INVALID_PARM;
@@ -266,7 +266,7 @@ OPERATE_RET tkl_ota_start_notify(UINT_T image_size, TUYA_OTA_TYPE_E type, TUYA_O
 *
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
-OPERATE_RET tkl_ota_data_process(TUYA_OTA_DATA_T *pack, UINT_T* remain_len)
+OPERATE_RET tkl_ota_data_process(TUYA_OTA_DATA_T *pack, uint32_t* remain_len)
 {
     if(ug_proc == NULL) {
         bk_printf("ota don't start or start err,process error!\r\n");
@@ -282,8 +282,8 @@ OPERATE_RET tkl_ota_data_process(TUYA_OTA_DATA_T *pack, UINT_T* remain_len)
             tkl_fist_flag = 1;
 
             uint8_t *temp_buf = NULL;
-            UINT_T off_size = pack->start_addr % FLASH_SECTOR_SIZE;
-            UINT_T address = pack->start_addr - off_size;
+            uint32_t off_size = pack->start_addr % FLASH_SECTOR_SIZE;
+            uint32_t address = pack->start_addr - off_size;
             //bk_printf("off_size:%x,%x,%x\r\n",off_size, address, pack->start_addr);
             if(off_size != 0) {
                 temp_buf = (uint8_t *) tkl_system_malloc(off_size);
@@ -361,7 +361,7 @@ OPERATE_RET tkl_ota_end_notify(BOOL_T reset)
 *
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
-OPERATE_RET tkl_ota_get_ability(UINT_T *image_size, TUYA_OTA_TYPE_E *type)
+OPERATE_RET tkl_ota_get_ability(uint32_t *image_size, TUYA_OTA_TYPE_E *type)
 {
     *image_size = 1500 * 1024;
 #if defined(ENABLE_MATTER) && (ENABLE_MATTER == 1)

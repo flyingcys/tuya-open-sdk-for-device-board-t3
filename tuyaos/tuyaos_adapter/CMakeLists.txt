@@ -1,33 +1,29 @@
 set(incs)
 set(srcs)
 
-#自动查找头文件路径函数
-macro(FIND_INCLUDE_DIR result curdir)                                               ## 定义函数,2个参数:存放结果result；指定路径curdir；
-    file(GLOB_RECURSE children "${curdir}/*.h")                                     ## 遍历获取{curdir}中*.hpp和*.h文件列表
-    set(dirlist "")                                                                 ## 定义dirlist中间变量，并初始化
-    foreach(child ${children})                                                      ## for循环
-        string(REGEX REPLACE "(.*)/.*" "\\1" DIR_NAME ${child})                     ## 字符串替换,用/前的字符替换/*h
-        if((IS_DIRECTORY ${DIR_NAME}) AND (NOT (${DIR_NAME} IN_LIST dirlist)))      ## 判断是否为路径
-            list(APPEND dirlist ${DIR_NAME})                                        ## 将合法的路径加入dirlist变量中
-        endif()                                                                     ## 结束判断
-    endforeach()                                                                    ## 结束for循环
-    set(${result} ${dirlist})                                                       ## dirlist结果放入result变量中
-    #message(STATUS "result=${dirlist}")                                            ## 打印*.hpp和*.h的文件列表
+macro(FIND_INCLUDE_DIR result curdir)
+    file(GLOB_RECURSE children "${curdir}/*.h")
+    set(dirlist "")
+    foreach(child ${children})
+        string(REGEX REPLACE "(.*)/.*" "\\1" DIR_NAME ${child})
+        if((IS_DIRECTORY ${DIR_NAME}) AND (NOT (${DIR_NAME} IN_LIST dirlist)))
+            list(APPEND dirlist ${DIR_NAME})
+        endif()
+    endforeach()
+    set(${result} ${dirlist})
+    #message(STATUS "result=${dirlist}")
 endmacro()
 
 #add tuya include dir
 set(INCLUDE_DIR_LIST_TUYA $ENV{TUYA_HEADER_DIR})
-# 将路径列表转换为 CMake 中的列表变量
 string(REPLACE " " ";" INCLUDE_DIR_LIST_TUYA "${INCLUDE_DIR_LIST_TUYA}")
 set(incs ${INCLUDE_DIR_LIST_TUYA})
-
 
 list(APPEND srcs
 	"src/driver/tkl_adc.c"
 	"src/driver/tkl_flash.c"
 	"src/driver/tkl_gpio.c"
 	"src/driver/tkl_hci.c"
-	"src/driver/tkl_lwip.c"
 	"src/driver/tkl_pwm.c"
 	"src/driver/tkl_rtc.c"
 	"src/driver/tkl_spi.c"
@@ -52,14 +48,9 @@ list(APPEND srcs
 
 file(GLOB_RECURSE utilities_srcs "$ENV{ARMINO_PATH}/../../tuyaos/tuyaos_adapter/include/utilities/src/*.c")
 list(APPEND srcs ${utilities_srcs})
-#add incs srcs
 
-set(lwip_select $ENV{TUYA_LWIP_STACK_USED})
-if (lwip_select STREQUAL "lwip_bk")
-    armino_component_register(SRCS "${srcs}" INCLUDE_DIRS "${incs}" REQUIRES bk_common bk_log lwip_intf_v2_1)
-else ()
-    armino_component_register(SRCS "${srcs}" INCLUDE_DIRS "${incs}" REQUIRES bk_common bk_log)
-endif()
+#add incs srcs
+armino_component_register(SRCS "${srcs}" INCLUDE_DIRS "${incs}" REQUIRES bk_common bk_log lwip_intf_v2_1)
 
 #add tuya lib
 set(tuya_libs "$ENV{TUYA_LIBS}")

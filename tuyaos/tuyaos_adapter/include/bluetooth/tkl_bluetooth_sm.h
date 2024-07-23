@@ -94,7 +94,7 @@ typedef VOID(*TUYA_BLE_SM_FUNC_CB)(TUYA_BLE_SM_PARAMS_EVT_T *p_event);
  * @return  SUCCESS
  *          ERROR   Must have either IO capabilities or OOB if MITM.
  * */ 
-OPERATE_RET tkl_ble_security_manager_init(TUYA_BLE_SM_PARAMS_T CONST *p_security_parameter);
+OPERATE_RET tkl_ble_security_manager_init(TUYA_BLE_SM_PARAMS_T const *p_security_parameter);
 
 /**
  * @brief   [Optional][SM Required] Register the Callback While Using Security Manager.
@@ -103,7 +103,7 @@ OPERATE_RET tkl_ble_security_manager_init(TUYA_BLE_SM_PARAMS_T CONST *p_security
  * @return  SUCCESS
  *          ERROR
  * */ 
-OPERATE_RET tkl_ble_security_callback_register(CONST TUYA_BLE_SM_FUNC_CB security_callback);
+OPERATE_RET tkl_ble_security_callback_register(const TUYA_BLE_SM_FUNC_CB security_callback);
 
 /**
  * @brief   [Optional][SM Required][Ble Peripheral/Central] Security Request, Function For Initiate the GAP Authentication procedure.
@@ -141,7 +141,7 @@ OPERATE_RET tkl_ble_encryption_request(uint16_t conn_handle);
  * @note    Please Check the key_type and p_key, will reject this procedure if key_type = TUYA_BLE_SM_AUTH_KEY_TYPE_NONE or p_key = NULL
  * 
  * */ 
-OPERATE_RET tkl_ble_security_key_reply(uint16_t conn_handle, uint8_t key_type, uint8_t CONST *p_key);
+OPERATE_RET tkl_ble_security_key_reply(uint16_t conn_handle, uint8_t key_type, uint8_t const *p_key);
 
 /**
  * @brief   [Optional] Get the Bonding Information.

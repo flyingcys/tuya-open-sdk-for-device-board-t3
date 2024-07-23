@@ -132,7 +132,7 @@ uint32_t tuya_ring_buff_write(TUYA_RINGBUFF_T ringbuff, const VOID_T *data, uint
 {
     uint32_t tmp_len;
     uint32_t free_len;
-    CONST uint8_t* pdata = data;
+    const uint8_t* pdata = data;
     __RINGBUFF_T *rbuff = (__RINGBUFF_T *)ringbuff;
 
     if(rbuff == NULL || data == NULL || len == 0) {

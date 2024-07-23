@@ -122,9 +122,9 @@ STATIC ULONG_T crc32_tab[] = {
     };
 
 /* Return a 32-bit CRC of the contents of the buffer. */
-STATIC ULONG_T __crc32_hashmap(CONST uint8_t *s, UINT_T len)
+STATIC ULONG_T __crc32_hashmap(const uint8_t *s, uint32_t len)
 {
-    UINT_T i;
+    uint32_t i;
     ULONG_T crc32val;
     
     crc32val = 0;
@@ -139,7 +139,7 @@ STATIC ULONG_T __crc32_hashmap(CONST uint8_t *s, UINT_T len)
 /*
  * Hashing function for a string
  */
-UINT_T __hashmap_hash_int(HASHMAP_T * m, CHAR_T* keystring)
+uint32_t __hashmap_hash_int(HASHMAP_T * m, CHAR_T* keystring)
 {
     ULONG_T key = __crc32_hashmap((uint8_t*)(keystring), strlen(keystring));
 
@@ -198,7 +198,7 @@ STATIC HASHMAP_ELEMENT_T *__hash_find(HASHMAP_T *m, CHAR_T* key)
  * @param[in] table_size the hash table size
  * @return a new empty hashmap 
  */
-MAP_T tuya_hashmap_new(UINT_T table_size)
+MAP_T tuya_hashmap_new(uint32_t table_size)
 {
     if(0 == table_size) {
         return NULL;
@@ -237,7 +237,7 @@ err:
  * 
  * @note For same key, it does not replace it. it is inserted in the head of the list
  */
-int32_t tuya_hashmap_put(MAP_T in, CONST CHAR_T* key ,CONST ANY_T data)
+int32_t tuya_hashmap_put(MAP_T in, const CHAR_T* key ,const ANY_T data)
 {
     HASHMAP_ELEMENT_T *element = (HASHMAP_ELEMENT_T *)tkl_system_malloc(sizeof(HASHMAP_ELEMENT_T));
     if(NULL == element) {
@@ -265,7 +265,7 @@ int32_t tuya_hashmap_put(MAP_T in, CONST CHAR_T* key ,CONST ANY_T data)
  * @param[out] arg the first value that the key matches
  * @return MAP_OK on success, others on failed, please refer to the define of hashmap error code  
  */
-int32_t tuya_hashmap_get(MAP_T in, CONST CHAR_T* key, ANY_T *arg)
+int32_t tuya_hashmap_get(MAP_T in, const CHAR_T* key, ANY_T *arg)
 {
     HASHMAP_T *m = (HASHMAP_T *) in;
     HASHMAP_ELEMENT_T *element = __hash_find(m,(CHAR_T *)key);
@@ -288,7 +288,7 @@ int32_t tuya_hashmap_get(MAP_T in, CONST CHAR_T* key, ANY_T *arg)
  * 
  * @note if arg_iterator is NULL, fetch the first element, otherwise, fetch the next element
  */
-int32_t tuya_hashmap_data_traversal(MAP_T in, CONST CHAR_T* key, ANY_T_ITER *arg_iterator)
+int32_t tuya_hashmap_data_traversal(MAP_T in, const CHAR_T* key, ANY_T_ITER *arg_iterator)
 {
     HASHMAP_T *m = (HASHMAP_T *) in;
     HASHMAP_ELEMENT_T *element = NULL;

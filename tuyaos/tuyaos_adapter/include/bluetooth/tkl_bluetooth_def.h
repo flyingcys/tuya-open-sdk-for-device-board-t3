@@ -144,7 +144,7 @@ typedef struct {
 
     union {
         uint16_t            uuid16;                     /**< 16-bit UUID value  */
-        UINT_T              uuid32;                     /**< 32-bit UUID value */
+        uint32_t              uuid32;                     /**< 32-bit UUID value */
         uint8_t             uuid128[16];                /**< Little-Endian UUID bytes. 128bit uuid*/
     }uuid;
 } TKL_BLE_UUID_T;

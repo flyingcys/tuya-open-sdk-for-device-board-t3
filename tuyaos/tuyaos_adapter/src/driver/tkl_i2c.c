@@ -18,7 +18,7 @@
 
 static TUYA_IIC_STATUS_T s_i2c_status = {0};
 
-OPERATE_RET tkl_i2c_init(TUYA_I2C_NUM_E port, CONST TUYA_IIC_BASE_CFG_T *cfg)
+OPERATE_RET tkl_i2c_init(TUYA_I2C_NUM_E port, const TUYA_IIC_BASE_CFG_T *cfg)
 {
 	i2c_config_t i2c_config = {0};
 
@@ -80,7 +80,7 @@ OPERATE_RET tkl_i2c_irq_disable(TUYA_I2C_NUM_E port)
 	return OPRT_OK;
 }
 
-OPERATE_RET tkl_i2c_master_send(TUYA_I2C_NUM_E port, UINT16_T dev_addr, CONST VOID_T *data, uint32_t size, BOOL_T xfer_pending)
+OPERATE_RET tkl_i2c_master_send(TUYA_I2C_NUM_E port, UINT16_T dev_addr, const VOID_T *data, uint32_t size, BOOL_T xfer_pending)
 {
 	s_i2c_status.direction = I2C_DIRECTION_TRANSMIT;
 	bk_i2c_master_write((i2c_id_t)port, dev_addr, data, size, I2C_WRITE_WAIT_MAX_MS);
@@ -100,7 +100,7 @@ OPERATE_RET tkl_i2c_set_slave_addr(TUYA_I2C_NUM_E port, UINT16_T dev_addr)
 	return OPRT_OK;
 }
 
-OPERATE_RET tkl_i2c_slave_send(TUYA_I2C_NUM_E port, CONST VOID *data, uint32_t size)
+OPERATE_RET tkl_i2c_slave_send(TUYA_I2C_NUM_E port, const VOID *data, uint32_t size)
 {
 	s_i2c_status.direction = I2C_DIRECTION_TRANSMIT;
 	bk_i2c_slave_write((i2c_id_t)port, data, size, I2C_WRITE_WAIT_MAX_MS);

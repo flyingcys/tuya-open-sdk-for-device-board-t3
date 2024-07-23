@@ -1,5 +1,5 @@
+/home/share/samba/opensdk/tuya-open-sdk-for-device/platform/t3/t3_os/tuya_app/config/bk7236/partitions.csv
+/home/share/samba/opensdk/tuya-open-sdk-for-device/platform/t3/t3_os/armino/tools/build_tools/part_table_tools/tempFiles/vnd_flash_new.c
+/home/share/samba/opensdk/tuya-open-sdk-for-device/platform/t3/t3_os/armino/tools/build_tools/part_table_tools/tempFiles/partitions_new.csv
 /home/share/samba/opensdk/tuya-open-sdk-for-device/platform/t3/t3_os/armino/tools/build_tools/part_table_tools/tempFiles/partition_bk7256_ota_a_new.json
 /home/share/samba/opensdk/tuya-open-sdk-for-device/platform/t3/t3_os/armino/tools/build_tools/part_table_tools/tempFiles/vnd_flash_partition.h
-/home/share/samba/opensdk/tuya-open-sdk-for-device/platform/t3/t3_os/armino/tools/build_tools/part_table_tools/tempFiles/vnd_flash_new.c
-/home/share/samba/opensdk/tuya-open-sdk-for-device/platform/t3/t3_os/armino/tools/build_tools/part_table_tools/tempFiles/configuration_new.json
-/home/share/samba/opensdk/tuya-open-sdk-for-device/platform/t3/t3_os/armino/tools/build_tools/part_table_tools/tempFiles/partitions_new.csv

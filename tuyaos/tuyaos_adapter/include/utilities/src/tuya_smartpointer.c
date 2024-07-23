@@ -33,7 +33,7 @@
  * @param[in] cnt the Initial value of the reference
  * @return the reference data address
  */
-SMARTPOINTER_T *tuya_smartpointer_create(VOID *data, CONST UINT_T data_len, CONST BOOL_T malk, CONST UINT_T cnt)
+SMARTPOINTER_T *tuya_smartpointer_create(VOID *data, const uint32_t data_len, const BOOL_T malk, const uint32_t cnt)
 {
     if (0 == data_len || NULL == data) {
         return NULL;
@@ -100,7 +100,7 @@ VOID_T tuya_smartpointer_put(SMARTPOINTER_T *sp_data)
         return;
     }
 
-    UINT_T rfc = 0;
+    uint32_t rfc = 0;
     SP_LOCK(sp_data);
     rfc = --sp_data->rfc;
     SP_UNLOCK(sp_data);

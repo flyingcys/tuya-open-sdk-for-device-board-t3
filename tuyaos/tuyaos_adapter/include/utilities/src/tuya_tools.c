@@ -124,9 +124,9 @@ VOID_T tuya_hex2str(uint8_t *str, uint8_t *hex, int32_t hexlen)
     str[hexlen*2] = '\0';
 }
 
-BOOL_T tuya_str2num(UINT_T *number, const CHAR_T *str, uint8_t strlen)
+BOOL_T tuya_str2num(uint32_t *number, const CHAR_T *str, uint8_t strlen)
 {
-    UINT_T value = 0;
+    uint32_t value = 0;
     uint8_t i;
 
     for (i=0; i<strlen; i++) {
@@ -141,13 +141,13 @@ BOOL_T tuya_str2num(UINT_T *number, const CHAR_T *str, uint8_t strlen)
     return TRUE;
 }
 
-UINT_T tuya_intArray2int(uint8_t *intArray, UINT_T index, uint8_t len)
+uint32_t tuya_intArray2int(uint8_t *intArray, uint32_t index, uint8_t len)
 {
     if(index >= len) {
-        return (UINT_T)-1;
+        return (uint32_t)-1;
     }
     
-	UINT_T num = 0;
+	uint32_t num = 0;
     uint8_t i = 0;
 	for (i = index; i < index+len; i++) {
 		num = (num*10) + intArray[i];
@@ -156,10 +156,10 @@ UINT_T tuya_intArray2int(uint8_t *intArray, UINT_T index, uint8_t len)
 	return num;
 }
 
-UINT_T tuya_int2intArray(UINT_T num, uint8_t *intArray, uint8_t len)
+uint32_t tuya_int2intArray(uint32_t num, uint8_t *intArray, uint8_t len)
 {
     uint8_t i = 0;
-    UINT_T tmp = 0;
+    uint32_t tmp = 0;
     
     tmp = num;
     do {
@@ -255,9 +255,9 @@ VOID_T tuya_byte_sort(uint8_t is_ascend, uint8_t *buf, int32_t len)
     }
 }
 
-UINT_T tuya_bit1_count(UINT_T num)
+uint32_t tuya_bit1_count(uint32_t num)
 {
-    UINT_T count = 0;
+    uint32_t count = 0;
 
     for (count = 0; num; ++count) {
         num &= (num -1); // clear lower bit
@@ -266,10 +266,10 @@ UINT_T tuya_bit1_count(UINT_T num)
     return count;
 }
 
-UINT_T tuya_leading_zeros_count(UINT_T num)
+uint32_t tuya_leading_zeros_count(uint32_t num)
 {
-    UINT_T count = 0;
-    UINT_T temp = ~num;
+    uint32_t count = 0;
+    uint32_t temp = ~num;
 
     while(temp & 0x80000000) {
         temp <<= 1;
@@ -279,20 +279,20 @@ UINT_T tuya_leading_zeros_count(UINT_T num)
     return count;
 }
 
-uint8_t tuya_check_sum8(uint8_t *buf, UINT_T len)
+uint8_t tuya_check_sum8(uint8_t *buf, uint32_t len)
 {
     uint8_t sum = 0;
-    UINT_T idx=0;
+    uint32_t idx=0;
     for(idx=0; idx<len; idx++) {
         sum += buf[idx];
     }
     return sum;
 }
 
-UINT16_T tuya_check_sum16(uint8_t *buf, UINT_T len)
+UINT16_T tuya_check_sum16(uint8_t *buf, uint32_t len)
 {
     UINT16_T sum = 0;
-    UINT_T idx=0;
+    uint32_t idx=0;
     for(idx=0; idx<len; idx++) {
         sum += buf[idx];
     }

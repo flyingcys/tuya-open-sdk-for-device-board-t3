@@ -18,7 +18,7 @@ static uint32_t wakeup_source_init_status = 0;
  *
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wakeup_source_set(CONST TUYA_WAKEUP_SOURCE_BASE_CFG_T  *param)
+OPERATE_RET tkl_wakeup_source_set(const TUYA_WAKEUP_SOURCE_BASE_CFG_T  *param)
 {
     if (param == NULL)
         return OPRT_INVALID_PARM;
@@ -81,7 +81,7 @@ OPERATE_RET tkl_wakeup_source_get(TUYA_WAKEUP_SOURCE_BASE_CFG_T *param, uint32_t
  *
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wakeup_source_clear(CONST TUYA_WAKEUP_SOURCE_BASE_CFG_T *param)
+OPERATE_RET tkl_wakeup_source_clear(const TUYA_WAKEUP_SOURCE_BASE_CFG_T *param)
 {
     return OPRT_OK;
 }

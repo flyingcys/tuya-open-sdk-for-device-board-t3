@@ -2,7 +2,7 @@
 #include <driver/spi.h>
 #include <sdkconfig.h>
 
-OPERATE_RET tkl_spi_init(TUYA_SPI_NUM_E port, CONST TUYA_SPI_BASE_CFG_T *cfg)
+OPERATE_RET tkl_spi_init(TUYA_SPI_NUM_E port, const TUYA_SPI_BASE_CFG_T *cfg)
 {
     spi_config_t spi_config = {0};
 

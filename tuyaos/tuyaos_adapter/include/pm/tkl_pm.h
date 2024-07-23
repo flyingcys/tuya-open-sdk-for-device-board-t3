@@ -27,7 +27,7 @@ typedef struct {
 	int32_t min_mA;
 	int32_t max_mA;
     /* 用户私有定义值 */
-    UINT_T usr_arg;
+    uint32_t usr_arg;
 }TUYA_PM_DEV_DESC_T;
 
 /**
@@ -37,7 +37,7 @@ typedef struct {
 
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_dev_unregistor(CONST CHAR_T *devname);
+OPERATE_RET tkl_pm_dev_unregistor(const CHAR_T *devname);
 
 
 /**
@@ -47,7 +47,7 @@ OPERATE_RET tkl_pm_dev_unregistor(CONST CHAR_T *devname);
  *
  * @return TUYA_PM_DEV_DESC_T 设备描述对象
  */
-TUYA_PM_DEV_DESC_T *tkl_pm_get_dev_info(CONST CHAR_T *devname);
+TUYA_PM_DEV_DESC_T *tkl_pm_get_dev_info(const CHAR_T *devname);
 
 
 /**
@@ -68,7 +68,7 @@ TUYA_PM_DEV_DESC_T *tkl_pm_get_dev_list_head(VOID_T);
  *
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_set_voltage(CONST CHAR_T *devname, int32_t mV);
+OPERATE_RET tkl_pm_set_voltage(const CHAR_T *devname, int32_t mV);
 
 
 /**
@@ -78,7 +78,7 @@ OPERATE_RET tkl_pm_set_voltage(CONST CHAR_T *devname, int32_t mV);
  *
  * @return 电压，单位毫伏 .小于0 失败
  */
-int32_t tkl_pm_get_voltage(CONST CHAR_T *devname);
+int32_t tkl_pm_get_voltage(const CHAR_T *devname);
 
 /**
  * @brief 设置设备电源输出电流。
@@ -88,7 +88,7 @@ int32_t tkl_pm_get_voltage(CONST CHAR_T *devname);
  *
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_set_current(CONST CHAR_T *devname,int32_t mA);
+OPERATE_RET tkl_pm_set_current(const CHAR_T *devname,int32_t mA);
 
 /**
  * @brief 获取设备电源当前输出电流。
@@ -97,7 +97,7 @@ OPERATE_RET tkl_pm_set_current(CONST CHAR_T *devname,int32_t mA);
  *
  * @return 电压，单位毫安，小于0 失败
  */
-int32_t  tkl_pm_get_current(CONST CHAR_T *devname);
+int32_t  tkl_pm_get_current(const CHAR_T *devname);
 
 /**
  * @brief 使能设备电源功能。
@@ -107,7 +107,7 @@ int32_t  tkl_pm_get_current(CONST CHAR_T *devname);
  *
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_enable(CONST CHAR_T *devname,int32_t lp_en);
+OPERATE_RET tkl_pm_enable(const CHAR_T *devname,int32_t lp_en);
 
 /**
  * @brief 关闭设备电源功能。
@@ -116,7 +116,7 @@ OPERATE_RET tkl_pm_enable(CONST CHAR_T *devname,int32_t lp_en);
  *
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_disable(CONST CHAR_T *devname);
+OPERATE_RET tkl_pm_disable(const CHAR_T *devname);
 
 /**
  * @brief 获取设备电源功能是否使能。
@@ -125,7 +125,7 @@ OPERATE_RET tkl_pm_disable(CONST CHAR_T *devname);
  * @param status 返回状态，TRUE enable,FALSE disable
  * @return 1 打开；0 关闭
  */
-OPERATE_RET tkl_pm_is_enable(CONST CHAR_T *devname,BOOL_T *status);
+OPERATE_RET tkl_pm_is_enable(const CHAR_T *devname,BOOL_T *status);
 
 
 /**
@@ -135,7 +135,7 @@ OPERATE_RET tkl_pm_is_enable(CONST CHAR_T *devname,BOOL_T *status);
  * @status
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_power_off(CONST CHAR_T *devname);
+OPERATE_RET tkl_pm_power_off(const CHAR_T *devname);
 
 
 /**
@@ -145,7 +145,7 @@ OPERATE_RET tkl_pm_power_off(CONST CHAR_T *devname);
  *
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_reset(CONST CHAR_T *devname);
+OPERATE_RET tkl_pm_reset(const CHAR_T *devname);
 
 /**
  * @brief 设备的ioctl接口，这个接口是为了给设备提供了扩展的接口
@@ -155,7 +155,7 @@ OPERATE_RET tkl_pm_reset(CONST CHAR_T *devname);
  * @param param    输入参数指针
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_ioctl(CONST CHAR_T *devname,int32_t ctl_cmd,VOID_T *param);
+OPERATE_RET tkl_pm_ioctl(const CHAR_T *devname,int32_t ctl_cmd,VOID_T *param);
 
 
 

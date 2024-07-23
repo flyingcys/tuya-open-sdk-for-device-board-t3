@@ -51,9 +51,9 @@ SYS_TIME_T tkl_system_get_millisecond(VOID_T)
 *
 * @return VOID
 */
-VOID_T tkl_system_sleep(CONST UINT_T num_ms)
+VOID_T tkl_system_sleep(const uint32_t num_ms)
 {
-    UINT_T ticks = num_ms / portTICK_RATE_MS;
+    uint32_t ticks = num_ms / portTICK_RATE_MS;
 
     if (ticks == 0) {
         ticks = 1;
@@ -156,7 +156,7 @@ TUYA_RESET_REASON_E tkl_system_get_reset_reason(CHAR_T** describe)
 *
 * @return a random number in the specified range
 */
-int32_t tkl_system_get_random(CONST UINT_T range)
+int32_t tkl_system_get_random(const uint32_t range)
 {
     unsigned int trange = range;
 

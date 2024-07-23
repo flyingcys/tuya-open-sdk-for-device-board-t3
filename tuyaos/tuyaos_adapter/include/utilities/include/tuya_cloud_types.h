@@ -44,7 +44,7 @@ typedef unsigned long ULONG_T;
 typedef long *PLONG_T;
 typedef unsigned char BYTE_T;
 typedef BYTE_T *PBYTE_T;
-typedef unsigned int UINT_T;
+// typedef unsigned int uint32_t;
 typedef unsigned int *PUINT_T;
 typedef int BOOL_T;
 typedef BOOL_T *PBOOL_T;
@@ -102,8 +102,8 @@ typedef DWORD_T *PDWORD_T;
 #endif
 
 
-#ifndef CONST
-#define CONST const
+#ifndef const
+#define const const
 #endif
 
 #ifndef STATIC
@@ -251,8 +251,8 @@ typedef struct {
 #define ipaddr4  u_addr.ip4
 #define ipaddr6  u_addr.ip6
     union {
-        UINT_T  ip6[4];
-        UINT_T  ip4;
+        uint32_t  ip6[4];
+        uint32_t  ip4;
     } u_addr;
     IP_ADDR_TYPE type;
 } TUYA_IP_ADDR_T;
@@ -267,7 +267,7 @@ typedef struct
     char gw[16];    /* gateway:  xxx.xxx.xxx.xxx  */
 } NW_IP_S;
 /* tuyaos definition of IP addr */
-typedef UINT_T TUYA_IP_ADDR_T;
+typedef uint32_t TUYA_IP_ADDR_T;
 #endif
 
 #define MAC_ADDR_LEN 6
@@ -453,9 +453,9 @@ typedef enum {
  * 
  */
 typedef struct {
-    UINT_T block_size;
-    UINT_T start_addr;
-    UINT_T size;
+    uint32_t block_size;
+    uint32_t start_addr;
+    uint32_t size;
 } TUYA_FLASH_PARTITION_T;
 
 /**
@@ -467,7 +467,7 @@ typedef struct {
 #endif
 
 typedef struct {
-    UINT_T partition_num;
+    uint32_t partition_num;
     TUYA_FLASH_PARTITION_T partition[TUYA_FLASH_TYPE_MAX_PARTITION_NUM];
 } TUYA_FLASH_BASE_INFO_T;
 
@@ -902,13 +902,13 @@ typedef struct {
     TUYA_PWM_POLARITY_E polarity;
     TUYA_PWM_COUNT_E    count_mode;
     //pulse duty cycle = duty / cycle; exp duty = 5000,cycle = 10000; pulse duty cycle = 50%
-    UINT_T              duty;
-    UINT_T              cycle;
-    UINT_T              frequency;  // (bet: Hz)
+    uint32_t              duty;
+    uint32_t              cycle;
+    uint32_t              frequency;  // (bet: Hz)
 } TUYA_PWM_BASE_CFG_T;
 
 typedef struct {
-    UINT_T      cap_value;            /* Captured data */
+    uint32_t      cap_value;            /* Captured data */
     TUYA_PWM_POLARITY_E cap_edge;     /* Capture edge, TUYA_PWM_NEGATIVE:falling edge, TUYA_PWM_POSITIVE:rising edge */
 } TUYA_PWM_CAPTURE_DATA_T;
 
@@ -932,7 +932,7 @@ typedef enum {
 typedef struct {
     TUYA_PWM_CAPTURE_MODE_E     cap_mode;       /* pwm capture mode */
     TUYA_PWM_POLARITY_E         trigger_level;  /* trigger level, TUYA_PWM_NEGATIVE:falling edge, TUYA_PWM_POSITIVE:rising edge */
-    UINT_T                      clk;            /* sampling rate of capture signal */
+    uint32_t                      clk;            /* sampling rate of capture signal */
     TUYA_PWM_IRQ_CB             cb;             /* pwm irq cb */
     VOID_T                      *arg;           /* arg which would be passed to the irq cb */
 } TUYA_PWM_CAP_IRQ_T;
@@ -1005,8 +1005,8 @@ typedef struct {
     TUYA_SPI_TYPE_E      type;
     TUYA_SPI_DATABITS_E  databits;
     TUYA_SPI_BIT_ORDER_E bitorder;
-    UINT_T               freq_hz;
-    UINT_T               spi_dma_flags; /*!< SPI dma format , 1 use dma */ 
+    uint32_t               freq_hz;
+    uint32_t               spi_dma_flags; /*!< SPI dma format , 1 use dma */ 
 } TUYA_SPI_BASE_CFG_T;
 
 /****** SPI Event *****/
@@ -1149,8 +1149,8 @@ typedef struct {
 typedef UINT64_T SYS_TICK_T;
 typedef UINT64_T SYS_TIME_T;
 #else
-typedef UINT_T SYS_TICK_T;
-typedef UINT_T SYS_TIME_T;
+typedef uint32_t SYS_TICK_T;
+typedef uint32_t SYS_TIME_T;
 #endif
 /*
  *  reasons for restart
@@ -1207,12 +1207,12 @@ typedef struct {
  *  ota pack data, write to flash addr(start_addr + offset)
  */
 typedef struct {
-    UINT_T   total_len;     ///< ota image totle len   
-    UINT_T   offset;        ///< ota image offset
+    uint32_t   total_len;     ///< ota image totle len   
+    uint32_t   offset;        ///< ota image offset
     uint8_t* data;          ///< ota data
-    UINT_T   len;           ///< ota data len
+    uint32_t   len;           ///< ota data len
     VOID_T*  pri_data;      ///< private pointer
-    UINT_T   start_addr;    ///< ota flash start addr 
+    uint32_t   start_addr;    ///< ota flash start addr 
 } TUYA_OTA_DATA_T;
 
 /**
@@ -1284,7 +1284,7 @@ typedef enum {
  * 
  */
 typedef struct {
-    UINT_T                      baudrate;
+    uint32_t                      baudrate;
     TUYA_UART_PARITY_TYPE_E     parity;
     TUYA_UART_DATA_LEN_E        databits;
     TUYA_UART_STOP_LEN_E        stopbits;
@@ -1319,7 +1319,7 @@ typedef enum{
 
 
 typedef struct {
-    UINT_T interval_ms;
+    uint32_t interval_ms;
 } TUYA_WDOG_BASE_CFG_T;
 
 /**

@@ -121,7 +121,7 @@ STATIC INLINE VOID tuya_init_slist_node(INOUT SLIST_HEAD *node)
  * @param[in] list the sigle list head
  * @return 0 means not empty, others means empty 
  */
-STATIC INLINE int32_t tuya_slist_empty(IN CONST SLIST_HEAD *list) 
+STATIC INLINE int32_t tuya_slist_empty(IN const SLIST_HEAD *list) 
 {
     return !(list->next);
 }

@@ -25,8 +25,8 @@ extern "C" {
 typedef struct {
     TKL_MUTEX_HANDLE mutex;
     BOOL_T malk;
-    UINT_T rfc;
-    UINT_T data_len;
+    uint32_t rfc;
+    uint32_t data_len;
     VOID_T *data;
 }SMARTPOINTER_T;
 
@@ -39,7 +39,7 @@ typedef struct {
  * @param[in] cnt the Initial value of the reference
  * @return the reference data address
  */
-SMARTPOINTER_T *tuya_smartpointer_create(VOID *data, CONST UINT_T data_len, CONST BOOL_T malk, CONST UINT_T cnt);
+SMARTPOINTER_T *tuya_smartpointer_create(VOID *data, const uint32_t data_len, const BOOL_T malk, const uint32_t cnt);
 
 /**
  * @brief get the reference data, increase the reference

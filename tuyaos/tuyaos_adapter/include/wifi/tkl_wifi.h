@@ -105,7 +105,7 @@ typedef struct {
 } FAST_DHCP_INFO_T;
 /* for fast connect*/
 typedef struct {
-    UINT_T len;                                                    ///< data len
+    uint32_t len;                                                    ///< data len
     uint8_t data[0];                                                ///< data buff
 } FAST_WF_CONNECTED_AP_INFO_T;
 typedef struct {
@@ -175,7 +175,7 @@ typedef struct {
     uint8_t     ssid[WIFI_SSID_LEN + 1];
     uint8_t     channel;
     NW_MAC_S    mac;
-    UINT_T      vsie_data_len;
+    uint32_t      vsie_data_len;
     BYTE_T     *vsie_data;
 } WF_IOCTL_BEACON_T;
 
@@ -186,7 +186,7 @@ typedef struct {
 
 typedef struct {
     WF_STA_INFO_S  *array;
-    UINT_T          num;
+    uint32_t          num;
 } WF_STA_LIST_S;
 /**
  * @brief callback function: SNIFFER_CALLBACK
@@ -195,7 +195,7 @@ typedef struct {
  * @param[in]       buf         the buf wifi recv
  * @param[in]       len         the len of buf
  */
-typedef VOID_T (*SNIFFER_CALLBACK)(CONST uint8_t *buf, CONST UINT16_T len, CONST INT8_T rssi);
+typedef VOID_T (*SNIFFER_CALLBACK)(const uint8_t *buf, const UINT16_T len, const INT8_T rssi);
 
 /**
  * @brief callback function: WIFI_REV_MGNT_CB
@@ -204,7 +204,7 @@ typedef VOID_T (*SNIFFER_CALLBACK)(CONST uint8_t *buf, CONST UINT16_T len, CONST
  * @param[in]       buf         the buf wifi recv
  * @param[in]       len         the len of buf
  */
-typedef VOID_T (*WIFI_REV_MGNT_CB)(uint8_t *buf, UINT_T len);
+typedef VOID_T (*WIFI_REV_MGNT_CB)(uint8_t *buf, uint32_t len);
 
 /**
  * @brief callback function: WIFI_STATUS_CHANGE_CB
@@ -236,7 +236,7 @@ OPERATE_RET tkl_wifi_init(WIFI_EVENT_CB cb);
  *
  * @note if ssid == NULL means scan all ap, otherwise means scan the specific ssid
  */
-OPERATE_RET tkl_wifi_scan_ap(CONST SCHAR_T *ssid, AP_IF_S **ap_ary, UINT_T *num);
+OPERATE_RET tkl_wifi_scan_ap(const SCHAR_T *ssid, AP_IF_S **ap_ary, uint32_t *num);
 
 /**
  * @brief release the memory malloced in <tkl_wifi_ap_scan>
@@ -254,7 +254,7 @@ OPERATE_RET tkl_wifi_release_ap(AP_IF_S *ap);
  * @param[in]       cfg         the soft ap config
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_start_ap(CONST WF_AP_CFG_IF_S *cfg);
+OPERATE_RET tkl_wifi_start_ap(const WF_AP_CFG_IF_S *cfg);
 
 /**
  * @brief stop a soft ap
@@ -269,7 +269,7 @@ OPERATE_RET tkl_wifi_stop_ap(VOID_T);
  * @param[in]       chan        the channel to set
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_set_cur_channel(CONST uint8_t chan);
+OPERATE_RET tkl_wifi_set_cur_channel(const uint8_t chan);
 
 /**
  * @brief get wifi interface work channel
@@ -289,7 +289,7 @@ OPERATE_RET tkl_wifi_get_cur_channel(uint8_t *chan);
  * @param[in]       cb          notify callback
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_set_sniffer(CONST BOOL_T en, CONST SNIFFER_CALLBACK cb);
+OPERATE_RET tkl_wifi_set_sniffer(const BOOL_T en, const SNIFFER_CALLBACK cb);
 
 /**
  * @brief get wifi ip info.when wifi works in
@@ -299,7 +299,7 @@ OPERATE_RET tkl_wifi_set_sniffer(CONST BOOL_T en, CONST SNIFFER_CALLBACK cb);
  * @param[out]      ip          the ip addr info
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_get_ip(CONST WF_IF_E wf, NW_IP_S *ip);
+OPERATE_RET tkl_wifi_get_ip(const WF_IF_E wf, NW_IP_S *ip);
 
 /**
  * @brief get wifi ip info.when wifi works in
@@ -310,7 +310,7 @@ OPERATE_RET tkl_wifi_get_ip(CONST WF_IF_E wf, NW_IP_S *ip);
  * @param[out]      ip          the ip addr info
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_get_ipv6(CONST WF_IF_E wf, NW_IP_TYPE type, NW_IP_S *ip);
+OPERATE_RET tkl_wifi_get_ipv6(const WF_IF_E wf, NW_IP_TYPE type, NW_IP_S *ip);
 
 /**
  * @brief wifi set ip
@@ -319,7 +319,7 @@ OPERATE_RET tkl_wifi_get_ipv6(CONST WF_IF_E wf, NW_IP_TYPE type, NW_IP_S *ip);
  * @param[in]       ip     the ip addr info
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_set_ip(CONST WF_IF_E wf, NW_IP_S *ip);
+OPERATE_RET tkl_wifi_set_ip(const WF_IF_E wf, NW_IP_S *ip);
 
 /**
  * @brief set wifi mac info.when wifi works in
@@ -329,7 +329,7 @@ OPERATE_RET tkl_wifi_set_ip(CONST WF_IF_E wf, NW_IP_S *ip);
  * @param[in]       mac         the mac info
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_set_mac(CONST WF_IF_E wf, CONST NW_MAC_S *mac);
+OPERATE_RET tkl_wifi_set_mac(const WF_IF_E wf, const NW_MAC_S *mac);
 
 /**
  * @brief get wifi mac info.when wifi works in
@@ -339,7 +339,7 @@ OPERATE_RET tkl_wifi_set_mac(CONST WF_IF_E wf, CONST NW_MAC_S *mac);
  * @param[out]      mac         the mac info
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_get_mac(CONST WF_IF_E wf, NW_MAC_S *mac);
+OPERATE_RET tkl_wifi_get_mac(const WF_IF_E wf, NW_MAC_S *mac);
 
 /**
  * @brief set wifi work mode
@@ -347,7 +347,7 @@ OPERATE_RET tkl_wifi_get_mac(CONST WF_IF_E wf, NW_MAC_S *mac);
  * @param[in]       mode        wifi work mode
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_set_work_mode(CONST WF_WK_MD_E mode);
+OPERATE_RET tkl_wifi_set_work_mode(const WF_WK_MD_E mode);
 
 /**
  * @brief get wifi work mode
@@ -378,7 +378,7 @@ OPERATE_RET tkl_wifi_get_bssid(uint8_t *mac);
  * @param[in]       ccode  country code
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_set_country_code(CONST COUNTRY_CODE_E ccode);
+OPERATE_RET tkl_wifi_set_country_code(const COUNTRY_CODE_E ccode);
 
 /**
  * @brief do wifi calibration
@@ -396,14 +396,14 @@ OPERATE_RET tkl_wifi_set_rf_calibrated(VOID_T);
  * @param[in]       dtim     the wifi dtim
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_set_lp_mode(CONST BOOL_T enable, CONST uint8_t dtim);
+OPERATE_RET tkl_wifi_set_lp_mode(const BOOL_T enable, const uint8_t dtim);
 
 /**
  * @brief : fast connect
  * @param[in]      fast_ap_info
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_station_fast_connect(CONST FAST_WF_CONNECTED_AP_INFO_T *fast_ap_info);
+OPERATE_RET tkl_wifi_station_fast_connect(const FAST_WF_CONNECTED_AP_INFO_T *fast_ap_info);
 
 /**
  * @brief connect wifi with ssid and passwd
@@ -412,7 +412,7 @@ OPERATE_RET tkl_wifi_station_fast_connect(CONST FAST_WF_CONNECTED_AP_INFO_T *fas
  * @param[in]       passwd
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_station_connect(CONST SCHAR_T *ssid, CONST SCHAR_T *passwd);
+OPERATE_RET tkl_wifi_station_connect(const SCHAR_T *ssid, const SCHAR_T *passwd);
 
 /**
  * @brief disconnect wifi from connect ap
@@ -446,7 +446,7 @@ OPERATE_RET tkl_wifi_station_get_status(WF_STATION_STAT_E *stat);
  * @param[in]       len         length of buffer
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_send_mgnt(CONST uint8_t *buf, CONST UINT_T len);
+OPERATE_RET tkl_wifi_send_mgnt(const uint8_t *buf, const uint32_t len);
 
 /**
  * @brief register receive wifi management callback
@@ -455,7 +455,7 @@ OPERATE_RET tkl_wifi_send_mgnt(CONST uint8_t *buf, CONST UINT_T len);
  * @param[in]       recv_cb     receive callback
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_register_recv_mgnt_callback(CONST BOOL_T enable, CONST WIFI_REV_MGNT_CB recv_cb);
+OPERATE_RET tkl_wifi_register_recv_mgnt_callback(const BOOL_T enable, const WIFI_REV_MGNT_CB recv_cb);
 
 /**
  * @brief wifi ioctl

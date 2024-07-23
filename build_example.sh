@@ -135,13 +135,6 @@ cd t3_os
 
 TARGET_PROJECT=tuya_app
 
-echo "------ use bk lwip ------"
-export TUYA_LWIP_STACK_USED="lwip_bk"
-cp ${TARGET_PROJECT}/config/${TARGET_PLATFORM}/config .${TARGET_PLATFORM}_config.save
-sed -i "s/CONFIG_LWIP=n/CONFIG_LWIP=y/g" ${TARGET_PROJECT}/config/${TARGET_PLATFORM}/config
-sed -i "s/CONFIG_LWIP_V2_1=n/CONFIG_LWIP_V2_1=y/g" ${TARGET_PROJECT}/config/${TARGET_PLATFORM}/config
-
-
 echo "Start Compile"
 
 make ${TARGET_PLATFORM} PROJECT=app PROJECT_DIR=../${TARGET_PROJECT} BUILD_DIR=../tuya_build PROJECT_LIBS=app APP_NAME=$APP_BIN_NAME APP_VERSION=$USER_SW_VER APP_DIR=$APP_PATH -j -C ./armino/ APP_VERSION=${APP_VERSION} 

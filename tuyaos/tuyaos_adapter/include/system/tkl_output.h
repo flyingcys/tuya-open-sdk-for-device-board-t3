@@ -26,7 +26,7 @@ extern "C" {
 *
 * @return 
 */
-VOID_T tkl_log_output(CONST CHAR_T *format, ...);
+VOID_T tkl_log_output(const CHAR_T *format, ...);
 
 /**
 * @brief Close log port

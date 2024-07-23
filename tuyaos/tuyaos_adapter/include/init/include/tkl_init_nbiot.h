@@ -24,23 +24,23 @@ typedef struct {
     //ctcc
     OPERATE_RET             (*ctcc_lwm2m_register)          (NBIOT_LWM2M_REGISTER_T* reg_params);
     OPERATE_RET             (*ctcc_lwm2m_deregister)        (VOID);
-    OPERATE_RET             (*ctcc_data_send)               (uint8_t* data, UINT_T data_len);
-    OPERATE_RET             (*ctcc_lifetime_update)         (UINT_T lifetime);
+    OPERATE_RET             (*ctcc_data_send)               (uint8_t* data, uint32_t data_len);
+    OPERATE_RET             (*ctcc_lifetime_update)         (uint32_t lifetime);
     //cmcc
     OPERATE_RET             (*cmcc_register)                (NBIOT_LWM2M_REGISTER_T* reg_params);
     OPERATE_RET             (*cmcc_deregister)              (VOID);
-    OPERATE_RET             (*cmcc_data_send)               (uint8_t* data, UINT_T data_len);
-    OPERATE_RET             (*cmcc_lifetime_update)         (UINT_T lifetime);
+    OPERATE_RET             (*cmcc_data_send)               (uint8_t* data, uint32_t data_len);
+    OPERATE_RET             (*cmcc_lifetime_update)         (uint32_t lifetime);
     //psm
     OPERATE_RET             (*psm_plat_config)              (VOID);
     OPERATE_RET             (*psm_sleep_notify_reg)         (TKL_NB_PSM_NOTIFY_CB_T cb);
-    OPERATE_RET             (*psm_create_sleeplock)         (CONST PCHAR_T lock_name, uint8_t *handle);
+    OPERATE_RET             (*psm_create_sleeplock)         (const PCHAR_T lock_name, uint8_t *handle);
     OPERATE_RET             (*psm_acquire_sleeplock)        (uint8_t handle);
     OPERATE_RET             (*psm_release_sleeplock)        (uint8_t handle);
     VOID                    (*psm_force_sleep)              (VOID);
     OPERATE_RET             (*psm_get_poweron_result)       (TKL_NB_POWER_ON_RESULT_E *result);
     OPERATE_RET             (*psm_get_wakeup_source)        (TKL_NB_WAKEUP_SOURCE_E *src);
-    OPERATE_RET             (*psm_rtc_timer_create)         (UINT_T time_period_sec, BOOL_T is_periodic,TKL_NB_SLP_TIMER_CB_T cb);
+    OPERATE_RET             (*psm_rtc_timer_create)         (uint32_t time_period_sec, BOOL_T is_periodic,TKL_NB_SLP_TIMER_CB_T cb);
     OPERATE_RET             (*psm_rtc_timer_start)          (VOID);
     OPERATE_RET             (*psm_rtc_timer_stop)           (VOID);
     OPERATE_RET             (*psm_rtc_timer_delete)         (VOID);
@@ -52,10 +52,10 @@ typedef struct {
     OPERATE_RET             (*ril_attach_event_inquire)     (VOID);
     BOOL_T                  (*ril_is_sim_ready)             (VOID);
     OPERATE_RET             (*ril_get_cesq)                 (TKL_RIL_CESQ_T *info);
-    OPERATE_RET             (*ril_get_t3324)                (UINT_T *t3324);
-    OPERATE_RET             (*ril_get_t3412)                (UINT_T *t3412);
-    OPERATE_RET             (*ril_set_t3412)                (UINT_T req_time);
-    OPERATE_RET             (*ril_set_t3324)                (UINT_T req_time);
+    OPERATE_RET             (*ril_get_t3324)                (uint32_t *t3324);
+    OPERATE_RET             (*ril_get_t3412)                (uint32_t *t3412);
+    OPERATE_RET             (*ril_set_t3412)                (uint32_t req_time);
+    OPERATE_RET             (*ril_set_t3324)                (uint32_t req_time);
     OPERATE_RET             (*ril_set_apn)                  (PCHAR_T apn_name, PCHAR_T pdp_type);
     OPERATE_RET             (*ril_get_apn)                  (PCHAR_T apn);
     OPERATE_RET             (*ril_get_rssi)                 (int32_t *out_rssi);
@@ -80,15 +80,15 @@ typedef struct {
     BOOL_T                  (*misc_is_atcmd_serial_port_on) (VOID);
     OPERATE_RET             (*misc_atcmd_serial_port_off)   (VOID);
     OPERATE_RET             (*misc_atcmd_serial_port_on)    (VOID);
-    OPERATE_RET             (*misc_get_app_offset)          (UINT_T *out_addr);
-    OPERATE_RET             (*misc_get_app_len)             (UINT_T *out_len);
+    OPERATE_RET             (*misc_get_app_offset)          (uint32_t *out_addr);
+    OPERATE_RET             (*misc_get_app_len)             (uint32_t *out_len);
     OPERATE_RET             (*misc_fota_update_start)       (VOID);
     OPERATE_RET             (*misc_fota_status_acquire)     (VOID);
     OPERATE_RET             (*misc_fota_update_end)         (VOID);
-    OPERATE_RET             (*misc_get_fota_offset)         (UINT_T *out_addr,uint8_t *_1st_data, uint32_t _1st_data_size);
-    OPERATE_RET             (*misc_get_fota_len)            (UINT_T *out_len);
-    OPERATE_RET             (*misc_get_fota_update_info_offset)(UINT_T *out_addr);
-    OPERATE_RET             (*misc_get_fota_trigger_flag_offset)(UINT_T *out_addr);
+    OPERATE_RET             (*misc_get_fota_offset)         (uint32_t *out_addr,uint8_t *_1st_data, uint32_t _1st_data_size);
+    OPERATE_RET             (*misc_get_fota_len)            (uint32_t *out_len);
+    OPERATE_RET             (*misc_get_fota_update_info_offset)(uint32_t *out_addr);
+    OPERATE_RET             (*misc_get_fota_trigger_flag_offset)(uint32_t *out_addr);
 } TKL_NBIOT_DESC_T;
 
 /**

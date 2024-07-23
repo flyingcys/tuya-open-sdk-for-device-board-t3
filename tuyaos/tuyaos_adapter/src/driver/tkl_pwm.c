@@ -38,7 +38,7 @@ pwm_chan_t ty_to_bk_pwm(TUYA_PWM_NUM_E ch_id)
  *
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_pwm_init(TUYA_PWM_NUM_E ch_id, CONST TUYA_PWM_BASE_CFG_T *cfg)
+OPERATE_RET tkl_pwm_init(TUYA_PWM_NUM_E ch_id, const TUYA_PWM_BASE_CFG_T *cfg)
 {
     unsigned int period;
     unsigned int duty;
@@ -133,7 +133,7 @@ OPERATE_RET tkl_pwm_stop(TUYA_PWM_NUM_E ch_id)
  *
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_pwm_info_set(TUYA_PWM_NUM_E ch_id, CONST TUYA_PWM_BASE_CFG_T *info)
+OPERATE_RET tkl_pwm_info_set(TUYA_PWM_NUM_E ch_id, const TUYA_PWM_BASE_CFG_T *info)
 {
     unsigned int period;
     unsigned int duty;

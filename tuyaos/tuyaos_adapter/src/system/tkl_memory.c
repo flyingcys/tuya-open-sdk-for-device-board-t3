@@ -21,7 +21,7 @@
 *
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
-VOID_T* tkl_system_malloc(CONST SIZE_T size)
+VOID_T* tkl_system_malloc(const SIZE_T size)
 {
     VOID_T* ptr = os_malloc(size);
     if(NULL == ptr) {
@@ -58,7 +58,7 @@ VOID_T tkl_system_free(VOID_T* ptr)
 *
 * @return the memory address malloced
 */
-VOID_T *tkl_system_memset(VOID_T* src, int32_t ch, CONST SIZE_T n)
+VOID_T *tkl_system_memset(VOID_T* src, int32_t ch, const SIZE_T n)
 {
     return os_memset(src, ch, n);
 }
@@ -72,7 +72,7 @@ VOID_T *tkl_system_memset(VOID_T* src, int32_t ch, CONST SIZE_T n)
 *
 * @return the memory address malloced
 */
-VOID_T *tkl_system_memcpy(VOID_T* src, CONST VOID_T* dst, CONST SIZE_T n)
+VOID_T *tkl_system_memcpy(VOID_T* src, const VOID_T* dst, const SIZE_T n)
 {
     return os_memcpy(src, dst, n);
 }

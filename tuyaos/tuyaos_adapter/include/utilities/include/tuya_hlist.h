@@ -119,7 +119,7 @@ STATIC INLINE VOID tuya_init_hlist_node(INOUT HLIST_NODE *h)
  * @param[in] h the hash list head
  * @return 1 means empty,  0 means not empty
  */
-STATIC INLINE int32_t tuya_hlist_empty(IN CONST HLIST_HEAD *h) 
+STATIC INLINE int32_t tuya_hlist_empty(IN const HLIST_HEAD *h) 
 {
     return !h->first;
 }
@@ -130,7 +130,7 @@ STATIC INLINE int32_t tuya_hlist_empty(IN CONST HLIST_HEAD *h)
  * @param[in] h the hash list head
  * @return 1 means unhashed,  0 means not hashed 
  */
-STATIC INLINE int32_t tuya_hlist_unhashed(IN CONST HLIST_NODE *h) 
+STATIC INLINE int32_t tuya_hlist_unhashed(IN const HLIST_NODE *h) 
 {
     return !h->pprev;
 }

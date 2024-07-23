@@ -29,7 +29,7 @@ static void bk_wdt_rst_enable(void) {
     rtos_enable_int(level);
 }
 
-UINT_T tkl_watchdog_init(TUYA_WDOG_BASE_CFG_T *cfg)
+uint32_t tkl_watchdog_init(TUYA_WDOG_BASE_CFG_T *cfg)
 {
     if (cfg->interval_ms > 30000) {
         cfg->interval_ms = 30000;

@@ -295,7 +295,7 @@ typedef struct
     *    OPRT_TIMEOUT 获取信号量超时
     *    OPRT_BASE_OS_ADAPTER_REG_NULL_ERROR 函数未适配
     */
-    OPERATE_RET (*dtmf2voice)(TUYA_TONE_TYPE_E dtmfTone, UINT_T duration);
+    OPERATE_RET (*dtmf2voice)(TUYA_TONE_TYPE_E dtmfTone, uint32_t duration);
 
     OPERATE_RET (*reg_KTDetect)(TKL_CELLULAR_CALL_KTDETECH_CB cb);
 
@@ -437,7 +437,7 @@ typedef struct
      */
     OPERATE_RET (*sms_mute)(BOOL_T mute);
 
-    VOID*   (*convert_str)(CONST VOID *from, int32_t from_size,
+    VOID*   (*convert_str)(const VOID *from, int32_t from_size,
                             TUYA_CELLULAR_SMS_ENCODE_E from_chset,
                             TUYA_CELLULAR_SMS_ENCODE_E to_chset, int32_t *to_size);
 }TKL_CELL_SMS_INTF_T;
@@ -477,7 +477,7 @@ typedef struct
      *
      * @return OPRT_OK 设置成功 其它 设置失败
      */
-    OPERATE_RET (*set_charge_current)(UINT_T current);
+    OPERATE_RET (*set_charge_current)(uint32_t current);
 
     /**
      * @brief 获取充电器状态
@@ -499,7 +499,7 @@ typedef struct
     * @param voltage 当前电池电压，单位mV
     * @return OPRT_OK 获取成功 其它 获取失败
     */
-    OPERATE_RET (*get_voltage)(UINT_T* voltage);
+    OPERATE_RET (*get_voltage)(uint32_t* voltage);
 
 
     OPERATE_RET (*low_volt_poweroff_enable)(BOOL_T enable);
@@ -530,14 +530,14 @@ typedef struct
     OPERATE_RET (*audio_get_mute) (PBOOL_T mute);
     OPERATE_RET (*audio_mem_play) (TKL_AUDIO_PLAYER_TYPE_E type,
                                     TKL_AUDIO_STREAM_FORMAT_E format, PBYTE_T buff,
-                                    UINT_T size,TKL_AUDIO_PLAYER_CB cb, PVOID_T cb_ctx);
+                                    uint32_t size,TKL_AUDIO_PLAYER_CB cb, PVOID_T cb_ctx);
     OPERATE_RET (*audio_set_output) (TKL_AUDEV_OUTPUT_TYPE chan);
     OPERATE_RET (*audio_get_output) (TKL_AUDEV_OUTPUT_TYPE *chan);
     OPERATE_RET (*audio_set_input) (TKL_AUDEV_INPUT_TYPE chan);
     OPERATE_RET (*audio_get_input) (TKL_AUDEV_INPUT_TYPE *chan);
     OPERATE_RET (*audio_get_status) (TKL_AUDIO_PLAYER_STATUS_E *status);
-    OPERATE_RET (*audio_play_stream) (TKL_AUDIO_PLAYER_TYPE_E type, CONST TKL_AUDIO_PLAY_OPS_T* playOps,
-                                      PVOID_T playCtx, CONST TKL_AUDIO_FRAME_T* frame);
+    OPERATE_RET (*audio_play_stream) (TKL_AUDIO_PLAYER_TYPE_E type, const TKL_AUDIO_PLAY_OPS_T* playOps,
+                                      PVOID_T playCtx, const TKL_AUDIO_FRAME_T* frame);
     OPERATE_RET (*audio_stop_stream) (VOID);
 } TKL_CELL_PLAYER_INTF_T;
 

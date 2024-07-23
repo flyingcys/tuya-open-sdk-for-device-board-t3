@@ -29,7 +29,7 @@ OPERATE_RET tkl_ble_mesh_stack_reset(uint8_t config_reset);
  * @return  SUCCESS              Register successfully.
  *          ERROR
  * */
-OPERATE_RET tkl_ble_mesh_callback_register(CONST TKL_MESH_EVT_FUNC_CB mesh_evt);
+OPERATE_RET tkl_ble_mesh_callback_register(const TKL_MESH_EVT_FUNC_CB mesh_evt);
 
 /**
  * @brief   We need to set mesh info, include netkey and appkey
@@ -49,7 +49,7 @@ OPERATE_RET tkl_ble_mesh_info_set(TKL_MESH_LOCAL_INFO_T local_info);
  *          
  * @note    the unprovisioned beacon is given through TKL_MESH_EVT_ADV_REPORT event !!!!!!
  */
-OPERATE_RET tkl_ble_mesh_prov_scan(uint8_t enable, UINT_T timeout);
+OPERATE_RET tkl_ble_mesh_prov_scan(uint8_t enable, uint32_t timeout);
 
 /**
  * @brief   [Mesh Provisioner]Start to provision one mesh device,(Only Provision Invite)
@@ -95,7 +95,7 @@ OPERATE_RET tkl_ble_mesh_local_get_nid(uint8_t netkey[16], uint8_t *nid);
  *@return   SUCCESS: success, 
  *          ERROR: failure
  */
-OPERATE_RET tkl_ble_mesh_device_get_seq(UINT_T *seq, UINT_T *iv);
+OPERATE_RET tkl_ble_mesh_device_get_seq(uint32_t *seq, uint32_t *iv);
 
 /**
  *@brief    Set seq number.
@@ -103,7 +103,7 @@ OPERATE_RET tkl_ble_mesh_device_get_seq(UINT_T *seq, UINT_T *iv);
  *@return   SUCCESS: success, 
  *          ERROR: failure
  */
-OPERATE_RET tkl_ble_mesh_device_set_seq(UINT_T seq);
+OPERATE_RET tkl_ble_mesh_device_set_seq(uint32_t seq);
 
 /**
  *@brief    Update IV index
@@ -113,7 +113,7 @@ OPERATE_RET tkl_ble_mesh_device_set_seq(UINT_T seq);
  *@return   SUCCESS: success
  *          ERROR: failure
  */
-OPERATE_RET tkl_ble_mesh_device_update_iv_info(UINT_T iv_index, uint8_t flags);
+OPERATE_RET tkl_ble_mesh_device_update_iv_info(uint32_t iv_index, uint8_t flags);
 
 /**
  *@brief    set ttl.
@@ -180,7 +180,7 @@ OPERATE_RET tkl_ble_mesh_beacon_message_send(TKL_MESH_DEVICE_INFO_T device, TKL_
 OPERATE_RET tkl_ble_mesh_vendor_command_control(TKL_MESH_DEVICE_INFO_T device, uint16_t opcode, VOID_T *args);
 
 
-OPERATE_RET tkl_ble_mesh_dfu_init(CONST TKL_MESH_DFU_IO_T *p_dfu_io);
+OPERATE_RET tkl_ble_mesh_dfu_init(const TKL_MESH_DFU_IO_T *p_dfu_io);
 
 OPERATE_RET tkl_ble_mesh_dfu_control(TKL_MESH_DFU_OPERATION_E operation, VOID_T *args, uint16_t args_len);
 

@@ -103,7 +103,7 @@ TUYA_IP_ADDR_T tkl_net_str2addr(const char *ip)
  * @param[inout]      fds
  * @return  0: success  <0: fail
  */
-OPERATE_RET tkl_net_fd_set(CONST int32_t fd, TUYA_FD_SET_T* fds)
+OPERATE_RET tkl_net_fd_set(const int32_t fd, TUYA_FD_SET_T* fds)
 {
     if ((fd < 0) || (fds == NULL)) {
         return -3000 + fd;
@@ -120,7 +120,7 @@ OPERATE_RET tkl_net_fd_set(CONST int32_t fd, TUYA_FD_SET_T* fds)
  * @param[inout]      fds
  * @return  0: success  <0: fail
  */
-OPERATE_RET tkl_net_fd_clear(CONST int32_t fd, TUYA_FD_SET_T* fds)
+OPERATE_RET tkl_net_fd_clear(const int32_t fd, TUYA_FD_SET_T* fds)
 {
     if ((fd < 0) || (fds == NULL)) {
         return -3000 + fd;
@@ -137,7 +137,7 @@ OPERATE_RET tkl_net_fd_clear(CONST int32_t fd, TUYA_FD_SET_T* fds)
  * @param[in]      fds
  * @return  0-没有可读fd other-有可读fd
  */
-OPERATE_RET tkl_net_fd_isset(CONST int32_t fd, TUYA_FD_SET_T* fds)
+OPERATE_RET tkl_net_fd_isset(const int32_t fd, TUYA_FD_SET_T* fds)
 {
     if ((fd < 0) || (fds == NULL)) {
         return -3000 + fd;
@@ -223,7 +223,7 @@ TUYA_ERRNO tkl_net_shutdown(const int fd, const int how)
  * @param[in]      type
  * @return  >=0: socketfd  <0: fail
 */
-int32_t tkl_net_socket_create(CONST TUYA_PROTOCOL_TYPE_E type)
+int32_t tkl_net_socket_create(const TUYA_PROTOCOL_TYPE_E type)
 {
     int fd = -1;
 
@@ -586,7 +586,7 @@ int tkl_net_get_nonblock(const int fd)
  * @param[in]         type
  * @return  0: success  <0: fail
 */
-OPERATE_RET tkl_net_set_timeout(CONST int32_t fd, CONST int32_t ms_timeout, CONST TUYA_TRANS_TYPE_E type)
+OPERATE_RET tkl_net_set_timeout(const int32_t fd, const int32_t ms_timeout, const TUYA_TRANS_TYPE_E type)
 {
     if (fd < 0) {
         return -3000 + fd;
@@ -609,7 +609,7 @@ OPERATE_RET tkl_net_set_timeout(CONST int32_t fd, CONST int32_t ms_timeout, CONS
  * @param[in]         type
  * @return  0: success  <0: fail
  */
-OPERATE_RET tkl_net_set_bufsize(CONST int32_t fd, CONST int32_t buf_size, CONST TUYA_TRANS_TYPE_E type)
+OPERATE_RET tkl_net_set_bufsize(const int32_t fd, const int32_t buf_size, const TUYA_TRANS_TYPE_E type)
 {
     if (fd < 0) {
         return -3000 + fd;
@@ -725,7 +725,7 @@ int tkl_net_set_keepalive(int fd, const bool_t alive, const unsigned int idle, c
  * @param[inout]         addr
  * @return  0: success  <0: fail
  */
-OPERATE_RET tkl_net_gethostbyname(CONST CHAR_T *domain, TUYA_IP_ADDR_T *addr)
+OPERATE_RET tkl_net_gethostbyname(const CHAR_T *domain, TUYA_IP_ADDR_T *addr)
 {
     if ((domain == NULL) || (addr == NULL)) {
         return OPRT_OS_ADAPTER_INVALID_PARM;
@@ -751,7 +751,7 @@ OPERATE_RET tkl_net_gethostbyname(CONST CHAR_T *domain, TUYA_IP_ADDR_T *addr)
 * @return ip string
 */
 
-CHAR_T* tkl_net_addr2str(CONST TUYA_IP_ADDR_T ipaddr)
+CHAR_T* tkl_net_addr2str(const TUYA_IP_ADDR_T ipaddr)
 {
 #if defined(ENABLE_LWIP) && (ENABLE_LWIP == 1)
     unsigned int addr = lwip_htonl(ipaddr);
@@ -767,7 +767,7 @@ CHAR_T* tkl_net_addr2str(CONST TUYA_IP_ADDR_T ipaddr)
 }
 
 
-OPERATE_RET tkl_net_setsockopt(CONST int32_t fd, CONST TUYA_OPT_LEVEL level, CONST TUYA_OPT_NAME optname, CONST VOID_T *optval, CONST int32_t optlen)
+OPERATE_RET tkl_net_setsockopt(const int32_t fd, const TUYA_OPT_LEVEL level, const TUYA_OPT_NAME optname, const VOID_T *optval, const int32_t optlen)
 {
     int ret = 0;
 
@@ -775,7 +775,7 @@ OPERATE_RET tkl_net_setsockopt(CONST int32_t fd, CONST TUYA_OPT_LEVEL level, CON
     return ret;
 }
 
-OPERATE_RET tkl_net_getsockopt(CONST int32_t fd, CONST TUYA_OPT_LEVEL level, CONST TUYA_OPT_NAME optname, VOID_T *optval, int32_t *optlen)
+OPERATE_RET tkl_net_getsockopt(const int32_t fd, const TUYA_OPT_LEVEL level, const TUYA_OPT_NAME optname, VOID_T *optval, int32_t *optlen)
 {
     int ret = 0;
     ret = getsockopt(fd, level, optname, optval, optlen);
@@ -793,7 +793,7 @@ OPERATE_RET tkl_net_getsockopt(CONST int32_t fd, CONST TUYA_OPT_LEVEL level, CON
 *
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
-OPERATE_RET tkl_net_get_socket_ip(CONST int32_t fd, TUYA_IP_ADDR_T *addr)
+OPERATE_RET tkl_net_get_socket_ip(const int32_t fd, TUYA_IP_ADDR_T *addr)
 {
     return OPRT_NOT_SUPPORTED;
 }
@@ -807,7 +807,7 @@ OPERATE_RET tkl_net_get_socket_ip(CONST int32_t fd, TUYA_IP_ADDR_T *addr)
 *
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
-OPERATE_RET tkl_net_set_cloexec(IN CONST int32_t fd)
+OPERATE_RET tkl_net_set_cloexec(IN const int32_t fd)
 {
     return OPRT_OK;
 }
@@ -837,7 +837,7 @@ OPERATE_RET tkl_net_getsockname(int32_t fd, TUYA_IP_ADDR_T *addr, UINT16_T *port
 *
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
-OPERATE_RET tkl_net_set_broadcast(CONST int32_t fd)
+OPERATE_RET tkl_net_set_broadcast(const int32_t fd)
 {
     return 0;
 }
@@ -867,7 +867,7 @@ OPERATE_RET tkl_net_getpeername(int32_t fd, TUYA_IP_ADDR_T *addr, UINT16_T *port
 *
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
-OPERATE_RET tkl_net_sethostname(CONST CHAR_T *hostname)
+OPERATE_RET tkl_net_sethostname(const CHAR_T *hostname)
 {
     return 0;
 }

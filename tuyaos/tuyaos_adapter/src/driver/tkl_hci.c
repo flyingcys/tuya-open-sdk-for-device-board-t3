@@ -60,7 +60,7 @@ OPERATE_RET tkl_hci_reset(VOID)
     return OPRT_OK;
 }
 
-OPERATE_RET tkl_hci_cmd_packet_send(CONST uint8_t *p_buf, uint16_t buf_len)
+OPERATE_RET tkl_hci_cmd_packet_send(const uint8_t *p_buf, uint16_t buf_len)
 {
 #if TKL_DEBUG >= 5
     bk_printf("%s op 0x%04X\n", __func__, (uint16_t)((((uint16_t)p_buf[1]) << 8) | p_buf[0]));
@@ -82,7 +82,7 @@ OPERATE_RET tkl_hci_cmd_packet_send(CONST uint8_t *p_buf, uint16_t buf_len)
 
 }
 
-OPERATE_RET tkl_hci_acl_packet_send(CONST uint8_t *p_buf, uint16_t buf_len)
+OPERATE_RET tkl_hci_acl_packet_send(const uint8_t *p_buf, uint16_t buf_len)
 {
 #if TKL_DEBUG  >= 5
     bk_printf("%s handle 0x%04X\n", __func__, (uint16_t)((((uint16_t)p_buf[1]) << 8) | p_buf[0]));
@@ -128,7 +128,7 @@ static ble_err_t bk_ble_hci_acl_to_host_cb(uint8_t *buf, uint16_t len)
 }
 
 
-OPERATE_RET tkl_hci_callback_register(CONST TKL_HCI_FUNC_CB hci_evt_cb, CONST TKL_HCI_FUNC_CB acl_pkt_cb)
+OPERATE_RET tkl_hci_callback_register(const TKL_HCI_FUNC_CB hci_evt_cb, const TKL_HCI_FUNC_CB acl_pkt_cb)
 {
 #if TKL_DEBUG
     bk_printf("%s %p %p\n", __func__, hci_evt_cb, acl_pkt_cb);
