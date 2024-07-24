@@ -1,4 +1,6 @@
 tuya_build_env
 t3_os/tuya_build
+CatalogKconfig
 
-t3_os/armino/tools/build_tools/part_table_tools/config/gen_files_list.txt
+__pycache__
+gen_files_list.txt
