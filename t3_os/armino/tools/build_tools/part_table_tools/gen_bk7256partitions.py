@@ -155,7 +155,9 @@ class Bk7256PartTableGenerator:
         self.csv_gen_done = False
 
         if not os.path.exists(gen_files_path):
-            raise RuntimeError("Absence of %s file, Please build it..."%(gen_files_path))
+            # raise RuntimeError("Absence of %s file, Please build it..."%(gen_files_path))
+            with open(gen_files_path, "x"):
+                pass
         with open(gen_files_path, 'r') as f:
             files_lines = f.readlines()
             for files_line in files_lines:

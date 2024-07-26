@@ -1,1 +1,0 @@
-/home/share/samba/opensdk/tuya-open-sdk-for-device/platform/t3/t3_os/armino/tools/build_tools/part_table_tools/tempFiles/partition_bk7256_ota_a_new.json
