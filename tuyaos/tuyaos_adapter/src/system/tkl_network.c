@@ -71,7 +71,7 @@ TUYA_ERRNO tkl_net_get_errno(void)
 //  * @param[in]      ip    ip字符串    "192.168.1.1"
 //  * @return  ip地址(4B)
 //  */
-// CHAR_T* tkl_net_addr(const char *ip)
+// char* tkl_net_addr(const char *ip)
 // {
 //     if (ip == NULL) {
 //         return NULL;
@@ -725,7 +725,7 @@ int tkl_net_set_keepalive(int fd, const bool_t alive, const uint32_t idle, const
  * @param[inout]         addr
  * @return  0: success  <0: fail
  */
-OPERATE_RET tkl_net_gethostbyname(const CHAR_T *domain, TUYA_IP_ADDR_T *addr)
+OPERATE_RET tkl_net_gethostbyname(const char *domain, TUYA_IP_ADDR_T *addr)
 {
     if ((domain == NULL) || (addr == NULL)) {
         return OPRT_OS_ADAPTER_INVALID_PARM;
@@ -751,13 +751,13 @@ OPERATE_RET tkl_net_gethostbyname(const CHAR_T *domain, TUYA_IP_ADDR_T *addr)
 * @return ip string
 */
 
-CHAR_T* tkl_net_addr2str(const TUYA_IP_ADDR_T ipaddr)
+char* tkl_net_addr2str(const TUYA_IP_ADDR_T ipaddr)
 {
 #if defined(ENABLE_LWIP) && (ENABLE_LWIP == 1)
     unsigned int addr = lwip_htonl(ipaddr);
     return ip_ntoa((ip_addr_t *) &addr);
 #else
-    static CHAR_T str[10];
+    static char str[10];
 
     utoa(ipaddr, str, 10);
 
@@ -767,7 +767,7 @@ CHAR_T* tkl_net_addr2str(const TUYA_IP_ADDR_T ipaddr)
 }
 
 
-OPERATE_RET tkl_net_setsockopt(const int fd, const TUYA_OPT_LEVEL level, const TUYA_OPT_NAME optname, const VOID_T *optval, const int optlen)
+OPERATE_RET tkl_net_setsockopt(const int fd, const TUYA_OPT_LEVEL level, const TUYA_OPT_NAME optname, const void *optval, const int optlen)
 {
     int ret = 0;
 
@@ -775,7 +775,7 @@ OPERATE_RET tkl_net_setsockopt(const int fd, const TUYA_OPT_LEVEL level, const T
     return ret;
 }
 
-OPERATE_RET tkl_net_getsockopt(const int fd, const TUYA_OPT_LEVEL level, const TUYA_OPT_NAME optname, VOID_T *optval, int *optlen)
+OPERATE_RET tkl_net_getsockopt(const int fd, const TUYA_OPT_LEVEL level, const TUYA_OPT_NAME optname, void *optval, int *optlen)
 {
     int ret = 0;
     ret = getsockopt(fd, level, optname, optval, optlen);
@@ -807,7 +807,7 @@ OPERATE_RET tkl_net_get_socket_ip(const int fd, TUYA_IP_ADDR_T *addr)
 *
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
-OPERATE_RET tkl_net_set_cloexec(IN const int fd)
+OPERATE_RET tkl_net_set_cloexec(const int fd)
 {
     return OPRT_OK;
 }
@@ -867,7 +867,7 @@ OPERATE_RET tkl_net_getpeername(int fd, TUYA_IP_ADDR_T *addr, uint16_t *port)
 *
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
-OPERATE_RET tkl_net_sethostname(const CHAR_T *hostname)
+OPERATE_RET tkl_net_sethostname(const char *hostname)
 {
     return 0;
 }

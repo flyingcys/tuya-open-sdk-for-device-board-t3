@@ -1,8 +1,3 @@
-/*
-tuya_cloud_types.h
-Copyright(C),2018-2020, 涂鸦科技 www.tuya.comm
-*/
-
 #ifndef TUYA_CLOUD_TYPES_H
 #define TUYA_CLOUD_TYPES_H
 
@@ -25,53 +20,11 @@ extern "C" {
 #endif
 
 typedef int OPERATE_RET;
-typedef long long DLONG_T;
-typedef DLONG_T *PDLONG_T;
-typedef float FLOAT_T;
-typedef FLOAT_T *PFLOAT_T;
-// typedef signed int int;
-typedef int *PINT_T;
-typedef void *PVOID_T;
-typedef char CHAR_T;
-typedef char *PCHAR_T;
-typedef signed char SCHAR_T;
-typedef unsigned char uint8_t;
-typedef short SHORT_T;
-typedef unsigned short uint16_t;
-typedef short *PSHORT_T;
-typedef long LONG_T;
-typedef unsigned long ULONG_T;
-typedef long *PLONG_T;
-typedef unsigned char BYTE_T;
-typedef BYTE_T *PBYTE_T;
-// typedef unsigned int uint32_t;
-typedef unsigned int *PUINT_T;
 typedef int BOOL_T;
 typedef BOOL_T *PBOOL_T;
-typedef long long int INT64_T;
-typedef INT64_T *PINT64_T;
-typedef unsigned long long int UINT64_T;
-typedef UINT64_T *PUINT64_T;
-// typedef unsigned int uint32_t;
-// typedef unsigned int *PUint32_t;
-// typedef int int32_t;
-typedef int *Pint32_t;
-typedef short INT16_T;
-typedef INT16_T *PINT16_T;
-typedef unsigned short uint16_t;
-typedef uint16_t *PUINT16_T;
-typedef signed char INT8_T;
-typedef INT8_T *PINT8_T;
-typedef unsigned char uint8_t;
-typedef uint8_t *PUINT8_T;
-typedef ULONG_T TIME_MS;
-typedef ULONG_T TIME_S;
+typedef unsigned long TIME_MS;
+typedef unsigned long TIME_S;
 typedef unsigned int TIME_T;
-typedef double DOUBLE_T;
-typedef unsigned short WORD_T;
-typedef WORD_T *PWORD_T;
-typedef unsigned int DWORD_T;
-typedef DWORD_T *PDWORD_T;
 
 #ifndef FALSE
 #define FALSE 0
@@ -79,43 +32,6 @@ typedef DWORD_T *PDWORD_T;
 
 #ifndef TRUE
 #define TRUE 1
-#endif
-
-#ifndef IN
-#define IN
-#endif
-
-#ifndef OUT
-#define OUT
-#endif
-
-#ifndef INOUT
-#define INOUT
-#endif
-
-#ifndef void
-#define void void
-#endif
-
-#ifndef VOID_T
-#define VOID_T void
-#endif
-
-
-#ifndef const
-#define const const
-#endif
-
-#ifndef STATIC
-#define STATIC static
-#endif
-
-#ifndef SIZEOF
-#define SIZEOF sizeof
-#endif
-
-#ifndef INLINE
-#define INLINE inline
 #endif
 
 #ifndef NULL
@@ -151,12 +67,12 @@ typedef int bool_t;
 #ifndef BIT
 #define BIT(nr)     (1UL << (nr))
 #endif
-#define MAKEWORD(a, b) ((WORD_T)(((BYTE_T)(a)) | ((WORD_T)((BYTE_T)(b))) << 8))
+#define MAKEWORD(a, b) ((WORD_T)(((uint8_t)(a)) | ((WORD_T)((uint8_t)(b))) << 8))
 #define MAKELONG(a, b) ((LONG_T)(((WORD_T)(a)) | ((DWORD_T)((WORD_T)(b))) << 16))
 #define LOWORD(l) ((WORD_T)(l))
 #define HIWORD(l) ((WORD_T)(((DWORD_T)(l) >> 16) & 0xFFFF))
-#define LOBYTE(w) ((BYTE_T)(w))
-#define HIBYTE(w) ((BYTE_T)(((WORD_T)(w) >> 8) & 0xFF))
+#define LOBYTE(w) ((uint8_t)(w))
+#define HIBYTE(w) ((uint8_t)(((WORD_T)(w) >> 8) & 0xFF))
 
 #define WORD_SWAP(X)    (((X << 8) | (X >> 8))&0xFFFF)
 #define DWORD_SWAP(X)   ( (((X)&0xff)<<24) + \
@@ -751,7 +667,7 @@ typedef struct {
     TUYA_GPIO_LEVEL_E level;
 } TUYA_GPIO_BASE_CFG_T;
 
-typedef VOID_T (*TUYA_GPIO_IRQ_CB)(VOID_T *args);
+typedef void (*TUYA_GPIO_IRQ_CB)(void *args);
 
 /**
  * @brief gpio interrupt config
@@ -759,7 +675,7 @@ typedef VOID_T (*TUYA_GPIO_IRQ_CB)(VOID_T *args);
 typedef struct {
     TUYA_GPIO_IRQ_E      mode;
     TUYA_GPIO_IRQ_CB     cb;
-    VOID_T              *arg;
+    void              *arg;
 } TUYA_GPIO_IRQ_T;
 
 /**
@@ -840,7 +756,7 @@ typedef enum {
     TUYA_IIC_EVENT_BUS_CLEAR            = 8   ///< Bus clear finished
 } TUYA_IIC_IRQ_EVT_E;
 
-typedef VOID_T (*TUYA_I2C_IRQ_CB)(TUYA_I2C_NUM_E port, TUYA_IIC_IRQ_EVT_E event);
+typedef void (*TUYA_I2C_IRQ_CB)(TUYA_I2C_NUM_E port, TUYA_IIC_IRQ_EVT_E event);
 
 /**
  * @brief i2c flag
@@ -916,7 +832,7 @@ typedef struct {
  * @brief pwm cb, used in irq mode
  * 
  */
-typedef VOID_T (*TUYA_PWM_IRQ_CB)(TUYA_PWM_NUM_E port, TUYA_PWM_CAPTURE_DATA_T data, VOID_T *arg);
+typedef void (*TUYA_PWM_IRQ_CB)(TUYA_PWM_NUM_E port, TUYA_PWM_CAPTURE_DATA_T data, void *arg);
 
 /**
  * @brief pwm capture mode
@@ -934,7 +850,7 @@ typedef struct {
     TUYA_PWM_POLARITY_E         trigger_level;  /* trigger level, TUYA_PWM_NEGATIVE:falling edge, TUYA_PWM_POSITIVE:rising edge */
     uint32_t                      clk;            /* sampling rate of capture signal */
     TUYA_PWM_IRQ_CB             cb;             /* pwm irq cb */
-    VOID_T                      *arg;           /* arg which would be passed to the irq cb */
+    void                      *arg;           /* arg which would be passed to the irq cb */
 } TUYA_PWM_CAP_IRQ_T;
 
 /**
@@ -1022,7 +938,7 @@ typedef enum {
  * @brief spi cb,used in irq mode
  * 
  */
-typedef VOID_T (*TUYA_SPI_IRQ_CB)(TUYA_SPI_NUM_E port, TUYA_SPI_IRQ_EVT_E event);
+typedef void (*TUYA_SPI_IRQ_CB)(TUYA_SPI_NUM_E port, TUYA_SPI_IRQ_EVT_E event);
 
 /**
  * @brief SPI Status
@@ -1108,9 +1024,9 @@ typedef struct {
 #define TUYA_X_OK       1
 #define TUYA_F_OK       0
  
-typedef VOID_T* TUYA_DIR;
-typedef VOID_T* TUYA_FILEINFO;
-typedef VOID_T* TUYA_FILE; 
+typedef void* TUYA_DIR;
+typedef void* TUYA_FILEINFO;
+typedef void* TUYA_FILE; 
 
 
 /**
@@ -1124,12 +1040,12 @@ typedef enum {
 /**
  * @brief pre-sleep callback
  */
-typedef VOID_T (*TUYA_PRE_SLEEP_CB)(VOID_T);
+typedef void (*TUYA_PRE_SLEEP_CB)(void);
 
 /**
  * @brief post-wakeup callback
  */
-typedef VOID_T (*TUYA_POST_WAKEUP_CB)(VOID_T);
+typedef void (*TUYA_POST_WAKEUP_CB)(void);
 
 /**
  * @brief sleep callback
@@ -1146,8 +1062,8 @@ typedef struct {
 } TUYA_CPU_INFO_T;
 
 #if OPERATING_SYSTEM != SYSTEM_NON_OS
-typedef UINT64_T SYS_TICK_T;
-typedef UINT64_T SYS_TIME_T;
+typedef uint64_t SYS_TICK_T;
+typedef uint64_t SYS_TIME_T;
 #else
 typedef uint32_t SYS_TICK_T;
 typedef uint32_t SYS_TIME_T;
@@ -1211,7 +1127,7 @@ typedef struct {
     uint32_t   offset;        ///< ota image offset
     uint8_t* data;          ///< ota data
     uint32_t   len;           ///< ota data len
-    VOID_T*  pri_data;      ///< private pointer
+    void*  pri_data;      ///< private pointer
     uint32_t   start_addr;    ///< ota flash start addr 
 } TUYA_OTA_DATA_T;
 
@@ -1302,7 +1218,7 @@ typedef struct {
  *                     you can input like this TUYA_UART_PORT_ID(TUYA_UART_SYS, 2)
  * @return none
  */
-typedef VOID_T (*TUYA_UART_IRQ_CB)(TUYA_UART_NUM_E port_id);
+typedef void (*TUYA_UART_IRQ_CB)(TUYA_UART_NUM_E port_id);
 
 /**
  * @brief uart contrl command

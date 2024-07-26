@@ -213,15 +213,15 @@ typedef struct {
 typedef struct {
     TUYA_BT_BREDR_STEAM_STATUS_E        status;         /**< Stream Status */
 
-    VOID_T                              *p_endpoint;    /**< [Reserved] Stream Endpoint Pointer */
-    VOID_T                              *p_connection;  /**< [Reserved] Stream Connection Pointer */
-	VOID_T                              *user_data;     /**< Stream User Data */
+    void                              *p_endpoint;    /**< [Reserved] Stream Endpoint Pointer */
+    void                              *p_connection;  /**< [Reserved] Stream Connection Pointer */
+	void                              *user_data;     /**< Stream User Data */
 } TUYA_BT_BREDR_STEAM_T;
 
 typedef struct {
     TUYA_BT_BREDR_PHONE_STATUS_E        status;         /**< Phone Status */
     uint8_t                             user_data_len;  /**< User Data Length */
-	VOID_T                              *user_data;     /**< Stream User Data */
+	void                              *user_data;     /**< Stream User Data */
 } TUYA_BT_BREDR_PHONE_T;
 
 typedef struct {
@@ -261,7 +261,7 @@ typedef void(*TUYA_BT_BREDR_EVT_FUNC_CB)(TUYA_BT_BREDR_EVENT_T *p_event);
  * @return  SUCCESS
  *          ERROR
  * */
-OPERATE_RET tkl_bt_bredr_init(TUYA_BT_BREDR_ROLE_E role, TUYA_BT_BREDR_EVT_FUNC_CB p_event, VOID_T *user_data);
+OPERATE_RET tkl_bt_bredr_init(TUYA_BT_BREDR_ROLE_E role, TUYA_BT_BREDR_EVT_FUNC_CB p_event, void *user_data);
 
 /**
  * @brief   De-Init the Bluetooth BR-EDR Interface.
@@ -346,7 +346,7 @@ OPERATE_RET tkl_bt_gap_address_get(TUYA_BT_GAP_ADDR_T *p_peer_addr);
  * @return  SUCCESS
  *          ERROR
  * */
-OPERATE_RET tkl_bt_gap_name_set(CHAR_T *name);
+OPERATE_RET tkl_bt_gap_name_set(char *name);
 
 /**
  * @brief   Get the BT GAP Name
@@ -355,7 +355,7 @@ OPERATE_RET tkl_bt_gap_name_set(CHAR_T *name);
  * @return  SUCCESS
  *          ERROR
  * */
-OPERATE_RET tkl_bt_gap_name_get(CHAR_T *name);
+OPERATE_RET tkl_bt_gap_name_get(char *name);
 
 /**
  * @brief   Request the pair while in BT-Master Mode.
@@ -401,7 +401,7 @@ OPERATE_RET tkl_bt_gap_paring_delete(TUYA_BT_PAIR_BOND_INFO_T *bond_info);
  * @return  TRUE
  *          FALSE
  * */
-BOOL_T tkl_bt_pairing_status_get(VOID_T);
+BOOL_T tkl_bt_pairing_status_get(void);
 
 /**
  * @brief   disconnect the link.

@@ -25,7 +25,7 @@
 *
 * @return system ticket count
 */
-SYS_TICK_T tkl_system_get_tick_count(VOID_T)
+SYS_TICK_T tkl_system_get_tick_count(void)
 {
     return (SYS_TICK_T)xTaskGetTickCount();
 }
@@ -37,7 +37,7 @@ SYS_TICK_T tkl_system_get_tick_count(VOID_T)
 *
 * @return system millisecond
 */
-SYS_TIME_T tkl_system_get_millisecond(VOID_T)
+SYS_TIME_T tkl_system_get_millisecond(void)
 {
     return (SYS_TIME_T)(tkl_system_get_tick_count() * portTICK_RATE_MS);
 }
@@ -51,7 +51,7 @@ SYS_TIME_T tkl_system_get_millisecond(VOID_T)
 *
 * @return void
 */
-VOID_T tkl_system_sleep(const uint32_t num_ms)
+void tkl_system_sleep(const uint32_t num_ms)
 {
     uint32_t ticks = num_ms / portTICK_RATE_MS;
 
@@ -72,7 +72,7 @@ VOID_T tkl_system_sleep(const uint32_t num_ms)
 *
 * @return void
 */
-VOID_T tkl_system_reset(VOID_T)
+void tkl_system_reset(void)
 {
     bk_reboot();
 	return;
@@ -87,7 +87,7 @@ VOID_T tkl_system_reset(VOID_T)
 *
 * @return size of free heap
 */
-int tkl_system_get_free_heap_size(VOID_T)
+int tkl_system_get_free_heap_size(void)
 {
     return (int)xPortGetFreeHeapSize();
 }
@@ -101,7 +101,7 @@ int tkl_system_get_free_heap_size(VOID_T)
 *
 * @return reset reason of system
 */
-TUYA_RESET_REASON_E tkl_system_get_reset_reason(CHAR_T** describe)
+TUYA_RESET_REASON_E tkl_system_get_reset_reason(char** describe)
 {
     unsigned char value = bk_misc_get_reset_reason() & 0xFF;
     TUYA_RESET_REASON_E ty_value;

@@ -43,13 +43,13 @@ uint32_t tkl_watchdog_init(TUYA_WDOG_BASE_CFG_T *cfg)
     return cfg->interval_ms;
 }
 
-OPERATE_RET tkl_watchdog_deinit(VOID_T)
+OPERATE_RET tkl_watchdog_deinit(void)
 {
     bk_wdt_stop();
     return OPRT_OK;
 }
 
-OPERATE_RET tkl_watchdog_refresh(VOID_T)
+OPERATE_RET tkl_watchdog_refresh(void)
 {
     bk_wdt_feed();
     return OPRT_OK;

@@ -92,7 +92,7 @@ OPERATE_RET tkl_i2c_irq_disable(TUYA_I2C_NUM_E port);
  * @param[in] xfer_pending: xfer_pending: TRUE : not send stop condition, FALSE : send stop condition.
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_i2c_master_send(TUYA_I2C_NUM_E port, uint16_t dev_addr, const VOID_T *data, uint32_t size, BOOL_T xfer_pending);
+OPERATE_RET tkl_i2c_master_send(TUYA_I2C_NUM_E port, uint16_t dev_addr, const void *data, uint32_t size, BOOL_T xfer_pending);
 
 /**
  * @brief i2c master recv

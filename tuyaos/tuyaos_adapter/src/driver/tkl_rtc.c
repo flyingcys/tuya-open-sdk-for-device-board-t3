@@ -23,7 +23,7 @@
 
 #define TICK_CNT_PER_MS    (32)
 
-OPERATE_RET tkl_rtc_init(VOID_T)
+OPERATE_RET tkl_rtc_init(void)
 {
     bk_aon_rtc_tick_init();
 
@@ -56,7 +56,7 @@ OPERATE_RET tkl_rtc_time_set(TIME_T time_sec)
     return OPRT_OK;
 }
 
-OPERATE_RET tkl_rtc_deinit(VOID_T)
+OPERATE_RET tkl_rtc_deinit(void)
 {
     bk_aon_rtc_driver_deinit();
 

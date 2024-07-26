@@ -29,8 +29,8 @@ extern "C" {
  * @brief the description of tuya kernel adapter layer rtc
  */
 typedef struct {
-    OPERATE_RET     (*init)                 (VOID_T);
-    OPERATE_RET     (*deinit)               (VOID_T);
+    OPERATE_RET     (*init)                 (void);
+    OPERATE_RET     (*deinit)               (void);
     OPERATE_RET     (*time_get)             (TIME_T *time_sec);
     OPERATE_RET     (*time_set)             (TIME_T  time_sec);
 } TKL_RTC_DESC_T;
@@ -40,7 +40,7 @@ typedef struct {
  *
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-TKL_RTC_DESC_T* tkl_rtc_desc_get(VOID_T);
+TKL_RTC_DESC_T* tkl_rtc_desc_get(void);
 #endif
 
 #ifdef ENABLE_WATCHDOG
@@ -49,8 +49,8 @@ TKL_RTC_DESC_T* tkl_rtc_desc_get(VOID_T);
  */
 typedef struct {
     uint32_t          (*init)                 (TUYA_WDOG_BASE_CFG_T *cfg);
-    OPERATE_RET     (*deinit)               (VOID_T);
-    OPERATE_RET     (*refresh)              (VOID_T);
+    OPERATE_RET     (*deinit)               (void);
+    OPERATE_RET     (*refresh)              (void);
 } TKL_WATCHDOG_DESC_T;
 
 /**
@@ -58,7 +58,7 @@ typedef struct {
  *
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-TKL_WATCHDOG_DESC_T* tkl_watchdog_desc_get(VOID_T);
+TKL_WATCHDOG_DESC_T* tkl_watchdog_desc_get(void);
 #endif
 
 #ifdef ENABLE_FLASH
@@ -79,7 +79,7 @@ typedef struct {
  *
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-TKL_FLASH_DESC_T* tkl_flash_desc_get(VOID_T);
+TKL_FLASH_DESC_T* tkl_flash_desc_get(void);
 #endif
 
 #ifdef __cplusplus

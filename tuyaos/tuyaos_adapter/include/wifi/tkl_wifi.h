@@ -23,11 +23,11 @@ extern "C" {
 typedef struct
 {
     uint8_t channel;                 ///< AP channel
-    SCHAR_T rssi;                             ///< AP rssi
+    int8_t rssi;                     ///< AP rssi
     uint8_t bssid[6];                ///< AP bssid
     uint8_t ssid[WIFI_SSID_LEN+1];   ///< AP ssid array
     uint8_t s_len;                   ///< AP ssid len
-    uint8_t security;           //refer to WF_AP_AUTH_MODE_E
+    uint8_t security;                //refer to WF_AP_AUTH_MODE_E
     uint8_t resv1;
     uint8_t data_len;
     uint8_t data[0];
@@ -98,10 +98,10 @@ typedef enum {
 }WF_STATION_STAT_E;
 
 typedef struct {
-    CHAR_T ip[16];
-    CHAR_T mask[16];
-    CHAR_T gw[16];
-    CHAR_T dns[16];
+    char ip[16];
+    char mask[16];
+    char gw[16];
+    char dns[16];
 } FAST_DHCP_INFO_T;
 /* for fast connect*/
 typedef struct {
@@ -176,7 +176,7 @@ typedef struct {
     uint8_t     channel;
     NW_MAC_S    mac;
     uint32_t      vsie_data_len;
-    BYTE_T     *vsie_data;
+    uint8_t     *vsie_data;
 } WF_IOCTL_BEACON_T;
 
 typedef struct {
@@ -195,7 +195,7 @@ typedef struct {
  * @param[in]       buf         the buf wifi recv
  * @param[in]       len         the len of buf
  */
-typedef VOID_T (*SNIFFER_CALLBACK)(const uint8_t *buf, const uint16_t len, const INT8_T rssi);
+typedef void (*SNIFFER_CALLBACK)(const uint8_t *buf, const uint16_t len, const int8_t rssi);
 
 /**
  * @brief callback function: WIFI_REV_MGNT_CB
@@ -204,7 +204,7 @@ typedef VOID_T (*SNIFFER_CALLBACK)(const uint8_t *buf, const uint16_t len, const
  * @param[in]       buf         the buf wifi recv
  * @param[in]       len         the len of buf
  */
-typedef VOID_T (*WIFI_REV_MGNT_CB)(uint8_t *buf, uint32_t len);
+typedef void (*WIFI_REV_MGNT_CB)(uint8_t *buf, uint32_t len);
 
 /**
  * @brief callback function: WIFI_STATUS_CHANGE_CB
@@ -212,7 +212,7 @@ typedef VOID_T (*WIFI_REV_MGNT_CB)(uint8_t *buf, uint32_t len);
  *        with this callback.
  * @param[out]       is_up         the wifi link status is up or not
  */
-typedef VOID_T (*WIFI_EVENT_CB)(WF_EVENT_E event, VOID_T *arg);
+typedef void (*WIFI_EVENT_CB)(WF_EVENT_E event, void *arg);
 
 
 /**
@@ -236,7 +236,7 @@ OPERATE_RET tkl_wifi_init(WIFI_EVENT_CB cb);
  *
  * @note if ssid == NULL means scan all ap, otherwise means scan the specific ssid
  */
-OPERATE_RET tkl_wifi_scan_ap(const SCHAR_T *ssid, AP_IF_S **ap_ary, uint32_t *num);
+OPERATE_RET tkl_wifi_scan_ap(const int8_t *ssid, AP_IF_S **ap_ary, uint32_t *num);
 
 /**
  * @brief release the memory malloced in <tkl_wifi_ap_scan>
@@ -261,7 +261,7 @@ OPERATE_RET tkl_wifi_start_ap(const WF_AP_CFG_IF_S *cfg);
  * 
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_stop_ap(VOID_T);
+OPERATE_RET tkl_wifi_stop_ap(void);
 
 /**
  * @brief set wifi interface work channel
@@ -387,7 +387,7 @@ OPERATE_RET tkl_wifi_set_country_code(const COUNTRY_CODE_E ccode);
  *
  * @return true on success. faile on failure
  */
-OPERATE_RET tkl_wifi_set_rf_calibrated(VOID_T);
+OPERATE_RET tkl_wifi_set_rf_calibrated(void);
 
 /**
  * @brief set wifi lowpower mode
@@ -412,14 +412,14 @@ OPERATE_RET tkl_wifi_station_fast_connect(const FAST_WF_CONNECTED_AP_INFO_T *fas
  * @param[in]       passwd
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_station_connect(const SCHAR_T *ssid, const SCHAR_T *passwd);
+OPERATE_RET tkl_wifi_station_connect(const int8_t *ssid, const int8_t *passwd);
 
 /**
  * @brief disconnect wifi from connect ap
  * 
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_station_disconnect(VOID_T);
+OPERATE_RET tkl_wifi_station_disconnect(void);
 
 /**
  * @brief get wifi connect rssi
@@ -427,7 +427,7 @@ OPERATE_RET tkl_wifi_station_disconnect(VOID_T);
  * @param[out]      rssi        the return rssi
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_wifi_station_get_conn_ap_rssi(SCHAR_T *rssi);
+OPERATE_RET tkl_wifi_station_get_conn_ap_rssi(int8_t *rssi);
 
 
 /**

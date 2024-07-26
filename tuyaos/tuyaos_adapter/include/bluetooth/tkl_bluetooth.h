@@ -160,7 +160,7 @@ OPERATE_RET tkl_ble_gap_conn_param_update(uint16_t conn_handle, TKL_BLE_GAP_CONN
  * @return  SUCCESS
  *          ERROR
  * */ 
-OPERATE_RET tkl_ble_gap_tx_power_set(uint8_t role, int32_t tx_power);
+OPERATE_RET tkl_ble_gap_tx_power_set(uint8_t role, int tx_power);
 
 /**
  * @brief   Get the received signal strength for the last connection event.
@@ -176,7 +176,7 @@ OPERATE_RET tkl_ble_gap_rssi_get(uint16_t conn_handle);
  * @return  SUCCESS
  *          ERROR
  * */
-OPERATE_RET tkl_ble_gap_name_set(CHAR_T *p_name);
+OPERATE_RET tkl_ble_gap_name_set(char *p_name);
 
 /**
  * @brief   Add Ble Gatt Service
@@ -352,7 +352,7 @@ OPERATE_RET tkl_ble_gattc_exchange_mtu_request(uint16_t conn_handle, uint16_t cl
  *  * @return  SUCCESS
  *          ERROR
  * */
-OPERATE_RET tkl_ble_vendor_command_control(uint16_t opcode, VOID_T *user_data, uint16_t data_len);
+OPERATE_RET tkl_ble_vendor_command_control(uint16_t opcode, void *user_data, uint16_t data_len);
 
 /**
  * @brief set ble mode, used in wifi ble coexist mode

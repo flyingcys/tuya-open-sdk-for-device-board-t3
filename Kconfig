@@ -1,29 +1,20 @@
-menu "configure board <your-board-name>"
+menu "configure t3"
     config OPERATING_SYSTEM
-        int "OPERATING_SYSTEM --- mandatory for board"
-        default 100
+        int
+        default 98
         ---help---
             100     /* LINUX */
             98      /* RTOS */  
 
     config LITTLE_END
-        int "LITTLE_END --- mandatory for board"
+        int
         default 1
         ---help---
             0       /* big endian */
             1       /* little endian */
 
-    config ENABLE_FILE_SYSTEM
-        bool "ENABLE_FILE_SYSTEM --- support filesystem"
-        default y if OPERATING_SYSTEM = 100
-        default n if OPERATING_SYSTEM = 98
-
     config ENABLE_WIFI
         bool "ENABLE_WIFI --- support wifi"
-        default n
-
-    config ENABLE_WIRED
-        bool "ENABLE_WIRED --- support wired"
         default y
 
     menuconfig ENABLE_BLUETOOTH
@@ -78,65 +69,5 @@ menu "configure board <your-board-name>"
     config ENABLE_TIMER
         bool "ENABLE_TIMER --- support hw timer"
         default n                                
-                        
-    config ENABLE_DISPLAY
-        bool "ENABLE_DISPLAY --- support GUI display"
-        default n                                
-
-    config ENABLE_MEDIA
-        bool "ENABLE_MEDIA --- support media"
-        default n                                
-
-    config ENABLE_PM
-        bool "ENABLE_PM --- support power manager"
-        default n                                
-
-    config ENABLE_STORAGE
-        bool "ENABLE_STORAGE --- support storage such as SDCard"
-        default n                               
-
-    config ENABLE_DAC
-        bool "ENABLE_DAC --- support dac"
-        default n   
-
-    config ENABLE_I2S
-        bool "ENABLE_I2S --- support i2s"
-        default n   
-
-    config ENABLE_WAKEUP
-        bool "ENABLE_WAKEUP --- support lowpower wakeup"
-        default n 
-
-    config ENABLE_REGISTER
-        bool "ENABLE_REGISTER --- support register"
-        default n   
-
-    config ENABLE_PINMUX
-        bool "ENABLE_PINMUX --- support pinmux"
-        default n   
-
-    config ENABLE_PLATFORM_AES
-        bool "ENABLE_PLATFORM_AES --- support hw AES"
-        default n   
-
-    config ENABLE_PLATFORM_SHA256
-        bool "ENABLE_PLATFORM_SHA256 --- support hw sha256"
-        default n   
-
-    config ENABLE_PLATFORM_MD5
-        bool "ENABLE_PLATFORM_MD5 --- support hw md5"
-        default n            
-        
-    config ENABLE_PLATFORM_SHA1
-        bool "ENABLE_PLATFORM_SHA1 --- support hw sha1"
-        default n            
-
-    config ENABLE_PLATFORM_RSA
-        bool "ENABLE_PLATFORM_RSA --- support hw rsa"
-        default n            
-
-    config ENABLE_PLATFORM_ECC
-        bool "ENABLE_PLATFORM_ECC --- support hw ecc"
-        default n            
 
     endmenu

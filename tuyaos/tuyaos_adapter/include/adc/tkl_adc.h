@@ -64,7 +64,7 @@ uint32_t tkl_adc_ref_voltage_get(TUYA_ADC_NUM_E port_num);
  *
  * @return temperature(bat: 'C)
  */
-int32_t tkl_adc_temperature_get(VOID_T);
+int32_t tkl_adc_temperature_get(void);
 
 /**
  * @brief adc read

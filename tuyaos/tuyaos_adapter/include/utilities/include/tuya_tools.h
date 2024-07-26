@@ -45,7 +45,7 @@
  * 
  * @return length of string
  */
-size_t tuya_strlen(const CHAR_T *str);
+size_t tuya_strlen(const char *str);
 
 /**
  * @brief string copy
@@ -55,7 +55,7 @@ size_t tuya_strlen(const CHAR_T *str);
  * 
  * @return pointer to the final destination string dest
  */
-CHAR_T *tuya_strcpy(CHAR_T *dst, const CHAR_T *src);
+char *tuya_strcpy(char *dst, const char *src);
 
 /**
  * @brief string cat
@@ -65,7 +65,7 @@ CHAR_T *tuya_strcpy(CHAR_T *dst, const CHAR_T *src);
  * 
  * @return pointer to the final destination string dest
  */
-CHAR_T *tuya_strcat(CHAR_T* dst, const CHAR_T* src);
+char *tuya_strcat(char* dst, const char* src);
 
 /**
  * @brief compare the first n characters of two string
@@ -76,7 +76,7 @@ CHAR_T *tuya_strcat(CHAR_T* dst, const CHAR_T* src);
  * 
  * @return 0 one equal, 1 on s1 longer than s2, -1 on s2 longer than s1
  */
-int tuya_strncasecmp(const CHAR_T *s1, const CHAR_T *s2, size_t n);
+int tuya_strncasecmp(const char *s1, const char *s2, size_t n);
 
 /**
  * @brief compare characters of two string
@@ -86,7 +86,7 @@ int tuya_strncasecmp(const CHAR_T *s1, const CHAR_T *s2, size_t n);
  * 
  * @return 0 one equal, 1 on s1 longer than s2, -1 on s2 longer than s1
  */
-int tuya_strcmp(const CHAR_T *src, const CHAR_T *dst);
+int tuya_strcmp(const char *src, const char *dst);
 
 /**
  * @brief convert character to hex, if '0'-'f'/'F' -> 0-15, else 0
@@ -95,7 +95,7 @@ int tuya_strcmp(const CHAR_T *src, const CHAR_T *dst);
  * 
  * @return the hex value
  */
-uint8_t tuya_asc2hex(CHAR_T asccode);
+uint8_t tuya_asc2hex(char asccode);
 
 /**
  * @brief convert the hex character array to hex array
@@ -106,7 +106,7 @@ uint8_t tuya_asc2hex(CHAR_T asccode);
  * 
  * @return none
  */
-VOID_T tuya_ascs2hex(uint8_t *hex, uint8_t *ascs, int srclen);
+void tuya_ascs2hex(uint8_t *hex, uint8_t *ascs, int srclen);
 
 /**
  * @brief convert the input hex array to string array
@@ -118,7 +118,7 @@ VOID_T tuya_ascs2hex(uint8_t *hex, uint8_t *ascs, int srclen);
  * @return none
  * @note the size of <str> must >= hexlen * 2, convert example 00-ff -> "00"-"FF"
  */
-VOID_T tuya_hex2str(uint8_t *str, uint8_t *hex, int hexlen);
+void tuya_hex2str(uint8_t *str, uint8_t *hex, int hexlen);
 
 /**
  * @brief convert the input string to number
@@ -130,7 +130,7 @@ VOID_T tuya_hex2str(uint8_t *str, uint8_t *hex, int hexlen);
  * @return none
  * @note the size of <pbDest> must >= nLen * 2, convert example 00-ff -> "00"-"FF"
  */
-BOOL_T tuya_str2num(uint32_t *number, const CHAR_T *str, uint8_t strlen);
+BOOL_T tuya_str2num(uint32_t *number, const char *str, uint8_t strlen);
 
 /**
  * @brief int number convert to buff 
@@ -161,7 +161,7 @@ uint32_t tuya_intArray2int(uint8_t *intArray, uint32_t index, uint8_t len);
  * 
  * @return none
  */
-VOID_T tuya_buff_reverse(uint8_t *buf, uint16_t len);
+void tuya_buff_reverse(uint8_t *buf, uint16_t len);
 
 /**
  * @note data reversal function
@@ -171,10 +171,10 @@ VOID_T tuya_buff_reverse(uint8_t *buf, uint16_t len);
  * 
  * @return none
  */
-VOID_T tuya_data_reverse(uint8_t *dst, uint8_t *src, uint16_t srclen);
+void tuya_data_reverse(uint8_t *dst, uint8_t *src, uint16_t srclen);
 
 /**
- * @brief sort the CHAR_T in the buf according ascii value
+ * @brief sort the char in the buf according ascii value
  * 
  * @param[in] is_ascend: sorting mode
  * @param[in] buf: the buffer need to sort
@@ -182,7 +182,7 @@ VOID_T tuya_data_reverse(uint8_t *dst, uint8_t *src, uint16_t srclen);
  * 
  * @return none 
  */
-VOID_T tuya_byte_sort(uint8_t is_ascend, uint8_t *buf, int len);
+void tuya_byte_sort(uint8_t is_ascend, uint8_t *buf, int len);
 
 /**
  * @brief find <ch> in <str>, start find in index <revr_index>, find in reverse order.
@@ -193,7 +193,7 @@ VOID_T tuya_byte_sort(uint8_t is_ascend, uint8_t *buf, int len);
  * 
  * @return -2 on not found, -1 on invalid parameter, >=0 on the position of the character to find 
  */
-int tuya_find_char_with_reverse_idx(const CHAR_T *str, const int index, const CHAR_T ch);
+int tuya_find_char_with_reverse_idx(const char *str, const int index, const char ch);
 
 /**
  * @brief calculate the number of bits 1 in a number

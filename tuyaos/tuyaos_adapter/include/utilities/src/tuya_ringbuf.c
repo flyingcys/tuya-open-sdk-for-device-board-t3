@@ -24,7 +24,7 @@ typedef struct {
 #define RINGBUFF_SIZE   sizeof(__RINGBUFF_T)
 
 
-STATIC VOID_T __ringbuff_init(__RINGBUFF_T *ringbuff, uint32_t len)
+static void __ringbuff_init(__RINGBUFF_T *ringbuff, uint32_t len)
 {
     ringbuff->in = 0;
     ringbuff->out = 0;
@@ -128,7 +128,7 @@ uint32_t tuya_ring_buff_used_size_get(TUYA_RINGBUFF_T ringbuff)
     return size;
 }
 
-uint32_t tuya_ring_buff_write(TUYA_RINGBUFF_T ringbuff, const VOID_T *data, uint32_t len)
+uint32_t tuya_ring_buff_write(TUYA_RINGBUFF_T ringbuff, const void *data, uint32_t len)
 {
     uint32_t tmp_len;
     uint32_t free_len;
@@ -165,7 +165,7 @@ uint32_t tuya_ring_buff_write(TUYA_RINGBUFF_T ringbuff, const VOID_T *data, uint
     return tmp_len + len;
 }
 
-uint32_t tuya_ring_buff_read(TUYA_RINGBUFF_T ringbuff, VOID_T *data, uint32_t len)
+uint32_t tuya_ring_buff_read(TUYA_RINGBUFF_T ringbuff, void *data, uint32_t len)
 {
     uint32_t tmp_len;
     uint32_t used_len;
@@ -202,7 +202,7 @@ uint32_t tuya_ring_buff_read(TUYA_RINGBUFF_T ringbuff, VOID_T *data, uint32_t le
     return tmp_len + len;
 }
 
-uint32_t tuya_ring_buff_peek(TUYA_RINGBUFF_T ringbuff, VOID_T *data, uint32_t len)
+uint32_t tuya_ring_buff_peek(TUYA_RINGBUFF_T ringbuff, void *data, uint32_t len)
 {
     uint32_t out;
     uint32_t tmp_len;

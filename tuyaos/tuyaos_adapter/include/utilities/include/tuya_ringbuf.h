@@ -18,7 +18,7 @@
 #include "tuya_cloud_types.h"
 
 
-typedef VOID_T* TUYA_RINGBUFF_T;
+typedef void* TUYA_RINGBUFF_T;
 
 typedef enum {
     OVERFLOW_STOP_TYPE = 0, ///< unread buff area will not be overwritten when writing overflow
@@ -77,7 +77,7 @@ uint32_t tuya_ring_buff_used_size_get(TUYA_RINGBUFF_T ringbuff);
  * @param[in]   len:      read len
  * @return  length of the data read
  */
-uint32_t tuya_ring_buff_read(TUYA_RINGBUFF_T ringbuff, VOID_T *data, uint32_t len);
+uint32_t tuya_ring_buff_read(TUYA_RINGBUFF_T ringbuff, void *data, uint32_t len);
 
 /**
  * @brief ringbuff data peek 
@@ -88,7 +88,7 @@ uint32_t tuya_ring_buff_read(TUYA_RINGBUFF_T ringbuff, VOID_T *data, uint32_t le
  * @param[in]   len:      read len
  * @return  length of the data read
  */
-uint32_t tuya_ring_buff_peek(TUYA_RINGBUFF_T ringbuff, VOID_T *data, uint32_t len);
+uint32_t tuya_ring_buff_peek(TUYA_RINGBUFF_T ringbuff, void *data, uint32_t len);
 
 /**
  * @brief ringbuff data write 
@@ -98,7 +98,7 @@ uint32_t tuya_ring_buff_peek(TUYA_RINGBUFF_T ringbuff, VOID_T *data, uint32_t le
  * @param[in]   len:      write len
  * @return  length of the data write
  */
-uint32_t tuya_ring_buff_write(TUYA_RINGBUFF_T ringbuff, const VOID_T *data, uint32_t len);
+uint32_t tuya_ring_buff_write(TUYA_RINGBUFF_T ringbuff, const void *data, uint32_t len);
 
 
 #ifdef __cplusplus

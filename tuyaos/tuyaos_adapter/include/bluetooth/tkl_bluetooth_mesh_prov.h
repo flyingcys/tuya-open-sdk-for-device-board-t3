@@ -177,12 +177,12 @@ OPERATE_RET tkl_ble_mesh_beacon_message_send(TKL_MESH_DEVICE_INFO_T device, TKL_
  *  * @return  SUCCESS
  *          ERROR
  * */
-OPERATE_RET tkl_ble_mesh_vendor_command_control(TKL_MESH_DEVICE_INFO_T device, uint16_t opcode, VOID_T *args);
+OPERATE_RET tkl_ble_mesh_vendor_command_control(TKL_MESH_DEVICE_INFO_T device, uint16_t opcode, void *args);
 
 
 OPERATE_RET tkl_ble_mesh_dfu_init(const TKL_MESH_DFU_IO_T *p_dfu_io);
 
-OPERATE_RET tkl_ble_mesh_dfu_control(TKL_MESH_DFU_OPERATION_E operation, VOID_T *args, uint16_t args_len);
+OPERATE_RET tkl_ble_mesh_dfu_control(TKL_MESH_DFU_OPERATION_E operation, void *args, uint16_t args_len);
 
 #ifdef __cplusplus
 }

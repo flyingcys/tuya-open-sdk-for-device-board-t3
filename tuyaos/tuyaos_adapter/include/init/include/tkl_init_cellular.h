@@ -88,7 +88,7 @@ typedef struct
      * @param imsi识别码，为15字节的字符串
      * @return 0 成功 其它 失败
      */
-    OPERATE_RET (*get_imsi) (uint8_t sim_id,CHAR_T imsi[15 + 1]);
+    OPERATE_RET (*get_imsi) (uint8_t sim_id,char imsi[15 + 1]);
 
     /**
      * @brief 获取SIM卡的ICCID
@@ -96,21 +96,21 @@ typedef struct
      * @param ICCID识别码，为20字节的字符串
      * @return 0 成功 其它 失败
      */
-    OPERATE_RET (*get_iccid) (uint8_t sim_id,CHAR_T iccid[20 + 1]);
+    OPERATE_RET (*get_iccid) (uint8_t sim_id,char iccid[20 + 1]);
     /**
      * @brief 获取SIM卡所在通道设备的IMEI号
      * @param simid
      * @param IMEI识别码，为15字节的字符串
      * @return 0 成功 其它 失败
      */
-    OPERATE_RET (*get_imei) (uint8_t sim_id,CHAR_T imei[15 + 1]);
+    OPERATE_RET (*get_imei) (uint8_t sim_id,char imei[15 + 1]);
 
     /**
      * @brief 设置SIM卡所在通道设备的IMEI号
      * @param IMEI识别码，为15字节的字符串
      * @return 0 成功 其它 失败
      */
-    OPERATE_RET (*set_imei) (uint8_t sim_id,CHAR_T imei[15 + 1]);
+    OPERATE_RET (*set_imei) (uint8_t sim_id,char imei[15 + 1]);
 
 	/**
      * @brief 获取当前蜂窝设备的信号接收功率——单位dbm
@@ -156,7 +156,7 @@ typedef struct
     * @brief 获取默认的SIM ID
     * @return 小于0失败，其他SIM ID
     */
-    INT8_T      (*get_default_simid)(void);
+    int8_t      (*get_default_simid)(void);
 
     /**
     * @brief 平台提供一些特殊的能力接口
@@ -195,7 +195,7 @@ typedef struct
      * @param callNum 呼叫号码，字符串形式
      * @return  0 发起呼叫成功 其它 失败
      */
-    OPERATE_RET (*call)(uint8_t sim_id, CHAR_T call_number[TKL_CELLULAR_CALLNUM_LEN_MAX]);
+    OPERATE_RET (*call)(uint8_t sim_id, char call_number[TKL_CELLULAR_CALLNUM_LEN_MAX]);
 
     /**
      * @brief 外部呼叫到来时，应答接听接口函数

@@ -142,7 +142,7 @@ OPERATE_RET tkl_uart_deinit(TUYA_UART_NUM_E port_id)
  * @return return > 0: number of data written; return <= 0: write errror
  */
 
-int tkl_uart_write(TUYA_UART_NUM_E port_id, VOID_T *buff, uint16_t len)
+int tkl_uart_write(TUYA_UART_NUM_E port_id, void *buff, uint16_t len)
 {
     uart_id_t port;
 
@@ -171,7 +171,7 @@ int tkl_uart_write(TUYA_UART_NUM_E port_id, VOID_T *buff, uint16_t len)
  *
  * @return return >= 0: number of data read; return < 0: read errror
  */
-int tkl_uart_read(TUYA_UART_NUM_E port_id, VOID_T *buff, uint16_t len)
+int tkl_uart_read(TUYA_UART_NUM_E port_id, void *buff, uint16_t len)
 {
     uart_id_t port;
 
@@ -247,7 +247,7 @@ static void uart_isr_t_cb(uart_id_t id, void  *param) {
  *
  * @return none
  */
-VOID_T tkl_uart_rx_irq_cb_reg(TUYA_UART_NUM_E port_id, TUYA_UART_IRQ_CB rx_cb)
+void tkl_uart_rx_irq_cb_reg(TUYA_UART_NUM_E port_id, TUYA_UART_IRQ_CB rx_cb)
 {
     int port_num = TUYA_UART_GET_PORT_NUMBER(port_id);
     uart_id_t port;
@@ -285,7 +285,7 @@ VOID_T tkl_uart_rx_irq_cb_reg(TUYA_UART_NUM_E port_id, TUYA_UART_IRQ_CB rx_cb)
  *
  * @return none
  */
-VOID_T tkl_uart_tx_irq_cb_reg(TUYA_UART_NUM_E port_id, TUYA_UART_IRQ_CB tx_cb)
+void tkl_uart_tx_irq_cb_reg(TUYA_UART_NUM_E port_id, TUYA_UART_IRQ_CB tx_cb)
 {
 
 }

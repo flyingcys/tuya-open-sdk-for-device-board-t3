@@ -21,9 +21,9 @@
 *
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
-VOID_T* tkl_system_malloc(const size_t size)
+void* tkl_system_malloc(const size_t size)
 {
-    VOID_T* ptr = os_malloc(size);
+    void* ptr = os_malloc(size);
     if(NULL == ptr) {
         tkl_log_output("tkl_system_malloc failed, size(%d)!\r\n", size);
     }
@@ -44,7 +44,7 @@ VOID_T* tkl_system_malloc(const size_t size)
 *
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
-VOID_T tkl_system_free(VOID_T* ptr)
+void tkl_system_free(void* ptr)
 {
     os_free(ptr);
 }
@@ -58,7 +58,7 @@ VOID_T tkl_system_free(VOID_T* ptr)
 *
 * @return the memory address malloced
 */
-VOID_T *tkl_system_memset(VOID_T* src, int ch, const size_t n)
+void *tkl_system_memset(void* src, int ch, const size_t n)
 {
     return os_memset(src, ch, n);
 }
@@ -72,7 +72,7 @@ VOID_T *tkl_system_memset(VOID_T* src, int ch, const size_t n)
 *
 * @return the memory address malloced
 */
-VOID_T *tkl_system_memcpy(VOID_T* src, const VOID_T* dst, const size_t n)
+void *tkl_system_memcpy(void* src, const void* dst, const size_t n)
 {
     return os_memcpy(src, dst, n);
 }
@@ -83,7 +83,7 @@ VOID_T *tkl_system_memcpy(VOID_T* src, const VOID_T* dst, const size_t n)
  * @param[in]       nitems      the numbers of memory block
  * @param[in]       size        the size of the memory block
  */
-VOID_T *tkl_system_calloc(size_t nitems, size_t size)
+void *tkl_system_calloc(size_t nitems, size_t size)
 {	
 	if (size && nitems > (~(size_t) 0) / size)
 		return NULL;
@@ -96,7 +96,7 @@ VOID_T *tkl_system_calloc(size_t nitems, size_t size)
  * @param[in]       nitems      source memory address
  * @param[in]       size        the size after re-allocate
  */
-VOID_T *tkl_system_realloc(VOID_T* ptr, size_t size)
+void *tkl_system_realloc(void* ptr, size_t size)
 {
     return os_realloc(ptr, size);
 }

@@ -53,7 +53,7 @@ OPERATE_RET tkl_queue_create_init(TKL_QUEUE_HANDLE *queue, int msgsize, int msgc
  *
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_queue_post(const TKL_QUEUE_HANDLE queue, VOID_T *data, uint32_t timeout)
+OPERATE_RET tkl_queue_post(const TKL_QUEUE_HANDLE queue, void *data, uint32_t timeout)
 {
     int ret = pdPASS;
 
@@ -95,7 +95,7 @@ extern uint32_t platform_is_in_interrupt_context( void );
  *
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-OPERATE_RET tkl_queue_fetch(const TKL_QUEUE_HANDLE queue, VOID_T *msg, uint32_t timeout)
+OPERATE_RET tkl_queue_fetch(const TKL_QUEUE_HANDLE queue, void *msg, uint32_t timeout)
 {
     void *dummyptr;
     int ret = pdPASS;
@@ -132,9 +132,9 @@ OPERATE_RET tkl_queue_fetch(const TKL_QUEUE_HANDLE queue, VOID_T *msg, uint32_t 
  *
  * @param[in] queue the message queue handle
  *
- * @return VOID_T
+ * @return void
  */
-VOID_T tkl_queue_free(const TKL_QUEUE_HANDLE queue)
+void tkl_queue_free(const TKL_QUEUE_HANDLE queue)
 {
     if (!queue) {
         return ;

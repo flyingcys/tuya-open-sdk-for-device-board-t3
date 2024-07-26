@@ -16,7 +16,7 @@
 #define ADC_DEV_CHANNEL_SUM 7
 #define ADC_BUF_SIZE 32
 
-static WORD_T adc_buf[ADC_BUF_SIZE];
+static uint16_t adc_buf[ADC_BUF_SIZE];
 
 
 //static bk_gpio_t ADC_PIN[] = {GPIO26,GPIO24,GPIO23,GPIO28,GPIO22,GPIO21};
@@ -285,7 +285,7 @@ OPERATE_RET tkl_adc_read_single_channel(TUYA_ADC_NUM_E unit_num, uint8_t ch_id, 
  *
  * @return temperature(bat: 'C)
  */
-int32_t tkl_adc_temperature_get(VOID_T)
+int32_t tkl_adc_temperature_get(void)
 {
     return OPRT_NOT_SUPPORTED;
 }

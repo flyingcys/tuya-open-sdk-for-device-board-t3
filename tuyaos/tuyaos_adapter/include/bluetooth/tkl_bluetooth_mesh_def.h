@@ -55,7 +55,7 @@ typedef struct {
     uint8_t   ttl;                /**< Time To Live. */
     uint16_t  app_key_index;      /**< The appkey index of this msg ues. */
     uint16_t  net_key_index;      /**< The networkkey index of this msg ues. */
-    CHAR_T    rssi;               /**< used when rx in adv bearer. */
+    char    rssi;               /**< used when rx in adv bearer. */
 } TKL_MESH_NET_PARAM_T;
 
 /**@brief network provision data. */
@@ -128,14 +128,14 @@ typedef struct {
     uint8_t     uuid[16];                           /**< Mesh Provisioner Scan Mesh Device UUID */
     uint16_t    oob;                                /**< Mesh Provisioner Scan Mesh Device OOB */
     uint32_t      uri_hash;                           /**< Mesh Provisioner Scan Mesh Device URI Hash */
-    CHAR_T      rssi;                               /**< Mesh Provisioner Scan Mesh Device Rssi */
+    char      rssi;                               /**< Mesh Provisioner Scan Mesh Device Rssi */
 }TKL_MESH_UNPROV_BEACON_T;
 
 typedef struct {
     uint8_t     mac[6];                             /**< Beacon Central Scan Adv Mac Address while in mesh mode*/
     uint8_t     length;                             /**< Beacon Central Scan advertising data length*/
     uint8_t     *p_data;                            /**< Beacon Central Scan advertising data */
-    CHAR_T      rssi;                               /**< Beacon Central Scan advertising Rssi */
+    char      rssi;                               /**< Beacon Central Scan advertising Rssi */
 }TKL_PRIVATE_BEACON_T;
 
 typedef struct {

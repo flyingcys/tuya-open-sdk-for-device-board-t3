@@ -19,7 +19,7 @@ typedef int IOCTRL_CMD;
 typedef struct {
   	LIST_HEAD list;
 	/*device name -- it is devcie unique identifier*/
-	CHAR_T name[16];
+	char name[16];
 	/* voltage output range (inclusive) - for voltage control */
 	int min_mV;
 	int max_mV;
@@ -37,7 +37,7 @@ typedef struct {
 
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_dev_unregistor(const CHAR_T *devname);
+OPERATE_RET tkl_pm_dev_unregistor(const char *devname);
 
 
 /**
@@ -47,7 +47,7 @@ OPERATE_RET tkl_pm_dev_unregistor(const CHAR_T *devname);
  *
  * @return TUYA_PM_DEV_DESC_T 设备描述对象
  */
-TUYA_PM_DEV_DESC_T *tkl_pm_get_dev_info(const CHAR_T *devname);
+TUYA_PM_DEV_DESC_T *tkl_pm_get_dev_info(const char *devname);
 
 
 /**
@@ -57,7 +57,7 @@ TUYA_PM_DEV_DESC_T *tkl_pm_get_dev_info(const CHAR_T *devname);
  *
  * @return TUYA_PM_DEV_DESC_T pm设备列表头指针
  */
-TUYA_PM_DEV_DESC_T *tkl_pm_get_dev_list_head(VOID_T);
+TUYA_PM_DEV_DESC_T *tkl_pm_get_dev_list_head(void);
 
 
 /**
@@ -68,7 +68,7 @@ TUYA_PM_DEV_DESC_T *tkl_pm_get_dev_list_head(VOID_T);
  *
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_set_voltage(const CHAR_T *devname, int mV);
+OPERATE_RET tkl_pm_set_voltage(const char *devname, int mV);
 
 
 /**
@@ -78,7 +78,7 @@ OPERATE_RET tkl_pm_set_voltage(const CHAR_T *devname, int mV);
  *
  * @return 电压，单位毫伏 .小于0 失败
  */
-int tkl_pm_get_voltage(const CHAR_T *devname);
+int tkl_pm_get_voltage(const char *devname);
 
 /**
  * @brief 设置设备电源输出电流。
@@ -88,7 +88,7 @@ int tkl_pm_get_voltage(const CHAR_T *devname);
  *
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_set_current(const CHAR_T *devname,int mA);
+OPERATE_RET tkl_pm_set_current(const char *devname,int mA);
 
 /**
  * @brief 获取设备电源当前输出电流。
@@ -97,7 +97,7 @@ OPERATE_RET tkl_pm_set_current(const CHAR_T *devname,int mA);
  *
  * @return 电压，单位毫安，小于0 失败
  */
-int  tkl_pm_get_current(const CHAR_T *devname);
+int  tkl_pm_get_current(const char *devname);
 
 /**
  * @brief 使能设备电源功能。
@@ -107,7 +107,7 @@ int  tkl_pm_get_current(const CHAR_T *devname);
  *
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_enable(const CHAR_T *devname,int lp_en);
+OPERATE_RET tkl_pm_enable(const char *devname,int lp_en);
 
 /**
  * @brief 关闭设备电源功能。
@@ -116,7 +116,7 @@ OPERATE_RET tkl_pm_enable(const CHAR_T *devname,int lp_en);
  *
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_disable(const CHAR_T *devname);
+OPERATE_RET tkl_pm_disable(const char *devname);
 
 /**
  * @brief 获取设备电源功能是否使能。
@@ -125,7 +125,7 @@ OPERATE_RET tkl_pm_disable(const CHAR_T *devname);
  * @param status 返回状态，TRUE enable,FALSE disable
  * @return 1 打开；0 关闭
  */
-OPERATE_RET tkl_pm_is_enable(const CHAR_T *devname,BOOL_T *status);
+OPERATE_RET tkl_pm_is_enable(const char *devname,BOOL_T *status);
 
 
 /**
@@ -135,7 +135,7 @@ OPERATE_RET tkl_pm_is_enable(const CHAR_T *devname,BOOL_T *status);
  * @status
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_power_off(const CHAR_T *devname);
+OPERATE_RET tkl_pm_power_off(const char *devname);
 
 
 /**
@@ -145,7 +145,7 @@ OPERATE_RET tkl_pm_power_off(const CHAR_T *devname);
  *
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_reset(const CHAR_T *devname);
+OPERATE_RET tkl_pm_reset(const char *devname);
 
 /**
  * @brief 设备的ioctl接口，这个接口是为了给设备提供了扩展的接口
@@ -155,7 +155,7 @@ OPERATE_RET tkl_pm_reset(const CHAR_T *devname);
  * @param param    输入参数指针
  * @return 0 设置成功 其它 设置失败
  */
-OPERATE_RET tkl_pm_ioctl(const CHAR_T *devname,int ctl_cmd,VOID_T *param);
+OPERATE_RET tkl_pm_ioctl(const char *devname,int ctl_cmd,void *param);
 
 
 

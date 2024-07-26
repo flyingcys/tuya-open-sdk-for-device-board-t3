@@ -291,7 +291,7 @@ TUYA_ERRNO tkl_net_recvfrom(const int fd, void *buf, const uint32_t nbytes, TUYA
 *
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
-OPERATE_RET tkl_net_gethostbyname(const CHAR_T *domain, TUYA_IP_ADDR_T *addr);
+OPERATE_RET tkl_net_gethostbyname(const char *domain, TUYA_IP_ADDR_T *addr);
 
 /**
 * @brief Bind to network with specified ip
@@ -303,7 +303,7 @@ OPERATE_RET tkl_net_gethostbyname(const CHAR_T *domain, TUYA_IP_ADDR_T *addr);
 *
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
-OPERATE_RET tkl_net_socket_bind(const int fd, const CHAR_T *ip);
+OPERATE_RET tkl_net_socket_bind(const int fd, const char *ip);
 
 /**
 * @brief Set socket fd close mode
@@ -337,7 +337,7 @@ OPERATE_RET tkl_net_get_socket_ip(const int fd, TUYA_IP_ADDR_T *addr);
 *
 * @return ip address
 */
-TUYA_IP_ADDR_T tkl_net_str2addr(const CHAR_T *ip_str);
+TUYA_IP_ADDR_T tkl_net_str2addr(const char *ip_str);
 
 /**
 * @brief Change ip address to string
@@ -348,7 +348,7 @@ TUYA_IP_ADDR_T tkl_net_str2addr(const CHAR_T *ip_str);
 *
 * @return ip string
 */
-CHAR_T* tkl_net_addr2str(const TUYA_IP_ADDR_T ipaddr);
+char* tkl_net_addr2str(const TUYA_IP_ADDR_T ipaddr);
 
 /**
 * @brief Set socket options
@@ -363,7 +363,7 @@ CHAR_T* tkl_net_addr2str(const TUYA_IP_ADDR_T ipaddr);
 *
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
-OPERATE_RET tkl_net_setsockopt(const int fd, const TUYA_OPT_LEVEL level, const TUYA_OPT_NAME optname, const VOID_T *optval, const int optlen);
+OPERATE_RET tkl_net_setsockopt(const int fd, const TUYA_OPT_LEVEL level, const TUYA_OPT_NAME optname, const void *optval, const int optlen);
 
 /**
 * @brief Get socket options
@@ -378,7 +378,7 @@ OPERATE_RET tkl_net_setsockopt(const int fd, const TUYA_OPT_LEVEL level, const T
 *
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
-OPERATE_RET tkl_net_getsockopt(const int fd, const TUYA_OPT_LEVEL level, const TUYA_OPT_NAME optname, VOID_T *optval, int *optlen);
+OPERATE_RET tkl_net_getsockopt(const int fd, const TUYA_OPT_LEVEL level, const TUYA_OPT_NAME optname, void *optval, int *optlen);
 
 /**
 * @brief Set timeout option of socket fd
@@ -489,7 +489,7 @@ OPERATE_RET tkl_net_getpeername(int fd, TUYA_IP_ADDR_T *addr, uint16_t *port);
 *
 * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
 */
-OPERATE_RET tkl_net_sethostname(const CHAR_T *hostname);
+OPERATE_RET tkl_net_sethostname(const char *hostname);
 
 
 #ifdef __cplusplus

@@ -102,7 +102,7 @@ typedef struct {
 typedef struct {
     TKL_BLE_GAP_ADV_TYPE_E  adv_type;                   /**< Advertising report type. Refer to @TKL_BLE_GAP_ADV_TYPE_E */
     TKL_BLE_GAP_ADDR_T      peer_addr;                  /**< Bluetooth address of the peer device. */
-    CHAR_T                  rssi;                       /**< Received Signal Strength Indication in dBm of the last packet received. */
+    char                  rssi;                       /**< Received Signal Strength Indication in dBm of the last packet received. */
     uint8_t                 channel_index;              /**< Channel Index on which the last advertising packet is received (37-39).channel index = 37, it means that we do advertisement in channel 37. */
     TKL_BLE_DATA_T          data;                       /**< Received advertising or scan response data.  */
 } TKL_BLE_GAP_ADV_REPORT_T;
@@ -310,7 +310,7 @@ typedef struct {
         TKL_BLE_GAP_DISCONNECT_EVT_T    disconnect;     /**< Receive disconnect callback*/
         TKL_BLE_GAP_ADV_REPORT_T        adv_report;     /**< Receive Adv and Respond report*/
         TKL_BLE_GAP_CONN_PARAMS_T       conn_param;     /**< We will update connect parameters.This value can be used with TKL_BLE_EVT_CONN_PARAM_REQ and TKL_BLE_EVT_CONN_PARAM_UPDATE*/
-        CHAR_T                          link_rssi;      /**< Peer device RSSI value */
+        char                          link_rssi;      /**< Peer device RSSI value */
     }gap_event;
 } TKL_BLE_GAP_PARAMS_EVT_T;
 typedef struct {

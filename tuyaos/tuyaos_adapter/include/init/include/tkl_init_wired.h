@@ -35,7 +35,7 @@ typedef struct {
  *
  * @return OPRT_OK on success. Others on error, please refer to tuya_error_code.h
  */
-TKL_WIRED_DESC_T* tkl_wired_desc_get(VOID_T);
+TKL_WIRED_DESC_T* tkl_wired_desc_get(void);
 
 
 #ifdef __cplusplus

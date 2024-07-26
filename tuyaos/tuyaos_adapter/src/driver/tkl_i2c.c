@@ -80,7 +80,7 @@ OPERATE_RET tkl_i2c_irq_disable(TUYA_I2C_NUM_E port)
 	return OPRT_OK;
 }
 
-OPERATE_RET tkl_i2c_master_send(TUYA_I2C_NUM_E port, uint16_t dev_addr, const VOID_T *data, uint32_t size, BOOL_T xfer_pending)
+OPERATE_RET tkl_i2c_master_send(TUYA_I2C_NUM_E port, uint16_t dev_addr, const void *data, uint32_t size, BOOL_T xfer_pending)
 {
 	s_i2c_status.direction = I2C_DIRECTION_TRANSMIT;
 	bk_i2c_master_write((i2c_id_t)port, dev_addr, data, size, I2C_WRITE_WAIT_MAX_MS);
